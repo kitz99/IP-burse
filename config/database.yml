@@ -20,9 +20,10 @@ test:
 
 production:
   adapter: postgresql
-  database: burse
-  username: postgres
-  password: burse
-  host: localhost
+  database: d1es19gqf1nspn
+  username: jcywhmyookjhxd
+  password: 9psc4_lB3rwvohIpfRVC2INR-Z
+  host: ec2-54-246-90-92.eu-west-1.compute.amazonaws.com
   pool: 5
   timeout: 5000
+  port: 5432
