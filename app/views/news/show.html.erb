@@ -1,0 +1,31 @@
+
+<p>
+  <strong>Title:</strong>
+  <%= @news.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @news.content %>
+</p>
+
+<p>
+  <strong>Post date:</strong>
+  <%= @news.post_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @news.user %>
+</p>
+
+<% if @current_user.is_admin == true%>
+<a href="#" data-toggle="modal" data-target="#edit">Edit</a>
+<%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <%= render 'news/form' %>
+  </div>
+</div>

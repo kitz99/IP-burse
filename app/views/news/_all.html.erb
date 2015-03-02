@@ -1,0 +1,25 @@
+
+<% @allnews.each do |news| %>
+<div style="margin-bottom:20px">
+  <div class="row">
+    <div class="col-md-9">
+      <h4><%= news.title %></h4>
+    </div>
+    <div class="col-md-2 col-md-offset-1">
+      <h5 class="pull-right"><%= news.post_date.to_date %></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= news.content %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <a class="pull-right" href="<%=root_url%>news/<%=news.id %>">citeste tot </a>
+    </div>
+  </div>
+</div>
+
+<% end %>

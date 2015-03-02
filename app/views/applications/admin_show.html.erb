@@ -1,0 +1,177 @@
+<div class="row">
+  <div class="col-md-8">
+    <h4 class="title">
+
+      <% case @application.scholarship_id %>
+      <% when 1 %>  
+      <p>Bursa de perfomanta</p>
+      <% when 2 %>  
+      <p>Bursa de studiu/merit</p>
+      <% when 3 %>  
+      <p>Bursa sociala</p>
+      <% when 4 %> 
+      <p>Bursa sociala ocazionala</p>
+      <% when 5 %> 
+      <p>Bursa medicala</p>
+      <% when 6 %>  
+      <p>Bursa sociala orfan</p>
+      
+      <% end %>
+      
+    </h4>
+    <div class="well">
+
+      <div id="showDetails" style=" padding-top:70px;  margin-left:50px; padding-bottom:50px; margin-right: auto;">
+
+        <p>
+          <b>Nume:</b>
+          <%=@user["first_name"] %>
+        </p>
+
+        <p>
+          <b>Prenume:</b>
+          <%= @user["last_name"] %>
+        </p>
+
+        <p>
+          <b>Status:</b>
+          <%= @application.status %>
+        </p>
+
+        <p>
+          <b>Data depunere:</b>
+          <%= @application.submission_date.strftime("%d-%m-%Y") %>
+        </p>
+
+        <p>
+          <b>Motiv de aplicare:</b>
+          <%= @application.reason %>
+        </p>
+
+        <p>
+          <b>Depunere pe card:</b>
+          <% case @application.on_card %>
+          <% when 0 %>
+          Nu
+          <% when 1 %>
+          Da
+          <p>
+            <b> Banca </b>
+            <%= @user.bank  %>
+          </p>
+          <p>
+            <b> IBAN </b>
+            <%= @user.iban  %>
+          </p>
+          <% end %>
+        </p>
+
+
+
+        <% @attachments.each do |attachment| %>
+        <% if attachment.path %>
+        <div class="pull-left"> 
+          <a href="<%= root_url[0..-2] + attachment.path.to_s %>" target="_blank">
+            <img class="img-thumbnail" src="<%= attachment.path_url(:thumb) %>" />
+          </a>
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <%= form_for(@application) do |f| %>
+
+    <div class="field">
+      <label>Status</label>
+      <select name="application[status]" id="select_status">
+        <option value="0" <% if @application.status == 'Nevalida' %> selected <% end %>>Nevalida</option>
+        <option value="1" <% if @application.status == 'Valida' %> selected <% end %>>Valida</option>
+      </select>
+    </div>
+
+    <div class="field" id="resp" style="display:none">
+      <label>Reason</label>
+      <textarea name="application[response]"><%= @application.response %></textarea>
+    </div>
+
+    <div id="domain" style="display:none">
+      <div class="field">
+        <label>Domain</label>
+        <select name="application[domain_id]" id="select_domain">
+          <% @domains.each do |e| %>
+          <option value="<%= e.id %>" 
+            <% if @application.domain_id == e.id %> selected <% end %>>
+            <%= e.name %>
+          </option>
+          <% end %>
+        </select>
+      </div>
+
+      <div id="datas">
+
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+    <% end %>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  var implicitDomainData = [];
+
+  <% @implicitDomainData.each do |p| %>
+  implicitDomainData.push(<%= p %>);
+  <% end %>
+
+  function selectChoose(){
+    if($("#select_status").val() == 0){
+      $("#domain").hide();
+      $("#resp").show();
+    }
+    else
+    {
+      $("#domain").show();
+      $("#resp").hide();  
+      populateDomainDatas();
+    }
+  }
+
+  function populateDomainDatas(){
+    $.get( "http://localhost:3000/json/data", { domain_id: $("#select_domain").val() } )
+    .done(function( data ) {
+      var html = "";
+      //data = JSON.parse(data);
+      for(var i = 0; i < data.length; i++){
+        var value = (implicitDomainData[i])?implicitDomainData[i].toString():"";
+        html = html + '<input type="hidden" name="data[id][]" value="' + data[i].id + '"><label>' + data[i].name + '</label><input type="text" name="data[value][]" value="' + value + '">';
+      }
+
+      $("#datas").html(html);
+      
+    });
+  }
+
+  $(document).ready(function(){
+    selectChoose();
+  });
+
+  $("#select_status").change(function(){
+    selectChoose();
+  });
+
+  $("#select_domain").change(function(){
+    populateDomainDatas();
+  });
+
+
+</script>

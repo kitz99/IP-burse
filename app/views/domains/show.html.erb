@@ -1,0 +1,32 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @domain.name %>
+</p>
+
+<p>
+  <strong>Money:</strong>
+  <%= @domain.money %>
+</p>
+
+<p>
+  <strong>Order number:</strong>
+  <%= @domain.order_number %>
+</p>
+
+<p>
+  <strong>Scholarship:</strong>
+  <%= @domain.scholarship.stype %>
+</p>
+
+<% @datas.each do |p| %>
+<p>
+  <strong>data:</strong>
+  <%= p.name %>
+  <%= p.sort %>
+  
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_domain_path(@domain) %> |
+<%= link_to 'Back', domains_path %>

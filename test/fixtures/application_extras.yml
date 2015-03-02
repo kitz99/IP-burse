@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 9.99
+  domain_data_id: 
+  application_id: 
+
+two:
+  value: 9.99
+  domain_data_id: 
+  application_id: 

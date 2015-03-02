@@ -1,0 +1,15 @@
+@media (min-width: 768px)
+  {
+  .span3
+  {
+    width: 146px;
+  }
+  .span2
+  {
+  	width: 80px;
+  }
+  .span44
+  {
+  	width: 200px;
+  }
+}

@@ -1,0 +1,243 @@
+
+<style>
+  #wrapper {
+    padding-right: 250px;
+    transition: all 0.4s ease 0s;
+  }
+
+  .panel-heading{
+    background-color:#EDEDED !important;
+  }
+
+  #sidebar-wrapper {
+    margin-right: -250px;
+    right: 250px;
+    width: 250px;
+    background: #F9F9F9;
+    position: fixed;
+    height: 500px;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
+  }
+
+  #page-content-wrapper {
+    width: 100%;
+  }
+
+  .sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar-nav li {
+    line-height: 40px;
+    text-indent: 20px;
+  }
+
+  .sidebar-nav li a {
+    color: #999999;
+    display: block;
+    text-decoration: none;
+  }
+
+  .sidebar-nav li a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    text-decoration: none;
+  }
+
+  .sidebar-nav li a:active,
+  .sidebar-nav li a:focus {
+    text-decoration: none;
+  }
+
+  .sidebar-nav > .sidebar-brand {
+    height: 65px;
+    line-height: 60px;
+    font-size: 18px;
+  }
+
+  .sidebar-nav > .sidebar-brand a {
+    color: #999999;
+  }
+
+  .sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+  }
+
+  .content-header {
+    height: 65px;
+    line-height: 65px;
+  }
+
+  .content-header h1 {
+    margin: 0;
+    margin-right: 20px;
+    line-height: 65px;
+    display: inline-block;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+
+  .inset {
+    padding: 20px;
+  }
+
+  @media (max-width:767px) {
+
+    #wrapper {
+      padding-right: 0;
+    }
+
+    #sidebar-wrapper {
+      right: 0;
+    }
+
+    #wrapper.active {
+      position: relative;
+      right: 250px;
+    }
+
+    #wrapper.active #sidebar-wrapper {
+      right: 250px;
+      width: 250px;
+      transition: all 0.4s ease 0s;
+    }
+
+    #menu-toggle {
+      display: inline-block;
+    }
+
+    .inset {
+      padding: 15px;
+    }
+
+  }
+
+</style>
+
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <%= render 'rightPanel' %>
+
+  <!-- Page content -->
+  <div id="page-content-wrapper">
+    <div class="page-content inset">
+      <%= render 'centerPanel' %>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+  var avail_sum = 0, used_sum = 0;
+  var domain_scholarships = [];
+  var students_with_scholarships = []
+
+  function step1(){
+    avail_sum = $("#money_avail").val();
+
+    $("#collapseOne").collapse('hide');
+    $("#collapseTwo").collapse('show');
+
+    var sociala12 = $('input[d="1"]')?$('input[d="1"]').val():0;
+    var sociala12_val = $('input[d="1"]').attr('sum')?$('input[d="1"]').attr('sum'):3600;
+    var sociala9_val = $('input[d="2"]').attr('sum')?$('input[d="2"]').attr('sum'):2700;
+
+    var sociala9 = Math.floor((0.15 * avail_sum - sociala12 * sociala12_val)/sociala9_val);
+    if($('input[d="2"]'))
+      $('input[d="2"]').val(sociala9);
+  }
+
+  function step2(){
+    $("#collapseTwo").collapse('hide');
+    $("#collapseThree").collapse('show');
+    $("#avail_sum").text(avail_sum);
+  }
+
+  function step3(){
+    $(".item").each(function(){
+
+      var students_str = students_with_scholarships.join(", ");
+      var how_many = ($(this).val())?parseInt($(this).val()):0 ;
+      var sum = $(this).attr('sum');
+      var domain_id = $(this).attr('d');
+
+      if(how_many != 0)
+        $.ajax({
+          type: "GET",
+          url: "<%= root_url %>json/jlm/",
+          processData: true,
+          async: false,
+          context: "application/json",
+          data: {domain_id: domain_id, not_users: students_str, limit: how_many},
+          success: function(data) {
+
+            var arr = [];
+
+            for(var i = 0; i < data.length; i++){
+              students_with_scholarships.push(data[i].user_id);
+
+              var temp_arr = [];
+              temp_arr.push(data[i].username);
+              
+              for(var j = 0; j < data[i].extra.length; j++)
+                temp_arr.push(data[i].extra[j].value);
+
+              temp_arr.push("<a href='<%= root_url %>applications/" + data[i].id + "' target='_blank'>Click</a>");
+
+              arr.push(temp_arr);
+            }
+
+
+            used_sum = used_sum + data.length * sum;
+            var ec = $('#d' + domain_id).attr('extracols');
+
+            $('#d' + domain_id).dataTable({
+              "sPaginationType": "bootstrap",
+              "bJQueryUI": true,
+
+
+              "aaData": arr,
+              "aoColumns": [
+              { "sTitle": "Student" },
+              JSON.parse(ec),
+              { "sTitle": "Applicatie" }
+
+              ]
+            });
+          },
+          error: function() {
+            console.log("failure");
+          }
+        });
+
+});
+
+
+$("#used_sum").text(used_sum);
+$("#diff_sum").text(avail_sum - used_sum);
+if(avail_sum - used_sum < 0)
+  $("#diff_sum").addClass("text-danger");
+else
+  $("#diff_sum").addClass("text-success");
+
+}
+
+
+function step4(){
+  console.log("trimite");
+}
+
+</script>

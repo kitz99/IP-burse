@@ -1,0 +1,67 @@
+<%= form_for(@domain) do |f| %>
+<% if @domain.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@domain.errors.count, "error") %> prohibited this domain from being saved:</h2>
+
+  <ul>
+    <% @domain.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :money %><br>
+  <%= f.text_field :money %>
+</div>
+<div class="field">
+  <%= f.label :order_number %><br>
+  <%= f.number_field :order_number %>
+</div>
+
+
+<div class="field">
+  <label>Scholarship</label>
+  <select name="domain[scholarship_id]">
+    <% @scholarships.each do |e| %>
+    <option value="<%= e.id %>" 
+      <% if @domain.scholarship_id == e.id %> selected <% end %>>
+      <%= e.stype%>
+    </option>
+    <% end %>
+  </select>
+</div>
+
+<div id="domaindata">
+  <label>Datas</label>
+  <% if ! @datas.nil? %>
+  <% @datas.each do |p| %>
+  <div class="field">
+    <input type="text" value="<%= p.name %>" disabled> 
+    <input type="text" value="<%= p.sort %>" disabled> 
+    <%= link_to 'Destroy', "/domains/data/" + p.id.to_s, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <% end %>
+    <% else %>
+    <div class="field"><input type="text" name="domain_data[name][]"><select name="domain_data[sort][]"><option value="asc">ascendent</option><option value="desc">descendent</option></select></div>
+    <% end %>
+  </div>
+
+
+  <a href="javascript:addData()">add data</a>
+
+  <script>
+    function addData(){
+      $("#domaindata").append('<div class="field"><input type="text" name="domain_data[name][]"><select name="domain_data[sort][]"><option value="asc">ascendent</option><option value="desc">desscendent</option></select></div>');
+
+    }
+  </script>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-8">
+    <h3>Ultimele stiri</h3>
+    <%= render 'news/all' %>
+  </div>
+
+  <div class="col-md-4">
+    <h3>Aplicatii active</h3>
+
+    <% @my_applications.each do |app| %>
+    <div class="row">
+      <div class="col-md-6">
+        <a href="<%= root_url %>applications/<%= app.id %>/edit"><%= app.scholarship.stype %></a>
+      </div>
+      <div class="col-md-6">
+        <div class="progress progress-striped active" style="margin-bottom:5px">
+
+
+          <div class="progress-bar progress-bar<%= 
+          case app.status
+          when "Valida" then ""
+          when "Nevalida" then "-warning"
+          when "Acceptata" then "-success"
+          when "Respinsa" then "-danger"
+          when "In asteptare" then "-info"
+          else ""
+          end 
+          %>"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> <%= app.status %></div>
+
+        </div>
+      </div>
+    </div>
+    <%
+  end
+  %>    
+
+
+</div>
+</div>

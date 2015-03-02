@@ -1,0 +1,93 @@
+  <div id="sidebar-wrapper">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Bani
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+
+           <div class="form-group">
+             <label class="control-label">
+              Introdu suma de bani(RON):
+            </label>
+            <input type="text" id="money_avail" class="form-control">
+          </div>
+          <div>
+            <a href="javascript:void(0)" onclick="step1();" class="btn btn-sm btn-primary pull-right">Next</a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" >
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Locuri/domeniu
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <% @domains.each do |p| %>
+            <% if !@initial_numbers[p.id].nil? && @initial_numbers[p.id] > 0 %>
+              <div class="clearfix" style="width:100%;font-size:12px">
+                <label class="pull-left"><%= p.name %></label>
+                <input class="pull-right item" sum="<%= p.money %>" d="<%= p.id %>" type="text" style="width:50px" 
+                <%= if p.order_number >= 4 then 'value=' + @initial_numbers[p.id].to_s + ' disabled' end %> 
+                <%= if p.order_number >= 2 && p.order_number < 4 then 'value=' + @initial_numbers[p.id].to_s end %>
+                >
+              </div>
+            <% end %>
+          <% end %>
+          <div style="margin-top:10px">
+            <a href="javascript:void(0)" onclick="step2();" class="btn btn-sm btn-primary pull-right">Next</a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            Generare Burse
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <h4 class="text-info">Suma disponibila: <span id="avail_sum"></span></h4>
+          <h4 class="text-info">Suma folosita: <span id="used_sum"></span></h4>
+          <h4 class="text-info">Diferenta: <span id="diff_sum"></span></h4>
+          <div>
+            <a href="javascript:void(0)" onclick="step3();" class="btn btn-sm btn-primary pull-right">Generate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+            Salveaza rezultatele
+          </a>
+        </h4>
+      </div>
+      <div id="collapseFour" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div>
+            <a href="javascript:void(0)" class="btn btn-sm btn-primary pull-right">Salveaza in api-ul central</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

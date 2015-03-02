@@ -1,0 +1,197 @@
+<div class="container col-md-10 col-md-offset-1 text-center">
+
+	<h3>
+		<% case params[:scholarship_id] %>
+		<% when "1" %>  
+		Bursa de perfomanta
+		<% when "2" %>  
+		Bursa de studiu/merit
+		<% when "3" %>  
+		Bursa sociala</p>
+		<% when "4" %> 
+		Bursa sociala ocazionala
+		<% when "5" %> 
+		Bursa medicala
+		<% when "6" %>  
+		Bursa sociala orfan
+
+		<% end %>
+	</h3>
+
+
+	<div class="row text-left">
+		<div>
+
+			<%= form_for(@application) do |f| %> 
+
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label class="col-md-12 control-label">Nume</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[last_name]" value="<%= @info["last_name"] %>" disabled>
+					</div>
+				</div>
+
+				<div class="form-group col-md-6">
+					<label class="col-md-12 control-label">Prenume</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[first_name]" value="<%= @info["first_name"] %>" disabled>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-4">
+					<label class="col-md-12 control-label">Specializarea</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[specialization]" value="<%= @info['specialization'] %>" disabled>
+					</div>
+				</div>
+
+				<div class="form-group col-md-2">
+					<label class="col-md-12 control-label">Anul</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[year]" value="<%= @info['group_year'] %>" disabled>
+					</div>
+				</div>  
+
+				<div class="form-group col-md-2">
+					<label class="col-md-12 control-label">Grupa</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[group]" value="<%= @info['group_year'].to_s + @info['group_series'].to_s + @info['group_number'].to_s %>" disabled>
+					</div>
+				</div>  
+
+				<div class="form-group col-md-2">
+					<label class="col-md-12 control-label">Media</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[medie]" value="<%= @info['mean'] %>" disabled>
+					</div>
+				</div>  
+
+				<div class="form-group col-md-2">
+					<label class="col-md-12 control-label">Nr credite</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[credite]" value="<%= @info['credits'] %>" disabled>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label class="col-md-12 control-label">CNP</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[cnp]" value="<%= @info['cnp'] %>" disabled>
+					</div>
+				</div>
+
+				<div class="form-group col-md-6">
+					<label class="col-md-12 control-label">BI/CI seria si nr</label>
+					<div class="col-md-12">
+						<input type="text" api="1" class="form-control" name="api[serienumar]" value="<%= @info['bi serie'].to_s + @info['bi numar'].to_s %>" disabled>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" class="form-control" name="api[is]" value="0">
+			<div class="form-group" id="editApi">
+				<div class="col-md-7" style="text-align:right">
+					<a href="javascript:void(0)"  onclick="edit_api();">Editeaza informatii</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label class="col-md-12 control-label">Motive</label>
+					<div class="col-md-12">
+						<%= f.text_area :reason, :rows => 5 , :class => "form-control" %>
+					</div>
+				</div>
+			</div>
+			<div class="row	">
+				<div class="form-group col-md-2">
+					<label class=" control-label">Bursa pe card?</label>
+					<div class="col-md-12">
+						<%= f.select(:on_card, [['Nu', 0], ['Da', 1]] , {:selected => if @iban == '' then 0 else 1 end}, { :class => 'form-control' }) %>  
+					</div>
+				</div>
+
+				<div class="form-group col-md-3" id="bankDiv" style="display:none">
+					<label class="col-md-12 control-label">Banca</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" name="application[users][bank]" value="<%= @bank %>">
+					</div>
+				</div>
+
+				<div class="form-group col-md-3" id="ibanDiv" style="display:none">
+					<label class="col-md-12 control-label">Iban</label>
+					<div class="col-md-12">
+						<input type="text" class="form-control" name="application[users][iban]" value="<%= @iban %>">
+					</div>
+				</div>
+
+				<div class="form-group col-md-4">
+					<label class="col-md-12 control-label">Documente</label>
+					<div class="col-md-12">
+						<%= f.fields_for :attachments do |p| %>
+						<%= p.file_field :path, :multiple => true, name: "attachments[path][]", class: "btn btn-default pull-left" %>
+						<% end %>    
+					</div>
+
+				</div>
+			</div>
+
+
+			<%= f.hidden_field :scholarship_id, :value => @scholarship_id %>
+
+
+		</div>
+
+
+	</div>
+
+
+	<div class="clearfix"></div>
+	<br />
+	<br />
+
+	<div class="row">
+		<div class="col-md-12" style="text-align:center">    
+			<%= f.submit "Salveaza", :class => 'btn btn-lg btn-primary' %>
+		</div>
+	</div>
+
+	<% end %>
+	<script>
+
+		function edit_api(){
+			$("#editApi").hide();
+
+			$("[name='api[is]']").val('1');
+
+			$("[api='1']").each(function(){
+				$(this).prop('disabled', false);
+			});
+
+	    //make all available
+	  }
+
+	  function check_iban(){
+	  	if($("#application_on_card").val() == 0){
+	  		$("#bankDiv").hide();
+	  		$("#ibanDiv").hide();
+	  	}
+	  	else{
+	  		$("#bankDiv").show();
+	  		$("#ibanDiv").show();
+	  	}
+	  }
+
+	  $(document).ready(function(){
+	  	check_iban();
+	  });
+
+	  $("#application_on_card").change(function(){
+	  	check_iban();
+	  });
+
+	</script>
+</div>
+
