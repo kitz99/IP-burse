@@ -28,9 +28,11 @@ gem 'carrierwave'
 gem "rmagick", "2.13.2", :require => 'RMagick'
 
 
-#for put on server 
+# for put on server 
 gem 'rest-client', '~> 1.6.7'
 
+
+# send emails
 
 
 gem 'rails4_upgrade', github: 'alindeman/rails4_upgrade'

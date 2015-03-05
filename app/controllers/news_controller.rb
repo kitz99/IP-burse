@@ -18,8 +18,11 @@ class NewsController < ApplicationController
     @news.post_date = Time.now
     @news.user_id = @current_user.id
 
+    username = User.find(@news.user_id).last_name
     respond_to do |format|
       if @news.save
+        # here send mail
+        NewsMailer.news_created(@news, username).deliver
         format.html { redirect_to @news, notice: 'News was successfully created.' }
         format.json { render action: 'show', status: :created, location: @news }
       end

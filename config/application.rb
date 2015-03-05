@@ -56,5 +56,13 @@ module Team9Scholarships
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
+
+    ActionMailer::Base.smtp_settings = {
+        :port =>           '587',
+        :address =>        'smtp.mandrillapp.com',
+        :user_name =>      'fiftyfourteam@gmail.com',
+        :password =>       'w7RpxKBh1FVJNDfCvKXnCA',
+        :authentication => :plain
+    }
   end
 end

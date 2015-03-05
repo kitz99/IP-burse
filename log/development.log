@@ -1,0 +1,1051 @@
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /home/bogdan/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-05 23:29:41 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/auth/autentificare/
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/autentificare/" for 127.0.0.1 at 2015-03-05 23:29:41 +0200
+
+
+Started GET "/auth/autentificare/callback?code=f6ebbb4a777f887a9a8e3602a7f24417&response_type=code&state=417baaf10613a4d502a8996f6a69ce06f982ec4c0dcda43c" for 127.0.0.1 at 2015-03-05 23:30:03 +0200
+Processing by UserSessionsController#create as HTML
+  Parameters: {"code"=>"f6ebbb4a777f887a9a8e3602a7f24417", "response_type"=>"code", "state"=>"417baaf10613a4d502a8996f6a69ce06f982ec4c0dcda43c", "provider"=>"autentificare"}
+Completed 500 Internal Server Error in 15ms
+
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  app/controllers/user_sessions_controller.rb:9:in `create'
+
+
+  Rendered /home/bogdan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.9/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.9/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.1.3/gems/actionpack-4.1.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.4ms)
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateApplications (20130319082806)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "applications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "submission_date" date, "approval_date" date, "status" varchar(255), "reason" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130319082806"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+Migrating to CreateScholarships (20130320195056)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "scholarships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "stype" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130320195056"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Migrating to AddScholarshipIdToApplications (20130323143007)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "applications" ADD "scholarship_id" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130323143007"]]
+  [1m[35m (13.3ms)[0m  commit transaction
+Migrating to AddUserIdToApplications (20130330102521)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "applications" ADD "user_id" integer
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130330102521"]]
+  [1m[35m (2.2ms)[0m  commit transaction
+Migrating to AddOnCardToApplications (20130406115152)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "applications" ADD "on_card" integer
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130406115152"]]
+  [1m[35m (1.9ms)[0m  commit transaction
+Migrating to CreateUsers (20130408071227)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "status" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130408071227"]]
+  [1m[35m (5.8ms)[0m  commit transaction
+Migrating to AddTokenToUsers (20130413103516)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "token" varchar(255)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130413103516"]]
+  [1m[35m (3.5ms)[0m  commit transaction
+Migrating to AddEmailToUsers (20130413110005)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "users" ADD "email" varchar(255)
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130413110005"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Migrating to AddIsStudentToUsers (20130413110624)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "users" ADD "is_student" boolean
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130413110624"]]
+  [1m[35m (2.1ms)[0m  commit transaction
+Migrating to AddIsTeacherToUsers (20130413110709)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "is_teacher" boolean
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130413110709"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+Migrating to AddIsManagementToUsers (20130413110732)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "users" ADD "is_management" boolean
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130413110732"]]
+  [1m[35m (16.3ms)[0m  commit transaction
+Migrating to AddIsAdminToUsers (20130416060714)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "is_admin" boolean
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20130416060714"]]
+  [1m[35m (18.1ms)[0m  commit transaction
+Migrating to CreateAttachments (20140416210224)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "attachments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "path" varchar(255), "application_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140416210224"]]
+  [1m[35m (23.4ms)[0m  commit transaction
+Migrating to CreateNews (20140424145504)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "news" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "post_date" datetime, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_news_on_user_id" ON "news" ("user_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140424145504"]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddIbanToUsers (20140430124650)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "users" ADD "iban" varchar(255)[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "bank" varchar(255)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140430124650"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+Migrating to AddResponseToApplication (20140504002420)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "applications" ADD "response" text
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140504002420"]]
+  [1m[35m (8.3ms)[0m  commit transaction
+Migrating to AddDomainToApplication (20140508232541)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "applications" ADD "domain_id" integer DEFAULT 0
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140508232541"]]
+  [1m[35m (2.2ms)[0m  commit transaction
+Migrating to CreateDomains (20140508232748)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "domains" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "money" decimal, "order_number" integer, "scholarship_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_domains_on_scholarship_id" ON "domains" ("scholarship_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140508232748"]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+Migrating to CreateDomainData (20140508233420)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "domain_data" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "sort" varchar(255), "domain_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.4ms)[0m  CREATE  INDEX "index_domain_data_on_domain_id" ON "domain_data" ("domain_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.934035"], ["domain_id", 1], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.934035"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.935966"], ["domain_id", 2], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.935966"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.937030"], ["domain_id", 3], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.937030"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.938053"], ["domain_id", 4], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.938053"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.939071"], ["domain_id", 5], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.939071"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.940122"], ["domain_id", 6], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.940122"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.941132"], ["domain_id", 7], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.941132"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.942163"], ["domain_id", 8], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.942163"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.943187"], ["domain_id", 9], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.943187"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.944274"], ["domain_id", 10], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.944274"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.945310"], ["domain_id", 11], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.945310"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.946327"], ["domain_id", 12], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.946327"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.947324"], ["domain_id", 13], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.947324"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.948358"], ["domain_id", 14], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.948358"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.949375"], ["domain_id", 15], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.949375"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.950388"], ["domain_id", 16], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.950388"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.951406"], ["domain_id", 17], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.951406"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.952438"], ["domain_id", 18], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.952438"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.953450"], ["domain_id", 19], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.953450"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.954453"], ["domain_id", 20], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.954453"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.955466"], ["domain_id", 21], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.955466"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.956500"], ["domain_id", 22], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.956500"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.957531"], ["domain_id", 23], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.957531"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.958556"], ["domain_id", 24], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.958556"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.959578"], ["domain_id", 25], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.959578"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.960617"], ["domain_id", 26], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.960617"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.961626"], ["domain_id", 27], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.961626"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.962702"], ["domain_id", 28], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.962702"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.963741"], ["domain_id", 29], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.963741"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.964785"], ["domain_id", 30], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.964785"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.965828"], ["domain_id", 31], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.965828"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.966874"], ["domain_id", 32], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.966874"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.967958"], ["domain_id", 33], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.967958"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.968970"], ["domain_id", 34], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.968970"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.970012"], ["domain_id", 35], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.970012"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.971060"], ["domain_id", 36], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.971060"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.972148"], ["domain_id", 37], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.972148"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.973166"], ["domain_id", 38], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.973166"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.974187"], ["domain_id", 39], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.974187"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.975189"], ["domain_id", 40], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.975189"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.976271"], ["domain_id", 41], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.976271"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.977298"], ["domain_id", 42], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.977298"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.978313"], ["domain_id", 43], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.978313"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.979314"], ["domain_id", 44], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.979314"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:35.980344"], ["domain_id", 45], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.980344"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "domain_data" ("created_at", "domain_id", "name", "sort", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:35.981391"], ["domain_id", 46], ["name", "Medie"], ["sort", "desc"], ["updated_at", "2015-03-05 21:30:35.981391"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140508233420"]]
+  [1m[35m (3.4ms)[0m  commit transaction
+Migrating to CreateApplicationExtras (20140508234046)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "application_extras" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" decimal DEFAULT 0, "domain_data_id" integer, "application_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.4ms)[0m  [1mCREATE  INDEX "index_application_extras_on_domain_data_id" ON "application_extras" ("domain_data_id")[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_application_extras_on_domain_data_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_application_extras_on_domain_data_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_application_extras_on_application_id" ON "application_extras" ("application_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140508234046"]]
+  [1m[36m (17.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_application_extras_on_application_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_application_extras_on_application_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_application_extras_on_domain_data_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_application_extras_on_domain_data_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_domain_data_on_domain_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_domain_data_on_domain_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_domains_on_scholarship_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_domains_on_scholarship_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_news_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_news_on_user_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "scholarships" ("created_at", "stype", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:44.942102"], ["stype", "Bursa de performanta"], ["updated_at", "2015-03-05 21:30:44.942102"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "scholarships" ("created_at", "stype", "updated_at") VALUES (?, ?, ?)  [["created_at", "2015-03-05 21:30:44.949532"], ["stype", "Bursa de merit/studiu"], ["updated_at", "2015-03-05 21:30:44.949532"]]
+  [1m[36m (2.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "scholarships" ("created_at", "stype", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:44.953362"], ["stype", "Bursa sociala"], ["updated_at", "2015-03-05 21:30:44.953362"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "scholarships" ("created_at", "stype", "updated_at") VALUES (?, ?, ?)  [["created_at", "2015-03-05 21:30:44.956958"], ["stype", "Bursa sociala ocazionala"], ["updated_at", "2015-03-05 21:30:44.956958"]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:44.986748"], ["money", 3600.0], ["name", "Sociala 12"], ["order_number", 4], ["scholarship_id", 3], ["updated_at", "2015-03-05 21:30:44.986748"]]
+  [1m[35m (19.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.009416"], ["money", 2700.0], ["name", "Sociala 9"], ["order_number", 1], ["scholarship_id", 3], ["updated_at", "2015-03-05 21:30:45.009416"]]
+  [1m[36m (9.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.022216"], ["money", 5400.0], ["name", "Info performanta an2"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.022216"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.026472"], ["money", 5400.0], ["name", "Info performanta an3"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.026472"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.031145"], ["money", 5400.0], ["name", "Info performanta master1"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.031145"]]
+  [1m[35m (2.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.036730"], ["money", 5400.0], ["name", "Info performanta master2"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.036730"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.042760"], ["money", 3600.0], ["name", "Info merit an1"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.042760"]]
+  [1m[35m (9.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.056293"], ["money", 3600.0], ["name", "Info merit an2"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.056293"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.062780"], ["money", 3600.0], ["name", "Info merit an3"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.062780"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.068941"], ["money", 3600.0], ["name", "Info merit master1"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.068941"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.074812"], ["money", 3600.0], ["name", "Info merit master2"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.074812"]]
+  [1m[35m (3.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.081646"], ["money", 3150.0], ["name", "Info studiu an1"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.081646"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.088645"], ["money", 3150.0], ["name", "Info studiu an2"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.088645"]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.094833"], ["money", 3150.0], ["name", "Info studiu an3"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.094833"]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.099985"], ["money", 3150.0], ["name", "Info studiu master1"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.099985"]]
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.107009"], ["money", 3150.0], ["name", "Info studiu master2"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.107009"]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.112573"], ["money", 5400.0], ["name", "Mate performanta an2"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.112573"]]
+  [1m[35m (2.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.118637"], ["money", 5400.0], ["name", "Mate performanta an3"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.118637"]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.124833"], ["money", 5400.0], ["name", "Mate performanta an4"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.124833"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.132065"], ["money", 5400.0], ["name", "Mate performanta master1"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.132065"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.137699"], ["money", 5400.0], ["name", "Mate performanta master2"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.137699"]]
+  [1m[35m (3.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.143568"], ["money", 3600.0], ["name", "Mate merit an1"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.143568"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.148760"], ["money", 3600.0], ["name", "Mate merit an2"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.148760"]]
+  [1m[35m (3.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.155573"], ["money", 3600.0], ["name", "Mate merit an3"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.155573"]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.161499"], ["money", 3600.0], ["name", "Mate merit an4"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.161499"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.166945"], ["money", 3600.0], ["name", "Mate merit master1"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.166945"]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.171731"], ["money", 3600.0], ["name", "Mate merit master2"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.171731"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.177024"], ["money", 3150.0], ["name", "Mate studiu an1"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.177024"]]
+  [1m[36m (3.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.184010"], ["money", 3150.0], ["name", "Mate studiu an2"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.184010"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.189109"], ["money", 3150.0], ["name", "Mate studiu an3"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.189109"]]
+  [1m[36m (2.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.195007"], ["money", 3150.0], ["name", "Mate studiu an4"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.195007"]]
+  [1m[35m (2.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.201028"], ["money", 3150.0], ["name", "Mate studiu master1"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.201028"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.207687"], ["money", 3150.0], ["name", "Mate studiu master2"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.207687"]]
+  [1m[35m (2.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.211880"], ["money", 5400.0], ["name", "TI performanta an2"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.211880"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.216281"], ["money", 5400.0], ["name", "TI performanta an3"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.216281"]]
+  [1m[35m (2.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.221192"], ["money", 5400.0], ["name", "TI performanta an4"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.221192"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.228284"], ["money", 5400.0], ["name", "TI performanta master1"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.228284"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.233858"], ["money", 5400.0], ["name", "TI performanta master2"], ["order_number", 5], ["scholarship_id", 1], ["updated_at", "2015-03-05 21:30:45.233858"]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.239731"], ["money", 3600.0], ["name", "TI merit an1"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.239731"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.245833"], ["money", 3600.0], ["name", "TI merit an2"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.245833"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.251991"], ["money", 3600.0], ["name", "TI merit an3"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.251991"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.258128"], ["money", 3600.0], ["name", "TI merit an4"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.258128"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.263718"], ["money", 3600.0], ["name", "TI merit master1"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.263718"]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.268667"], ["money", 3600.0], ["name", "TI merit master2"], ["order_number", 3], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.268667"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.274837"], ["money", 3150.0], ["name", "TI studiu an1"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.274837"]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.280898"], ["money", 3150.0], ["name", "TI studiu an2"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.280898"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.287356"], ["money", 3150.0], ["name", "TI studiu an3"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.287356"]]
+  [1m[35m (3.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.293529"], ["money", 3150.0], ["name", "TI studiu an4"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.293529"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:30:45.298742"], ["money", 3150.0], ["name", "TI studiu master1"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.298742"]]
+  [1m[35m (2.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "domains" ("created_at", "money", "name", "order_number", "scholarship_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-03-05 21:30:45.303675"], ["money", 3150.0], ["name", "TI studiu master2"], ["order_number", 2], ["scholarship_id", 2], ["updated_at", "2015-03-05 21:30:45.303675"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /home/bogdan/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-05 23:31:15 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/auth/autentificare/
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/autentificare/" for 127.0.0.1 at 2015-03-05 23:31:15 +0200
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-05 23:31:15 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/auth/autentificare/
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/autentificare/" for 127.0.0.1 at 2015-03-05 23:31:15 +0200
+
+
+Started GET "/auth/autentificare/callback?code=ef6d05d831096bd24d3c073e705820de&response_type=code&state=7d1696d09d4a5ee75bcd1c77112a23d385bc429c8b368c72" for 127.0.0.1 at 2015-03-05 23:31:16 +0200
+Processing by UserSessionsController#create as HTML
+  Parameters: {"code"=>"ef6d05d831096bd24d3c073e705820de", "response_type"=>"code", "state"=>"7d1696d09d4a5ee75bcd1c77112a23d385bc429c8b368c72", "provider"=>"autentificare"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "first_name", "is_admin", "is_management", "is_student", "is_teacher", "last_name", "token", "uid", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-03-05 21:31:17.462341"], ["email", "admin@admin.com"], ["first_name", "LicentaAppAdmin"], ["is_admin", "t"], ["is_management", "f"], ["is_student", "f"], ["is_teacher", "f"], ["last_name", "Admin"], ["token", "c20ad338ea8404f63b8c33d9b2bb7e35"], ["uid", "86"], ["updated_at", "2015-03-05 21:31:17.462341"]]
+  [1m[35m (2.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 89ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-05 23:31:17 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 7ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-05 23:31:17 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mNews Load (0.2ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  Rendered news/_all.html.erb (1.6ms)
+  Rendered news/_form.html.erb (85.8ms)
+  Rendered home/admin_index.html.erb within layouts/application (107.4ms)
+  Rendered shared/_head.html.erb (4950.8ms)
+  Rendered shared/_header.html.erb (2.2ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 5074ms (Views: 5070.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/admin_manager.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/applications.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/applications_edit.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/attachments.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/news.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:22 +0200
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:23 +0200
+
+
+Started GET "/assets/news.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:24 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-05 23:31:24 +0200
+
+
+Started POST "/news" for 127.0.0.1 at 2015-03-05 23:32:32 +0200
+Processing by NewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"twCMO0lIm2J03a/F4BsyShDzaZXyQRNdA/XjD3BwwQg=", "news"=>{"title"=>"This is my first news", "content"=>"Yolo Yolo"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "news" ("content", "created_at", "post_date", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["content", "Yolo Yolo"], ["created_at", "2015-03-05 21:32:32.434366"], ["post_date", "2015-03-05 21:32:32.433667"], ["title", "This is my first news"], ["updated_at", "2015-03-05 21:32:32.434366"], ["user_id", 1]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  Rendered news_mailer/news_created.html.erb (0.7ms)
+
+NewsMailer#news_created: processed outbound mail in 483.0ms
+
+Sent mail to bogdan.mihai.timofte@gmail.com (6336.4ms)
+Date: Thu, 05 Mar 2015 23:32:32 +0200
+From: burse-fmi@mydomain.com
+To: bogdan.mihai.timofte@gmail.com
+Message-ID: <54f8cb70e45d2_13bf3fe42e8360607213@bogdan-CR620.mail>
+Subject: Noutati burse!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<h1>This is my first news</h1>
+<p>stirea a fost publicata la: 2015-03-05 21:32:32 UTC de catre 1
+<p>Continut:</p>
+<p>
+	@news.content
+</p>
+Redirected to http://localhost:3000/news/1
+Completed 302 Found in 6835ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/news/1" for 127.0.0.1 at 2015-03-05 23:32:39 +0200
+Processing by NewsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mNews Load (0.4ms)[0m  SELECT  "news".* FROM "news"  WHERE "news"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered news/_form.html.erb (1.9ms)
+  Rendered news/show.html.erb within layouts/application (49.7ms)
+  Rendered shared/_head.html.erb (22.2ms)
+  Rendered shared/_header.html.erb (0.8ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 81ms (Views: 76.8ms | ActiveRecord: 0.9ms)
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /home/bogdan/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138)
+
+
+Started GET "/news/1" for 127.0.0.1 at 2015-03-05 23:40:41 +0200
+Processing by NewsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mNews Load (0.3ms)[0m  [1mSELECT  "news".* FROM "news"  WHERE "news"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered news/_form.html.erb (18.9ms)
+  Rendered news/show.html.erb within layouts/application (32.2ms)
+  Rendered shared/_head.html.erb (484.0ms)
+  Rendered shared/_header.html.erb (1.8ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 564ms (Views: 527.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-05 23:40:49 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mNews Load (0.2ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  Rendered news/_all.html.erb (1.9ms)
+  Rendered news/_form.html.erb (1.8ms)
+  Rendered home/admin_index.html.erb within layouts/application (5.5ms)
+  Rendered shared/_head.html.erb (23.0ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 36ms (Views: 33.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/news" for 127.0.0.1 at 2015-03-05 23:41:37 +0200
+Processing by NewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"twCMO0lIm2J03a/F4BsyShDzaZXyQRNdA/XjD3BwwQg=", "news"=>{"title"=>"Hello world!", "content"=>"Hello, I am 'Aplicatia de burse' and I send you an email! Yolo."}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "news" ("content", "created_at", "post_date", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["content", "Hello, I am 'Aplicatia de burse' and I send you an email! Yolo."], ["created_at", "2015-03-05 21:41:37.830751"], ["post_date", "2015-03-05 21:41:37.829333"], ["title", "Hello world!"], ["updated_at", "2015-03-05 21:41:37.830751"], ["user_id", 1]]
+  [1m[35m (2.5ms)[0m  commit transaction
+  Rendered news_mailer/news_created.html.erb (0.9ms)
+
+NewsMailer#news_created: processed outbound mail in 215.5ms
+
+Sent mail to bogdan.mihai.timofte@gmail.com (3676.5ms)
+Date: Thu, 05 Mar 2015 23:41:38 +0200
+From: burse-fmi@mydomain.com
+To: bogdan.mihai.timofte@gmail.com
+Message-ID: <54f8cd92f1de_15f32b80158340ab@bogdan-CR620.mail>
+Subject: Noutati burse!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<h1>Hello world!</h1>
+<p>stirea a fost publicata la: 2015-03-05 21:41:37 UTC de catre Admin
+<p>Continut:</p>
+<p>
+	Hello, I am &#39;Aplicatia de burse&#39; and I send you an email! Yolo.
+</p>
+Redirected to http://localhost:3000/news/2
+Completed 302 Found in 3910ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/news/2" for 127.0.0.1 at 2015-03-05 23:41:41 +0200
+Processing by NewsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNews Load (0.2ms)[0m  [1mSELECT  "news".* FROM "news"  WHERE "news"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered news/_form.html.erb (2.3ms)
+  Rendered news/show.html.erb within layouts/application (5.8ms)
+  Rendered shared/_head.html.erb (21.2ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 35ms (Views: 31.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-05 23:43:31 +0200
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 16ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-05 23:43:31 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+  [1m[35mNews Load (0.2ms)[0m  SELECT "news".* FROM "news"
+  Rendered news/_all.html.erb (5.7ms)
+  Rendered news/_form.html.erb (2.5ms)
+  Rendered home/admin_index.html.erb within layouts/application (9.7ms)
+  Rendered shared/_head.html.erb (20.6ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 39ms (Views: 35.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/news" for 127.0.0.1 at 2015-03-05 23:43:56 +0200
+Processing by NewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"twCMO0lIm2J03a/F4BsyShDzaZXyQRNdA/XjD3BwwQg=", "news"=>{"title"=>"Test cu mai multe emailuri", "content"=>"Hello Christopher!"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "news" ("content", "created_at", "post_date", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["content", "Hello Christopher!"], ["created_at", "2015-03-05 21:43:56.048929"], ["post_date", "2015-03-05 21:43:56.047513"], ["title", "Test cu mai multe emailuri"], ["updated_at", "2015-03-05 21:43:56.048929"], ["user_id", 1]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  Rendered news_mailer/news_created.html.erb (0.3ms)
+
+NewsMailer#news_created: processed outbound mail in 10.4ms
+
+Sent mail to bogdan.mihai.timofte@gmail.com, kingccc.cristi@gmail.com (20023.8ms)
+Date: Thu, 05 Mar 2015 23:43:56 +0200
+From: burse-fmi@mydomain.com
+To: bogdan.mihai.timofte@gmail.com, 
+ kingccc.cristi@gmail.com
+Message-ID: <54f8ce1c110c0_15f33fff72f32a8034158@bogdan-CR620.mail>
+Subject: Noutati burse!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<h1>Test cu mai multe emailuri</h1>
+<p>stirea a fost publicata la: 2015-03-05 21:43:56 UTC de catre Admin
+<p>Continut:</p>
+<p>
+	Hello Christopher!
+</p>
+Redirected to http://localhost:3000/news/3
+Completed 302 Found in 20050ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/news/3" for 127.0.0.1 at 2015-03-05 23:44:16 +0200
+Processing by NewsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mNews Load (0.6ms)[0m  SELECT  "news".* FROM "news"  WHERE "news"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered news/_form.html.erb (1.7ms)
+  Rendered news/show.html.erb within layouts/application (7.7ms)
+  Rendered shared/_head.html.erb (20.3ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 40ms (Views: 34.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-05 23:45:34 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 16ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-05 23:45:34 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mNews Load (0.2ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  Rendered news/_all.html.erb (7.2ms)
+  Rendered news/_form.html.erb (2.3ms)
+  Rendered home/admin_index.html.erb within layouts/application (11.2ms)
+  Rendered shared/_head.html.erb (23.3ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 39.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/news" for 127.0.0.1 at 2015-03-05 23:45:55 +0200
+Processing by NewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"twCMO0lIm2J03a/F4BsyShDzaZXyQRNdA/XjD3BwwQg=", "news"=>{"title"=>"hello!", "content"=>"Marcel il saluta pe Christopher!"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "news" ("content", "created_at", "post_date", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["content", "Marcel il saluta pe Christopher!"], ["created_at", "2015-03-05 21:45:55.019231"], ["post_date", "2015-03-05 21:45:55.017481"], ["title", "hello!"], ["updated_at", "2015-03-05 21:45:55.019231"], ["user_id", 1]]
+  [1m[35m (2.4ms)[0m  commit transaction
+  Rendered news_mailer/news_created.html.erb (0.2ms)
+
+NewsMailer#news_created: processed outbound mail in 6.1ms
+
+Sent mail to kingccc.cristi@gmail.com (1086.7ms)
+Date: Thu, 05 Mar 2015 23:45:55 +0200
+From: burse-fmi@mydomain.com
+To: kingccc.cristi@gmail.com
+Message-ID: <54f8ce9387d9_15f321fcde8342fc@bogdan-CR620.mail>
+Subject: Noutati burse!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<h1>hello!</h1>
+<p>stirea a fost publicata la: 2015-03-05 21:45:55 UTC de catre Admin
+<p>Continut:</p>
+<p>
+	Marcel il saluta pe Christopher!
+</p>
+Redirected to http://localhost:3000/news/4
+Completed 302 Found in 1107ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/news/4" for 127.0.0.1 at 2015-03-05 23:45:56 +0200
+Processing by NewsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mNews Load (0.3ms)[0m  [1mSELECT  "news".* FROM "news"  WHERE "news"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered news/_form.html.erb (3.1ms)
+  Rendered news/show.html.erb within layouts/application (8.4ms)
+  Rendered shared/_head.html.erb (22.4ms)
+  Rendered shared/_header.html.erb (0.9ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 40ms (Views: 36.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-05 23:50:53 +0200
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 15ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-05 23:50:53 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+  [1m[35mNews Load (0.2ms)[0m  SELECT "news".* FROM "news"
+  Rendered news/_all.html.erb (6.0ms)
+  Rendered news/_form.html.erb (2.2ms)
+  Rendered home/admin_index.html.erb within layouts/application (9.5ms)
+  Rendered shared/_head.html.erb (21.5ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 39ms (Views: 35.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/news" for 127.0.0.1 at 2015-03-05 23:51:06 +0200
+Processing by NewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"twCMO0lIm2J03a/F4BsyShDzaZXyQRNdA/XjD3BwwQg=", "news"=>{"title"=>"marcel", "content"=>"asta e o bucata"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "news" ("content", "created_at", "post_date", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["content", "asta e o bucata"], ["created_at", "2015-03-05 21:51:06.641343"], ["post_date", "2015-03-05 21:51:06.639549"], ["title", "marcel"], ["updated_at", "2015-03-05 21:51:06.641343"], ["user_id", 1]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  Rendered news_mailer/news_created.html.erb (0.3ms)
+
+NewsMailer#news_created: processed outbound mail in 5.5ms
+
+Sent mail to bogdan.mihai.timofte@gmail.com, kingccc.cristi@gmail.com (6200.3ms)
+Date: Thu, 05 Mar 2015 23:51:06 +0200
+From: burse-fmi@mydomain.com
+To: bogdan.mihai.timofte@gmail.com, 
+ kingccc.cristi@gmail.com
+Message-ID: <54f8cfcaa0267_15f33fff72b928f8343f4@bogdan-CR620.mail>
+Subject: Noutati burse!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<h1>marcel</h1>
+<p>stirea a fost publicata la: 2015-03-05 21:51:06 UTC de catre Admin
+<p>Continut:</p>
+<p>
+	asta e o bucata
+</p>
+Redirected to http://localhost:3000/news/5
+Completed 302 Found in 6221ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/news/5" for 127.0.0.1 at 2015-03-05 23:51:12 +0200
+Processing by NewsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mNews Load (0.3ms)[0m  SELECT  "news".* FROM "news"  WHERE "news"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered news/_form.html.erb (2.0ms)
+  Rendered news/show.html.erb within layouts/application (5.8ms)
+  Rendered shared/_head.html.erb (22.0ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 36ms (Views: 32.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-05 23:54:51 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 18ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-05 23:54:51 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mNews Load (0.2ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  Rendered news/_all.html.erb (8.7ms)
+  Rendered news/_form.html.erb (4.9ms)
+  Rendered home/admin_index.html.erb within layouts/application (16.3ms)
+  Rendered shared/_head.html.erb (28.5ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 54ms (Views: 50.7ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/news" for 127.0.0.1 at 2015-03-05 23:56:46 +0200
+Processing by NewsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"twCMO0lIm2J03a/F4BsyShDzaZXyQRNdA/XjD3BwwQg=", "news"=>{"title"=>"I am alive", "content"=>"Hello! Avem serviciul de mail prin mandrill in varianta beta! In momentul de fata e la mine pe local pe un branch separat. Cand o sa fie gata integrat o sa dau merge cu master si urc pe heroku. Noapte buna!"}}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "news" ("content", "created_at", "post_date", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["content", "Hello! Avem serviciul de mail prin mandrill in varianta beta! In momentul de fata e la mine pe local pe un branch separat. Cand o sa fie gata integrat o sa dau merge cu master si urc pe heroku. Noapte buna!"], ["created_at", "2015-03-05 21:56:46.271003"], ["post_date", "2015-03-05 21:56:46.269399"], ["title", "I am alive"], ["updated_at", "2015-03-05 21:56:46.271003"], ["user_id", 1]]
+  [1m[35m (2.3ms)[0m  commit transaction
+  Rendered news_mailer/news_created.html.erb (0.2ms)
+
+NewsMailer#news_created: processed outbound mail in 6.6ms
+
+Sent mail to axintemihnea@yahoo.com, teodora.cernea@yahoo.com, bogdan.mihai.timofte@gmail.com, dragos.tudorache91@gmail.com (1270.5ms)
+Date: Thu, 05 Mar 2015 23:56:46 +0200
+From: burse-fmi@mydomain.com
+To: axintemihnea@yahoo.com, 
+ teodora.cernea@yahoo.com, 
+ bogdan.mihai.timofte@gmail.com, 
+ dragos.tudorache91@gmail.com
+Message-ID: <54f8d11e4659d_15f33fff731406d834471@bogdan-CR620.mail>
+Subject: Noutati burse!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<h1>I am alive</h1>
+<p>stirea a fost publicata la: 2015-03-05 21:56:46 UTC de catre Admin
+<p>Continut:</p>
+<p>
+	Hello! Avem serviciul de mail prin mandrill in varianta beta! In momentul de fata e la mine pe local pe un branch separat. Cand o sa fie gata integrat o sa dau merge cu master si urc pe heroku. Noapte buna!
+</p>
+Redirected to http://localhost:3000/news/6
+Completed 302 Found in 1291ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/news/6" for 127.0.0.1 at 2015-03-05 23:56:47 +0200
+Processing by NewsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mNews Load (0.3ms)[0m  [1mSELECT  "news".* FROM "news"  WHERE "news"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered news/_form.html.erb (1.8ms)
+  Rendered news/show.html.erb within layouts/application (5.3ms)
+  Rendered shared/_head.html.erb (20.7ms)
+  Rendered shared/_header.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 34ms (Views: 30.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2015-03-05 23:59:01 +0200
+Processing by UserSessionsController#destroy as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."uid" = '86' LIMIT 1
+Redirected to http://fmi-api.herokuapp.com/users/sign_out
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
