@@ -28,17 +28,17 @@ class NewsController < ApplicationController
           cycle[1].each do |group|
             group[1].each do |student|              
              @mailing_list << student["email"]
-            end
-          end
-        end
-      # end
+           end
+         end
+       end
+      end
       @mailing_list << "tehnic@pddesign.ro"
       @mailing_list << "bogdan.timofte@hotmail.com"
       @mailing_list << "bogdan.mihai.timofte@gmail.com"
       @mailing_list << "kingccc.cristi@gmail.com"
       #end try
-    respond_to do |format|
-      if @news.save
+      respond_to do |format|
+        if @news.save
         # here send mail
         NewsMailer.news_created(@news, username, @mailing_list).deliver_now
         format.html { redirect_to @news, notice: 'News was successfully created.' }
@@ -51,9 +51,9 @@ class NewsController < ApplicationController
   # PATCH/PUT /news/1.json
   def update
     respond_to do |format|
-    @news.title = news_params["title"]
-    @news.content = news_params["content"]
-    @news.user_id = @current_user.id
+      @news.title = news_params["title"]
+      @news.content = news_params["content"]
+      @news.user_id = @current_user.id
       if @news.save
         format.html { redirect_to @news, notice: 'News was successfully updated.' }
         format.json { head :no_content }
@@ -81,4 +81,5 @@ class NewsController < ApplicationController
     def news_params
       params.require(:news).permit(:title, :content, :post_date, :user_id)
     end
-  end
+
+end
