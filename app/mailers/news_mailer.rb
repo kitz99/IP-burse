@@ -1,12 +1,12 @@
 class NewsMailer < ActionMailer::Base
-  def news_created(news, username)
+  def news_created(news, username, mailing_list)
   	@news = news
   	@username = username
 
   	mail(
-  		to: ["axintemihnea@yahoo.com", "teodora.cernea@yahoo.com", "bogdan.mihai.timofte@gmail.com", "dragos.tudorache91@gmail.com"],
+  		to: mailing_list,
   		from: "burse-fmi@mydomain.com",
-  		subject: "Noutati burse!"
+  		subject: "Informatii sesiune de burse"
   	)
   end
 end

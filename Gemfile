@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.2.0'
 
-gem 'rails', '~>4.1.6'
+gem 'rails', '~>4.2.0'
 
 
 gem 'rack'
@@ -69,6 +69,7 @@ end
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
+gem 'responders', '~> 2.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'

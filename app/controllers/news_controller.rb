@@ -5,7 +5,7 @@ class NewsController < ApplicationController
 
   # GET /news/1
   # GET /news/1.json
-  def show 
+  def show
   end
 
 
@@ -18,11 +18,29 @@ class NewsController < ApplicationController
     @news.post_date = Time.now
     @news.user_id = @current_user.id
 
-    username = User.find(@news.user_id).last_name
+    username = @current_user.last_name
+
+    @students = JSON.parse RestClient.get "http://fmi-api.herokuapp.com/get_students?oauth_token=#{@current_user.token}", {:accept => :json}
+      # incerc sa prelucrez studentii si sa scot emailurile intr-un array
+      @mailing_list = Array.new
+      @students.each do |year|
+        year[1].each do |cycle|
+          cycle[1].each do |group|
+            group[1].each do |student|              
+             @mailing_list << student["email"]
+            end
+          end
+        end
+      # end
+      @mailing_list << "tehnic@pddesign.ro"
+      @mailing_list << "bogdan.timofte@hotmail.com"
+      @mailing_list << "bogdan.mihai.timofte@gmail.com"
+      @mailing_list << "kingccc.cristi@gmail.com"
+      #end try
     respond_to do |format|
       if @news.save
         # here send mail
-        NewsMailer.news_created(@news, username).deliver
+        NewsMailer.news_created(@news, username, @mailing_list).deliver_now
         format.html { redirect_to @news, notice: 'News was successfully created.' }
         format.json { render action: 'show', status: :created, location: @news }
       end

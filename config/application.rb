@@ -61,7 +61,7 @@ module Team9Scholarships
         :port =>           '587',
         :address =>        'smtp.mandrillapp.com',
         :user_name =>      'fiftyfourteam@gmail.com',
-        :password =>       'w7RpxKBh1FVJNDfCvKXnCA',
+        :password =>       'yScLIssLJKZ4u8TD8QcHUg',
         :authentication => :plain
     }
   end
