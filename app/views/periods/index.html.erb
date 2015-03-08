@@ -1,0 +1,41 @@
+
+
+<h1>Listing Periods</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>End</th>
+      <th>Buget</th>
+      <th>Activ</th>
+      <th>Nr stud</th>
+      <th>Min salary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @periods.each do |period| %>
+      <tr>
+        <td><%= period.start %></td>
+        <td><%= period.end %></td>
+        <td><%= period.buget %></td>
+        <td><%= period.activ %></td>
+        <td><%= period.nr_stud %></td>
+        <td><%= period.min_salary %></td>
+        <td><%= link_to 'Vezi', period %></td>
+        <td><%= link_to 'Editeaza', edit_period_path(period) %></td>
+        <td><%= link_to 'Sterge sesiunea', period, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<br>
+<%= link_to 'New Period', new_period_path %>
+<br />
+<br />
+<p><%= link_to 'Adauga burse la sesiunea activa', new_domain_path %></p>

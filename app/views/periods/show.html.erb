@@ -1,0 +1,33 @@
+
+<p>
+  <strong>Start:</strong>
+  <%= @period.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @period.end %>
+</p>
+
+<p>
+  <strong>Buget:</strong>
+  <%= @period.buget %>
+</p>
+
+<p>
+  <strong>Activ:</strong>
+  <%= @period.activ %>
+</p>
+
+<p>
+  <strong>Nr stud:</strong>
+  <%= @period.nr_stud %>
+</p>
+
+<p>
+  <strong>Min salary:</strong>
+  <%= @period.min_salary %>
+</p>
+
+<%= link_to 'Edit', edit_period_path(@period) %> |
+<%= link_to 'Back', periods_path %>

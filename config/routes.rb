@@ -1,4 +1,6 @@
 Team9Scholarships::Application.routes.draw do
+  resources :periods
+
   resources :domains
   resources :news
   resources :home

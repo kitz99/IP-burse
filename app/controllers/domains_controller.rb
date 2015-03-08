@@ -19,6 +19,7 @@ class DomainsController < ApplicationController
   def new
     @domain = Domain.new
     @scholarships = Scholarship.all
+    @periods = Period.where(:activ => true)
   end
 
   # GET /domains/1/edit
@@ -30,6 +31,8 @@ class DomainsController < ApplicationController
   # POST /domains
   # POST /domains.json
   def create
+    puts "---------------------------------------> #{domain_params}"
+    puts "---------------------------------------> #{domain_params[:sesiune]}"
     @domain = Domain.new(domain_params)
 
     domain_data = params[:domain_data]
@@ -107,7 +110,7 @@ class DomainsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def domain_params
-      params.require(:domain).permit(:name, :money, :order_number, :scholarship_id)
+      params.require(:domain).permit(:name, :money, :order_number, :scholarship_id, :period_id, :an_studiu, :procent, :specializare )
     end
 
 end

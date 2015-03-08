@@ -37,6 +37,32 @@
   </select>
 </div>
 
+<div class="field">
+  <label>Sesiune</label>
+  <select name="domain[period_id]">
+    <% @periods.each do |p| %>
+      <option value="<%= p.id %>" selected>
+        Sesiunea <%= p.id %>
+      </option>
+    <% end %>  
+  </select>
+</div>
+
+<div class="field">
+    <%= f.label :procent %><br>
+    <%= f.text_field :procent %> %
+</div>
+
+<div class="field">
+    <%= f.label :an_studiu %><br>
+    <%= f.text_field :an_studiu %>
+</div>
+
+<div class="field">
+    <%= f.label :specializare %><br>
+    <%= f.text_field :specializare %>
+</div>
+
 <div id="domaindata">
   <label>Datas</label>
   <% if ! @datas.nil? %>

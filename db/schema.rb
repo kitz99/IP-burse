@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508234046) do
+ActiveRecord::Schema.define(version: 20150308145625) do
 
-  create_table "application_extras", force: true do |t|
+  create_table "application_extras", force: :cascade do |t|
     t.decimal  "value",          default: 0.0
     t.integer  "domain_data_id"
     t.integer  "application_id"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20140508234046) do
   add_index "application_extras", ["application_id"], name: "index_application_extras_on_application_id"
   add_index "application_extras", ["domain_data_id"], name: "index_application_extras_on_domain_data_id"
 
-  create_table "applications", force: true do |t|
+  create_table "applications", force: :cascade do |t|
     t.date     "submission_date"
     t.date     "approval_date"
-    t.string   "status"
+    t.string   "status",          limit: 255
     t.text     "reason"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -35,20 +35,20 @@ ActiveRecord::Schema.define(version: 20140508234046) do
     t.integer  "user_id"
     t.integer  "on_card"
     t.text     "response"
-    t.integer  "domain_id",       default: 0
+    t.integer  "domain_id",                   default: 0
   end
 
-  create_table "attachments", force: true do |t|
-    t.string   "name"
-    t.string   "path"
+  create_table "attachments", force: :cascade do |t|
+    t.string   "name",           limit: 255
+    t.string   "path",           limit: 255
     t.integer  "application_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "domain_data", force: true do |t|
-    t.string   "name"
-    t.string   "sort"
+  create_table "domain_data", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "sort",       limit: 255
     t.integer  "domain_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -56,19 +56,24 @@ ActiveRecord::Schema.define(version: 20140508234046) do
 
   add_index "domain_data", ["domain_id"], name: "index_domain_data_on_domain_id"
 
-  create_table "domains", force: true do |t|
-    t.string   "name"
+  create_table "domains", force: :cascade do |t|
+    t.string   "name",           limit: 255
     t.decimal  "money"
     t.integer  "order_number"
     t.integer  "scholarship_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "period_id"
+    t.integer  "an_studiu"
+    t.integer  "procent"
+    t.string   "specializare"
   end
 
+  add_index "domains", ["period_id"], name: "index_domains_on_period_id"
   add_index "domains", ["scholarship_id"], name: "index_domains_on_scholarship_id"
 
-  create_table "news", force: true do |t|
-    t.string   "title"
+  create_table "news", force: :cascade do |t|
+    t.string   "title",      limit: 255
     t.text     "content"
     t.datetime "post_date"
     t.integer  "user_id"
@@ -78,27 +83,38 @@ ActiveRecord::Schema.define(version: 20140508234046) do
 
   add_index "news", ["user_id"], name: "index_news_on_user_id"
 
-  create_table "scholarships", force: true do |t|
-    t.string   "stype"
+  create_table "periods", force: :cascade do |t|
+    t.date     "start"
+    t.date     "end"
+    t.integer  "buget"
+    t.boolean  "activ"
+    t.integer  "nr_stud"
+    t.integer  "min_salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scholarships", force: :cascade do |t|
+    t.string   "stype",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "uid"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "status"
+  create_table "users", force: :cascade do |t|
+    t.string   "uid",           limit: 255
+    t.string   "first_name",    limit: 255
+    t.string   "last_name",     limit: 255
+    t.string   "status",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "token"
-    t.string   "email"
+    t.string   "token",         limit: 255
+    t.string   "email",         limit: 255
     t.boolean  "is_student"
     t.boolean  "is_teacher"
     t.boolean  "is_management"
     t.boolean  "is_admin"
-    t.string   "iban"
-    t.string   "bank"
+    t.string   "iban",          limit: 255
+    t.string   "bank",          limit: 255
   end
 
 end
