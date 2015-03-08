@@ -6,6 +6,10 @@ class PeriodsController < ApplicationController
   # GET /periods.json
   def index
     @periods = Period.all
+    @all_scholarships = Array.new
+    @periods.each do |p|
+      @all_scholarships << {"sesiune" => p, "burse" => Domain.where(:period_id => p.id)}
+    end
   end
 
   # GET /periods/1

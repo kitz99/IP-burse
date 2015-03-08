@@ -1,9 +1,14 @@
 
 
 <h1>Listing Periods</h1>
-
-<table>
-  <thead>
+<style type="text/css">
+  td {
+      width: 120px;
+  }
+</style>
+<% @all_scholarships.each do |elem| %>
+  <table>
+    <thead>
     <tr>
       <th>Start</th>
       <th>End</th>
@@ -14,23 +19,53 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+  <tbody>
+    <tr>
+        <td><%= elem["sesiune"].start %></td>
+        <td><%= elem["sesiune"].end %></td>
+        <td><%= elem["sesiune"].buget %></td>
+        <td><%= elem["sesiune"].activ %></td>
+        <td><%= elem["sesiune"].nr_stud %></td>
+        <td><%= elem["sesiune"].min_salary %></td>
+        <td><%= link_to 'Vezi', elem["sesiune"] %></td>
+        <td><%= link_to 'Editeaza', edit_period_path(elem["sesiune"]) %></td>
+        <td><%= link_to 'Sterge sesiunea', elem["sesiune"], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  </tbody>
+  </table>
+  <br />
+  <p>Bursele asignate acestei categorii</p>
+  <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Money</th>
+      <th>An de studiu</th>
+      <th>Procent</th>
+      <th>Specializare</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
   <tbody>
-    <% @periods.each do |period| %>
+    <% elem["burse"].each do |domain| %>
       <tr>
-        <td><%= period.start %></td>
-        <td><%= period.end %></td>
-        <td><%= period.buget %></td>
-        <td><%= period.activ %></td>
-        <td><%= period.nr_stud %></td>
-        <td><%= period.min_salary %></td>
-        <td><%= link_to 'Vezi', period %></td>
-        <td><%= link_to 'Editeaza', edit_period_path(period) %></td>
-        <td><%= link_to 'Sterge sesiunea', period, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= domain.name %></td>
+        <td><%= domain.money %></td>
+        <td><%= domain.an_studiu %></td>
+        <td><%= domain.procent %></td>
+        <td><%= domain.specializare %></td>
+        <td><%= link_to 'Show', domain %></td>
+        <td><%= link_to 'Edit', edit_domain_path(domain) %></td>
+        <td><%= link_to 'Destroy', domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br /><br />
+<% end %>
 
 
 
