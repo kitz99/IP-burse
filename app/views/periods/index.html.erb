@@ -1,13 +1,14 @@
 
 
-<h1>Listing Periods</h1>
+<h1>Perioade de aplicare</h1>
 <style type="text/css">
   td {
       width: 120px;
   }
 </style>
 <% @all_scholarships.each do |elem| %>
-  <table>
+
+  <table class="table">
     <thead>
     <tr>
       <th>Start</th>
@@ -33,44 +34,49 @@
       </tr>
   </tbody>
   </table>
-  <br />
-  <p>Bursele asignate acestei categorii</p>
-  <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Money</th>
-      <th>An de studiu</th>
-      <th>Procent</th>
-      <th>Specializare</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% elem["burse"].each do |domain| %>
-      <tr>
-        <td><%= domain.name %></td>
-        <td><%= domain.money %></td>
-        <td><%= domain.an_studiu %></td>
-        <td><%= domain.procent %></td>
-        <td><%= domain.specializare %></td>
-        <td><%= link_to 'Show', domain %></td>
-        <td><%= link_to 'Edit', edit_domain_path(domain) %></td>
-        <td><%= link_to 'Destroy', domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<a class="btn btn-danger" data-toggle="collapse" href="#heading<%= elem["sesiune"].id %>" aria-expanded="false" aria-controls="collapseExample">
+  Vreau sa vad bursele perioadei de mai sus
+</a>
+<div class="collapse" id="heading<%= elem["sesiune"].id %>">
+  <div class="well">
+            <h4>Bursele asignate perioadei <%= elem["sesiune"].start %> -> <%= elem["sesiune"].end %></h4>
+            <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Money</th>
+                <th>An de studiu</th>
+                <th>Procent</th>
+                <th>Specializare</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% elem["burse"].each do |domain| %>
+                <tr>
+                  <td><%= domain.name %></td>
+                  <td><%= domain.money %></td>
+                  <td><%= domain.an_studiu %></td>
+                  <td><%= domain.procent %></td>
+                  <td><%= domain.specializare %></td>
+                  <td><%= link_to 'Vezi', domain %></td>
+                  <td><%= link_to 'Editeaza', edit_domain_path(domain) %></td>
+                  <td><%= link_to 'Sterge', domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+  </div>
+</div>
 <br /><br />
 <% end %>
 
 
-
 <br>
-<%= link_to 'New Period', new_period_path %>
-<br />
-<br />
-<p><%= link_to 'Adauga burse la sesiunea activa', new_domain_path %></p>
+<h3><%= link_to 'Adauga o noua perioada', new_period_path %></h3>
+<h3><%= link_to 'Adauga burse la sesiunea activa', new_domain_path %></h3>
