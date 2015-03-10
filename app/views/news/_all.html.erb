@@ -1,12 +1,10 @@
-
 <% @allnews.each do |news| %>
+<div class="alert alert-warning alert-dismissable">
 <div style="margin-bottom:20px">
   <div class="row">
     <div class="col-md-9">
-      <h4><%= news.title %></h4>
-    </div>
-    <div class="col-md-2 col-md-offset-1">
-      <h5 class="pull-right"><%= news.post_date.to_date %></h5>
+      <h3 style="margin-top:0px"><%= news.title %></h3>
+      <h6 style="color:green;"><i><%= news.post_date.to_date %></i></h6><br />
     </div>
   </div>
 
@@ -14,12 +12,10 @@
     <div class="col-md-12">
       <%= news.content %>
     </div>
-  </div>
-  <div class="row">
     <div class="col-md-12">
-      <a class="pull-right" href="<%=root_url%>news/<%=news.id %>">citeste tot </a>
+    <a class="btn btn-default" href="<%=root_url%>news/<%=news.id %>">Citeste tot </a>
     </div>
   </div>
 </div>
-
+</div>
 <% end %>
