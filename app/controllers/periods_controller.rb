@@ -57,7 +57,7 @@ class PeriodsController < ApplicationController
           @mailing_list << "tehnic@pddesign.ro"
           @mailing_list << "bogdan.timofte@hotmail.com"
           @mailing_list << "bogdan.mihai.timofte@gmail.com"
-        end
+
         NewsMailer.news_created(@news, username, @mailing_list).deliver_now
         @news.save()
         format.html { redirect_to @period, notice: 'Period was successfully created.' }
