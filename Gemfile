@@ -27,7 +27,7 @@ gem  'jquery-ui-rails', '~> 4.2.0'
 gem 'carrierwave'
 gem "rmagick", "2.13.2", :require => 'RMagick'
 
-
+gem 'gravatar_image_tag'
 # for put on server 
 gem 'rest-client', '~> 1.6.7'
 

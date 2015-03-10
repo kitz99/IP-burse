@@ -92,6 +92,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    gravatar_image_tag (1.2.0)
     hashie (2.1.1)
     heroku (3.28.1)
       heroku-api (~> 0.3.19)
@@ -230,6 +231,7 @@ DEPENDENCIES
   bootstrap-sass
   carrierwave
   coffee-rails (~> 4.0.0)
+  gravatar_image_tag
   heroku
   jbuilder
   jquery-datatables-rails!
