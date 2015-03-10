@@ -64096,3 +64096,125 @@ Started GET "/assets/news.js?body=1" for 127.0.0.1 at 2015-03-10 14:38:35 +0200
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-10 14:38:35 +0200
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /home/axintemihnea/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-10 14:46:23 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  [1m[35mNews Load (0.5ms)[0m  SELECT "news".* FROM "news"
+  Rendered news/_all.html.erb (13.7ms)
+  Rendered news/_form.html.erb (58.5ms)
+  Rendered home/admin_index.html.erb within layouts/application (85.6ms)
+  Rendered shared/_head.html.erb (4482.3ms)
+Completed 500 Internal Server Error in 4681ms
+
+ActionView::Template::Error (Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes.
+  (in /home/axintemihnea/Desktop/Development/burse54-fmi/app/assets/javascripts/domains.js.coffee)):
+    1: <title>Burse</title>
+    2: <%= stylesheet_link_tag  "application", media: "all" %>
+    3: <%= javascript_include_tag "application"%>
+    4: <%= csrf_meta_tags %>    
+    5: 
+    6: <style>
+  app/views/shared/_head.html.erb:3:in `_app_views_shared__head_html_erb__2230748893162251010_37221000'
+  app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___4078146104615340666_38996000'
+  app/controllers/home_controller.rb:38:in `admin_index'
+
+
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.2ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.8ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (44.0ms)
+
+
+Started GET "/requests/" for 127.0.0.1 at 2015-03-10 14:54:35 +0200
+Processing by HomeController#admin_requests as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  Rendered home/admin_requests.html.erb within layouts/application (2.4ms)
+  Rendered shared/_head.html.erb (175.6ms)
+Completed 500 Internal Server Error in 192ms
+
+ActionView::Template::Error (Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes.
+  (in /home/axintemihnea/Desktop/Development/burse54-fmi/app/assets/javascripts/domains.js.coffee)):
+    1: <title>Burse</title>
+    2: <%= stylesheet_link_tag  "application", media: "all" %>
+    3: <%= javascript_include_tag "application"%>
+    4: <%= csrf_meta_tags %>    
+    5: 
+    6: <style>
+  app/views/shared/_head.html.erb:3:in `_app_views_shared__head_html_erb__2230748893162251010_37221000'
+  app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___4078146104615340666_38996000'
+  app/controllers/home_controller.rb:84:in `admin_requests'
+
+
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (26.4ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.7ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (66.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-10 14:54:43 +0200
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-10 14:54:43 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  [1m[35mNews Load (1.8ms)[0m  SELECT "news".* FROM "news"
+  Rendered news/_all.html.erb (14.4ms)
+  Rendered news/_form.html.erb (5.0ms)
+  Rendered home/admin_index.html.erb within layouts/application (22.6ms)
+  Rendered shared/_head.html.erb (148.2ms)
+Completed 500 Internal Server Error in 181ms
+
+ActionView::Template::Error (Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes.
+  (in /home/axintemihnea/Desktop/Development/burse54-fmi/app/assets/javascripts/domains.js.coffee)):
+    1: <title>Burse</title>
+    2: <%= stylesheet_link_tag  "application", media: "all" %>
+    3: <%= javascript_include_tag "application"%>
+    4: <%= csrf_meta_tags %>    
+    5: 
+    6: <style>
+  app/views/shared/_head.html.erb:3:in `_app_views_shared__head_html_erb__2230748893162251010_37221000'
+  app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___4078146104615340666_38996000'
+  app/controllers/home_controller.rb:38:in `admin_index'
+
+
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (27.8ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.3ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (69.9ms)
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /home/axintemihnea/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-10 14:58:35 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  [1m[35mNews Load (0.6ms)[0m  SELECT "news".* FROM "news"
+  Rendered news/_all.html.erb (14.2ms)
+  Rendered news/_form.html.erb (47.7ms)
+  Rendered home/admin_index.html.erb within layouts/application (71.5ms)
+  Rendered shared/_head.html.erb (273.0ms)
+Completed 500 Internal Server Error in 447ms
+
+ActionView::Template::Error (Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs for a list of available runtimes.
+  (in /home/axintemihnea/Desktop/Development/burse54-fmi/app/assets/javascripts/domains.js.coffee)):
+    1: <title>Burse</title>
+    2: <%= stylesheet_link_tag  "application", media: "all" %>
+    3: <%= javascript_include_tag "application"%>
+    4: <%= csrf_meta_tags %>    
+    5: 
+    6: <style>
+  app/views/shared/_head.html.erb:3:in `_app_views_shared__head_html_erb___82059030685413051_36149180'
+  app/views/layouts/application.html.erb:4:in `_app_views_layouts_application_html_erb___2642664405572761944_37962000'
+  app/controllers/home_controller.rb:38:in `admin_index'
+
+
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (26.8ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.8ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/axintemihnea/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (69.8ms)

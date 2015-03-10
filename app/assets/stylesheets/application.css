@@ -14,3 +14,43 @@
  *= require dataTables/jquery.dataTables
  *= require dataTables/jquery.dataTables.bootstrap3
  */
+
+
+.sidebar{
+	position: fixed !important;
+	top: 51px;
+	bottom: 0px;
+	left: 0px;
+	z-index: 1000;
+	display: block;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: #F5F5F5;
+	border-right: 1px solid #EEE;
+}
+
+.nav-sidebar {
+    margin-right: -21px;
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+
+.main {
+    padding-right: 40px;
+    padding-left: 40px;
+    margin-top: 3.8em;
+}
+
+.nav-sidebar > li > a {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    font-size: 1.1em;
+}
+
+.navbar-default {
+    background-image: linear-gradient(to bottom, #FFF 0px, #F8F8F8 100%) !important;
+    background-repeat: repeat-x;
+    border-radius: 4px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.15) inset, 0px 1px 5px rgba(0, 0, 0, 0.075);
+}
