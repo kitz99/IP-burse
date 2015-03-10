@@ -35,7 +35,6 @@ class NewsController < ApplicationController
       @mailing_list << "tehnic@pddesign.ro"
       @mailing_list << "bogdan.timofte@hotmail.com"
       @mailing_list << "bogdan.mihai.timofte@gmail.com"
-      @mailing_list << "kingccc.cristi@gmail.com"
       #end try
       respond_to do |format|
         if @news.save
