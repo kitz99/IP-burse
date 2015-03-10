@@ -10,24 +10,90 @@
 			<div class="col-sm-3 col-md-2 sidebar" >
 				<!-- User nelogat -->
 				<!-- User type candidat -->
+				
 				<ul class="nav nav-sidebar">
-					<li><a href="/welcome">Acasa</a></li>
-					<li><a href="/dashboard">Panou de control</a></li>
-					<li><a href="/profile">Profil</a></li>
-					<li><a href="/profile/edit">Completeaza profilul</a></li>
-					<li><a href="/applications">Aplicatii</a></li>
-					<li><a href="/applications/new">Aplicatie noua</a></li>
-				</ul>
-				<!-- User type secretar -->
-				<!-- User type admin -->
-			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<% if @current_user.is_admin == true %>
+					<li><a href="<%= root_url %>admin">Dashboard</a></li>
+					<li><a href="<%= root_url %>scholarships">Burse</a></li>
+					<li><a href="<%= root_url %>domains">Domenii</a></li>
+					<li><a href="<%= root_url %>periods">Sesiuni</a></li>
+					
 
-				<p id="notice"><%= notice %></p>
-				<%= yield %>
+
+
+					<!-- development start -->
+					<li>
+						<a aria-expanded="false" class="collapsed" href="javascript:;" data-toggle="collapse" data-target="#ddlCereri"><i class="fa fa-fw fa-arrows-v"></i> Cereri <i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="ddlCereri" style="height: 0px;" aria-expanded="false" aria-labelledby="drop3" class="collapse">
+							<li><a href="<%= root_url %>waiting/">In asteptare</a></li>
+							<li><a href="<%= root_url %>valid/">Valide</a></li>
+							<li><a href="<%= root_url %>requests/">Toate</a></li>
+						</ul>
+					</li>
+					<!-- development end  -->
+
+
+
+
+					<li class="dropdown" id="fat-menu">
+						<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">Cereri<b class="caret"></b></a>
+						<ul aria-labelledby="drop3" role="menu" class="dropdown-menu">
+							<li><a href="<%= root_url %>waiting/">In asteptare</a></li>
+							<li><a href="<%= root_url %>valid/">Valide</a></li>
+							<li><a href="<%= root_url %>requests/">Toate</a></li>
+						</ul>
+					</li>
+					<li><a href="<%= root_url %>generate">Generare Burse</a></li>
+
+					<% elsif @current_user.is_student == true %>
+					<li><a href="<%= root_url %>">Dashboard</a></li>
+					<li class="dropdown" id="fat-menu">
+						<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">Aplicatii<b class="caret"></b></a>
+						<ul aria-labelledby="drop3" role="menu" class="dropdown-menu">
+							<%
+							if @my_applications and not @my_applications.empty?
+								@my_applications.each do |app|
+									%>
+									<li style="background-color:#D1DAEB"><a href="<%= root_url %>applications/<%= app.id %>/edit">
+										<%= app.scholarship.stype %></a></li>
+										<%
+									end
+
+									if @available_appl and not @available_appl.empty?
+										%>
+										<li class="divider"></li>
+										<%
+									end
+								end
+
+								if @available_appl and not @available_appl.empty?
+									@available_appl.each do |app|
+										%>
+										<li><a href="<%= root_url %>applications/<%= app.id %>/new">
+											<%= app.stype %></a></li>
+											<%
+										end
+									end
+									%>
+								</ul>
+							</li>
+
+							<% elsif @current_user.is_management == true %>
+							<li><a href="#">Dashboard</a></li>
+							<li><a href="#">Cereri</a></li>
+							<% end %>
+
+						</ul>
+						<!-- User type secretar -->
+						<!-- User type admin -->
+					</div>
+					<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+						<p id="notice"><%= notice %></p>
+						<%= yield %>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<%= render "shared/footer" %>
-</body>
-</html>
+			<%= render "shared/footer" %>
+		</body>
+		</html>
