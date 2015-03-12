@@ -54,3 +54,16 @@
     border-radius: 4px;
     box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.15) inset, 0px 1px 5px rgba(0, 0, 0, 0.075);
 }
+
+#ddlCereri{
+    list-style: none;
+}
+
+.list-item-cereri {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.list-item-cereri a:hover{
+    text-decoration: none;
+}

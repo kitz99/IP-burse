@@ -17,30 +17,12 @@
 					<li><a href="<%= root_url %>scholarships">Burse</a></li>
 					<li><a href="<%= root_url %>domains">Domenii</a></li>
 					<li><a href="<%= root_url %>periods">Sesiuni</a></li>
-					
-
-
-
-					<!-- development start -->
 					<li>
 						<a aria-expanded="false" class="collapsed" href="javascript:;" data-toggle="collapse" data-target="#ddlCereri"><i class="fa fa-fw fa-arrows-v"></i> Cereri <i class="fa fa-fw fa-caret-down"></i></a>
 						<ul id="ddlCereri" style="height: 0px;" aria-expanded="false" aria-labelledby="drop3" class="collapse">
-							<li><a href="<%= root_url %>waiting/">In asteptare</a></li>
-							<li><a href="<%= root_url %>valid/">Valide</a></li>
-							<li><a href="<%= root_url %>requests/">Toate</a></li>
-						</ul>
-					</li>
-					<!-- development end  -->
-
-
-
-
-					<li class="dropdown" id="fat-menu">
-						<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">Cereri<b class="caret"></b></a>
-						<ul aria-labelledby="drop3" role="menu" class="dropdown-menu">
-							<li><a href="<%= root_url %>waiting/">In asteptare</a></li>
-							<li><a href="<%= root_url %>valid/">Valide</a></li>
-							<li><a href="<%= root_url %>requests/">Toate</a></li>
+							<li class="list-item-cereri"><a href="<%= root_url %>waiting/">In asteptare</a></li>
+							<li class="list-item-cereri"><a href="<%= root_url %>valid/">Valide</a></li>
+							<li class="list-item-cereri"><a href="<%= root_url %>requests/">Toate</a></li>
 						</ul>
 					</li>
 					<li><a href="<%= root_url %>generate">Generare Burse</a></li>

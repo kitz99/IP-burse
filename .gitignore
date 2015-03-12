@@ -1,2 +1,3 @@
 *.slqlite3
-temp/
+tmp/
+
