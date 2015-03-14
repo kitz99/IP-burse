@@ -8,10 +8,11 @@
 
       <li class="dropdown" id="fat-menu">
         <div class="pull-right">
-        <%= link_to gravatar_image_tag(@current_user.first_name , :class => 'gravatar'), {controller:'home', action:'index'} %>
+        <%= link_to gravatar_image_tag(@current_user.first_name , :class => 'gravatar'), {controller:'user_sessions', action:'show_profile'} %>
         <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><%= @current_user.first_name + " " + @current_user.last_name %>
           <b class="caret"></b></a>
           <ul aria-labelledby="drop3" role="menu" class="dropdown-menu">
+            <li><a href="/profile">Profil</a></li>
             <li><a href="<%= root_url %>logout">Iesire</a></li>
           </ul>
         </div>
