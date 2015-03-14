@@ -1,0 +1,10 @@
+<%= form_tag("/edit_profile", method: "post") do %>
+	<ul>
+		<li>Nume: <input class="form-control" type="text" placeholder="<%= @user.last_name %>" name="last_name"></li>
+		<li>Prenume <input class="form-control" type="text" placeholder="<%= @user.first_name %>" name="first_name"></li>
+		<li>Email <input class="form-control" type="text" placeholder="<%= @user.email %>" name="email"></li>
+		<li>IBAN: <input class="form-control" type="text" placeholder="<%= @user.iban %>" name="iban"></li>
+		<li>Banca <input class="form-control" type="text" placeholder="<%= @user.bank %>" name="bank"></li>
+	</ul>
+	<input type="submit" value="Submit" class="btn btn-default">
+<% end %>
