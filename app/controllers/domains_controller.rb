@@ -26,14 +26,15 @@ class DomainsController < ApplicationController
   def edit
     @scholarships = Scholarship.all
     @datas = DomainData.where(:domain_id => @domain.id )
+    @periods = Period.where(:activ => true)
   end
 
   # POST /domains
   # POST /domains.json
   def create
-    puts "---------------------------------------> #{domain_params}"
-    puts "---------------------------------------> #{domain_params[:sesiune]}"
+    @scholarships = Scholarship.all
     @domain = Domain.new(domain_params)
+    @periods = Period.where(:activ => true)
 
     domain_data = params[:domain_data]
 
@@ -56,6 +57,8 @@ class DomainsController < ApplicationController
   # PATCH/PUT /domains/1
   # PATCH/PUT /domains/1.json
   def update
+    @scholarships = Scholarship.all
+    @periods = Period.where(:activ => true)
     domain_data = params[:domain_data]
 
     respond_to do |format|
