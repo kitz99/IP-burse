@@ -36,10 +36,27 @@ class UserSessionsController < ApplicationController
 
   def show_profile
     @user = current_user
+    str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
+
+    @info = JSON.parse(open(str).read)
+
+    if ! @info['error'].nil? 
+      redirect_to root_url + 'logout'
+    end
+    # @info = YAML::dump(@info)
   end
 
   def show_edit_profile
     @user = current_user
+
+    str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
+
+    @info = JSON.parse(open(str).read)
+
+    if ! @info['error'].nil? 
+      redirect_to root_url + 'logout'
+    end
+
   end
 
   def edit_profile
@@ -49,19 +66,33 @@ class UserSessionsController < ApplicationController
     email = params[:email]
     iban = params[:iban]
     banca = params[:bank]
+    bi_serie = params[:bi_serie]
+    bi_numar = params[:bi_numar]
 
     user = current_user
-
+    body = Hash.new()
 
     if nume != ""
       user.update_attributes(:last_name => nume)
+      body["last_name"] = nume
     end
     if prenume != ""
       user.update_attributes(:first_name => prenume)
+      body["first_name"] = prenume
     end
     if email != ""
       user.update_attributes(:email => email)
+      body["email"] = email
     end
+
+    if bi_serie != ""
+      body["bi serie"] = bi_serie
+    end
+
+    if bi_numar != ""
+      body["bi numar"] = bi_serie
+    end
+
     if iban != ""
       user.update_attributes(:iban => iban)
     end
@@ -69,8 +100,23 @@ class UserSessionsController < ApplicationController
       user.update_attributes(:bank=> banca)
     end
 
-    flash[:notice] = "Datele au fost actualizate"
-    redirect_to "/profile"
+    url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{@current_user.uid}?oauth_token=#{@current_user.token}"
+    body = body.to_json
+    
+    response = RestClient.post url, body, {:content_type => :json} 
+
+
+    response = JSON.parse(response)
+
+    if response['message'] == "error while updating student"
+      flash[:error] = "Error while updating your profile"
+      redirect_to "/profile"
+
+    else
+      flash[:notice] = "Datele au fost actualizate"
+      redirect_to "/profile"
+    end
+
   end
 
   # Omniauth failure callback
@@ -85,6 +131,21 @@ class UserSessionsController < ApplicationController
     redirect_to "#{CUSTOM_PROVIDER_URL}/users/sign_out"
   end
 
+private
+     def send_info (b) 
+    url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{@current_user.uid}?oauth_token=#{@current_user.token}"
+    body = b.to_json
+    
+    response = RestClient.post url, body, {:content_type => :json} 
 
+
+    response = JSON.parse(response)
+
+    if response['message'] == "error while updating student"
+      return false
+    end
+
+    return true
+  end
 
 end

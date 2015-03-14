@@ -1,18 +1,10 @@
 <h1>User profile</h1>
 <ul>
-	<li>
-		Nume: <%= @user.last_name %>
-	</li>
-	<li>
-		Prenume: <%= @user.first_name %>
-	</li>
-	<li>Email: <%= @user.email %></li>
+	<li>Nume: <%= @info["last_name"] %></li>
+	<li>Prenume: <%= @info["first_name"]%></li>
+	<li>Email: <%= @info['email'] %></li>
 	<li>
 	    Tip cont: 
-		<% if @user.is_student %>
-			STUDENT
-		<% end %>
-
 		<% if @user.is_student %>
 			STUDENT
 		<% end %>
@@ -24,6 +16,13 @@
 		<% if @user.is_management %>
 			SECRETARIAT
 		<% end %>
+		
+		<li>Serie BI/CI: <%= @info['bi serie'] %> </li>
+		<li>Numar BI/CI: <%= @info['bi numar'] %> </li>
+		<li>Specializare: <%= @info['specialization'] %></li>
+		<li>An de studiu: <%= @info['group_year'] %></li>
+		<li>Seria: <%= @info['group_series'] %></li>
+		<li>Grupa: <%= @info['group_number'] %></li>
 
 		<li>IBAN: <%= @user.iban %></li>
 		<li>Banca: <%= @user.bank %></li>
