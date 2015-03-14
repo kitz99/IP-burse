@@ -1,3 +1,4 @@
 *.slqlite3
 tmp/
-log/
+*.log
+
