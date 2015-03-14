@@ -34,10 +34,48 @@ class UserSessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def show_profile
+    @user = current_user
+  end
+
+  def show_edit_profile
+    @user = current_user
+  end
+
+  def edit_profile
+
+    nume = params[:last_name]
+    prenume = params[:first_name]
+    email = params[:email]
+    iban = params[:iban]
+    banca = params[:bank]
+
+    user = current_user
+
+
+    if nume != ""
+      user.update_attributes(:last_name => nume)
+    end
+    if prenume != ""
+      user.update_attributes(:first_name => prenume)
+    end
+    if email != ""
+      user.update_attributes(:email => email)
+    end
+    if iban != ""
+      user.update_attributes(:iban => iban)
+    end
+    if banca != ""
+      user.update_attributes(:bank=> banca)
+    end
+
+    flash[:notice] = "Datele au fost actualizate"
+    redirect_to "/profile"
+  end
+
   # Omniauth failure callback
   def failure
     flash[:notice] = params[:message]
-
   end
 
 
@@ -46,4 +84,7 @@ class UserSessionsController < ApplicationController
     flash[:notice] = 'You have successfully signed out!'
     redirect_to "#{CUSTOM_PROVIDER_URL}/users/sign_out"
   end
+
+
+
 end

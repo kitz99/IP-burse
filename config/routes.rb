@@ -14,6 +14,10 @@ Team9Scholarships::Application.routes.draw do
   get '/auth/:provider/callback' => 'user_sessions#create'
   get '/auth/failure' => 'user_sessions#failure'
 
+  get '/profile' => 'user_sessions#show_profile'
+  get '/edit' => 'user_sessions#show_edit_profile'
+  post '/edit_profile' => "user_sessions#edit_profile"
+
   get '/logout' => 'user_sessions#destroy'
 
   get '/admin' => 'home#admin_index'

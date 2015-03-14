@@ -1,0 +1,32 @@
+<h1>User profile</h1>
+<ul>
+	<li>
+		Nume: <%= @user.last_name %>
+	</li>
+	<li>
+		Prenume: <%= @user.first_name %>
+	</li>
+	<li>Email: <%= @user.email %></li>
+	<li>
+	    Tip cont: 
+		<% if @user.is_student %>
+			STUDENT
+		<% end %>
+
+		<% if @user.is_student %>
+			STUDENT
+		<% end %>
+
+		<% if @user.is_admin %>
+			ADMINISTRATOR
+		<% end %>
+
+		<% if @user.is_management %>
+			SECRETARIAT
+		<% end %>
+
+		<li>IBAN: <%= @user.iban %></li>
+		<li>Banca: <%= @user.bank %></li>
+	</li>
+</ul>
+<%= link_to("Edit profile", '/edit') %>
