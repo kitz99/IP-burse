@@ -17319,3 +17319,521 @@ Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +
 
 
 Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/waiting/" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+Processing by HomeController#admin_waiting as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+  Rendered home/admin_waiting.html.erb within layouts/application (0.8ms)
+  Rendered shared/_head.html.erb (42.5ms)
+  Rendered shared/_header.html.erb (0.9ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 52ms (Views: 49.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/applications.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/admin_manager.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/applications_edit.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/attachments.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/news.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/periods.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/sb-admin.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/template.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:23 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/news.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/periods.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+
+
+Started GET "/datatable_i18n" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+Processing by HomeController#datatable_i18n as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/waiting.json?sEcho=1&iColumns=4&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&mDataProp_3=3&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&sSearch_3=&bRegex_3=false&bSearchable_3=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&bSortable_3=true&_=1426586483682" for 127.0.0.1 at 2015-03-17 12:01:24 +0200
+Processing by HomeController#admin_waiting as JSON
+  Parameters: {"sEcho"=>"1", "iColumns"=>"4", "sColumns"=>"", "iDisplayStart"=>"0", "iDisplayLength"=>"10", "mDataProp_0"=>"0", "mDataProp_1"=>"1", "mDataProp_2"=>"2", "mDataProp_3"=>"3", "sSearch"=>"", "bRegex"=>"false", "sSearch_0"=>"", "bRegex_0"=>"false", "bSearchable_0"=>"true", "sSearch_1"=>"", "bRegex_1"=>"false", "bSearchable_1"=>"true", "sSearch_2"=>"", "bRegex_2"=>"false", "bSearchable_2"=>"true", "sSearch_3"=>"", "bRegex_3"=>"false", "bSearchable_3"=>"true", "iSortCol_0"=>"0", "sSortDir_0"=>"asc", "iSortingCols"=>"1", "bSortable_0"=>"true", "bSortable_1"=>"true", "bSortable_2"=>"true", "bSortable_3"=>"true", "_"=>"1426586483682"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE (lower(status) like 'in asteptare')[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "applications" INNER JOIN "users" ON "users"."id" = "applications"."user_id" INNER JOIN "scholarships" ON "scholarships"."id" = "applications"."scholarship_id" WHERE (lower(applications.status) like 'in asteptare')
+  [1m[36mApplication Load (0.4ms)[0m  [1mSELECT  "applications".* FROM "applications" INNER JOIN "users" ON "users"."id" = "applications"."user_id" INNER JOIN "scholarships" ON "scholarships"."id" = "applications"."scholarship_id" WHERE (lower(applications.status) like 'in asteptare')  ORDER BY users.last_name asc LIMIT 10 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mScholarship Load (0.2ms)[0m  [1mSELECT  "scholarships".* FROM "scholarships" WHERE "scholarships"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 68ms (Views: 60.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/applications/1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+Processing by ApplicationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+  [1m[36mApplication Load (0.2ms)[0m  [1mSELECT  "applications".* FROM "applications" WHERE "applications"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/applications/admin/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/applications/admin/1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+Processing by ApplicationsController#admin_show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+  [1m[36mApplication Load (0.1ms)[0m  [1mSELECT  "applications".* FROM "applications" WHERE "applications"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Attachment> at /home/bogdan/Desktop/marcel/burse54-fmi/app/models/attachment.rb:2)
+DEPRECATION WARNING: Currently, Active Record suppresses errors raised within `after_rollback`/`after_commit` callbacks and only print them to the logs. In the next version, these errors will no longer be suppressed. Instead, the errors will propagate normally just like in other Active Record callbacks.
+
+You can opt into the new behavior and remove this warning by setting:
+
+  config.active_record.raise_in_transactional_callbacks = true
+
+ (called from <class:Attachment> at /home/bogdan/Desktop/marcel/burse54-fmi/app/models/attachment.rb:2)
+  [1m[36mScholarship Load (0.2ms)[0m  [1mSELECT  "scholarships".* FROM "scholarships" WHERE "scholarships"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mApplicationExtra Load (0.3ms)[0m  SELECT "application_extras".* FROM "application_extras" WHERE "application_extras"."application_id" = ?  [["application_id", 1]]
+  [1m[36mAttachment Load (0.3ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."application_id" = ?[0m  [["application_id", 1]]
+  [1m[35mDomain Load (0.4ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."scholarship_id" = ?  [["scholarship_id", 1]]
+  Rendered applications/admin_show.html.erb within layouts/application (24.7ms)
+  Rendered shared/_head.html.erb (28.9ms)
+  Rendered shared/_header.html.erb (0.9ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+Completed 200 OK in 106ms (Views: 65.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/admin_manager.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/applications.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/attachments.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/news.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/sb-admin.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/periods.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/applications_edit.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/template.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.css?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:30 +0200
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/news.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/periods.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-17 12:01:31 +0200
