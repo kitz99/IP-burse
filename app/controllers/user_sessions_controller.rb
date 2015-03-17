@@ -43,7 +43,6 @@ class UserSessionsController < ApplicationController
     if ! @info['error'].nil? 
       redirect_to root_url + 'logout'
     end
-    # @info = YAML::dump(@info)
   end
 
   def show_edit_profile
@@ -59,67 +58,76 @@ class UserSessionsController < ApplicationController
 
   end
 
-  def edit_profile
+  def update
+    # metoda ce updateasa inline profilul utilizatorului
+    # Iau din params ceea ce trebuie sa updatez
+    # Verific daca se poate face update-ul si apoi incerc sa scriu in repo
+    # TODO:  De vorbit cu cei de la repo sa vada de ce nu se intampla update-ul la user profile
 
-    nume = params[:last_name]
-    prenume = params[:first_name]
-    email = params[:email]
-    iban = params[:iban]
-    banca = params[:bank]
-    bi_serie = params[:bi_serie]
-    bi_numar = params[:bi_numar]
+    nume = params['user']['last_name']
+    prenume = params['user']['first_name']
+    email = params['user']['email']
+    iban = params['user']['iban']
+    banca = params['user']['bank']
+    bi_serie = params['user']['bi_serie']
+    bi_numar = params['user']['bi_numar']
 
     user = current_user
-    body = Hash.new()
+    body = Hash.new
+    b = false
 
-    if nume != ""
+    if not nume.nil?
       user.update_attributes(:last_name => nume)
       body["last_name"] = nume
+      b = true
     end
-    if prenume != ""
+
+    if not prenume.nil?
       user.update_attributes(:first_name => prenume)
       body["first_name"] = prenume
+      b = true
     end
-    if email != ""
+    if not email.nil?
       user.update_attributes(:email => email)
       body["email"] = email
+      b = true
     end
 
-    if bi_serie != ""
+    if not bi_serie.nil?
       body["bi serie"] = bi_serie
+      b = true
     end
 
-    if bi_numar != ""
+    if not bi_numar.nil?
       body["bi numar"] = bi_serie
+      b = true
     end
 
-    if iban != ""
-      user.update_attributes(:iban => iban)
+    if not iban.nil?
+      if user.update_attributes(:iban => iban)
+        body["pass"] = "ok"
+      end
     end
-    if banca != ""
-      user.update_attributes(:bank=> banca)
-    end
-
-    url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{@current_user.uid}?oauth_token=#{@current_user.token}"
-    body = body.to_json
-
-    puts "-------------------------------------------------------> #{body}"
-    
-    response = RestClient.post url, body, {:content_type => :json} 
-
-
-    response = JSON.parse(response)
-
-    if response['message'] == "error while updating student"
-      flash[:error] = "Error while updating your profile"
-      redirect_to "/profile"
-
-    else
-      flash[:notice] = "Datele au fost actualizate"
-      redirect_to "/profile"
+    if not banca.nil?
+      if user.update_attributes(:bank=> banca)
+        body["pass1"] = "ok"
+      end
     end
 
+    respond_to do |format|
+      if send_info(body, user) == true
+        format.html { redirect_to '/profile' }
+        format.json { head :no_content }
+      elsif (body["pass1"] = "ok" or body["pass"] = "ok") and b == false
+        format.html { redirect_to '/profile' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to "/logout" }
+        format.json { head :no_content }
+      end
+    end
   end
+
 
   # Omniauth failure callback
   def failure
@@ -134,14 +142,20 @@ class UserSessionsController < ApplicationController
   end
 
 private
-    def send_info (b) 
-    url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{@current_user.uid}?oauth_token=#{@current_user.token}"
+  def send_info (b, user) 
+    # Metoda care trimite jsonul catre repo pentru update
+    # Metoda verifica raspunsul primit si returneaza un mesaj ca atare
+
+    if b.nil?
+      return false
+    end
+
+    url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{user.uid}?oauth_token=#{user.token}"
     body = b.to_json
     
-    response = RestClient.post url, body, {:content_type => :json} 
+    response = JSON.parse(RestClient.post url, body, {:content_type => :json})
 
-
-    response = JSON.parse(response)
+    # puts "Mesajul de la repo-------------------> #{response}"
 
     if response['message'] == "error while updating student"
       return false

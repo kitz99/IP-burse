@@ -15,8 +15,13 @@ Team9Scholarships::Application.routes.draw do
   get '/auth/failure' => 'user_sessions#failure'
 
   get '/profile' => 'user_sessions#show_profile'
-  get '/edit' => 'user_sessions#show_edit_profile'
-  post '/edit_profile' => "user_sessions#edit_profile"
+  put '/profile' => 'user_sessions#show_profile'
+
+  # get '/edit' => 'user_sessions#show_edit_profile'
+  # post '/edit_profile' => "user_sessions#edit_profile"
+
+  # put '/edit_profile' => "user_sessions#edit_profile"
+  put '/update' => "user_sessions#update"
 
   get '/logout' => 'user_sessions#destroy'
 

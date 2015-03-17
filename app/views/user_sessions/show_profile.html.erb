@@ -1,8 +1,22 @@
 <h1>User profile</h1>
 <ul>
-	<li>Nume: <%= @info["last_name"] %></li>
-	<li>Prenume: <%= @info["first_name"]%></li>
-	<li>Email: <%= @info['email'] %></li>
+	<li>Nume: 
+	 <a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="last_name" data-url="/update" data-title="nume">
+            <%= @info["last_name"] %>
+          </a>
+	</li>
+	<li>
+	Prenume: 
+	<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="first_name" data-url="/update" data-title="prenume">
+            <%= @info["first_name"]%>
+          </a>
+	</li>
+	<li>
+	Email: 
+	<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="email" data-url="/update" data-title="email">
+            <%= @info['email'] %>
+          </a>
+	</li>
 	<li>
 	    Tip cont: 
 		<% if @user.is_student %>
@@ -17,15 +31,31 @@
 			SECRETARIAT
 		<% end %>
 		
-		<li>Serie BI/CI: <%= @info['bi serie'] %> </li>
-		<li>Numar BI/CI: <%= @info['bi numar'] %> </li>
+		<li>Serie BI/CI: 
+			<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="bi_serie" data-url="/update" data-title="serie">
+            <%= @info['bi serie'] %> 
+          </a>
+
+		</li>
+		<li>Numar BI/CI:
+			<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="bi_numar" data-url="/update" data-title="numar">
+            <%= @info['bi numar'] %> 
+          </a> 
+		</li>
 		<li>Specializare: <%= @info['specialization'] %></li>
 		<li>An de studiu: <%= @info['group_year'] %></li>
 		<li>Seria: <%= @info['group_series'] %></li>
 		<li>Grupa: <%= @info['group_number'] %></li>
 
-		<li>IBAN: <%= @user.iban %></li>
-		<li>Banca: <%= @user.bank %></li>
+		<li>IBAN: 
+			<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="iban" data-url="/update" data-title="iban">
+            <%= @user.iban %>
+          </a>
+		</li>
+		<li>Banca: 
+			<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="bank" data-url="/update" data-title="banca">
+            <%= @user.bank %>
+          </a>
+		</li>
 	</li>
 </ul>
-<%= link_to("Edit profile", '/edit') %>

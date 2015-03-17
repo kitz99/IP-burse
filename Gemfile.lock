@@ -72,6 +72,8 @@ GEM
     arel (6.0.0)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bootstrap-x-editable-rails (1.5.1.1)
+      railties (>= 3.0)
     builder (3.2.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -229,6 +231,7 @@ DEPENDENCIES
   activerecord-session_store (~> 0.0.1)
   activeresource (~> 4.0.0.beta1)
   bootstrap-sass
+  bootstrap-x-editable-rails
   carrierwave
   coffee-rails (~> 4.0.0)
   gravatar_image_tag
