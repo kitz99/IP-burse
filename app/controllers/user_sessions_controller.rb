@@ -102,6 +102,8 @@ class UserSessionsController < ApplicationController
 
     url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{@current_user.uid}?oauth_token=#{@current_user.token}"
     body = body.to_json
+
+    puts "-------------------------------------------------------> #{body}"
     
     response = RestClient.post url, body, {:content_type => :json} 
 
@@ -132,7 +134,7 @@ class UserSessionsController < ApplicationController
   end
 
 private
-     def send_info (b) 
+    def send_info (b) 
     url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{@current_user.uid}?oauth_token=#{@current_user.token}"
     body = b.to_json
     

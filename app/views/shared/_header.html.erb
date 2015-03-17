@@ -1,24 +1,80 @@
-<div role="navigation" class="navbar navbar-default navbar-fixed-top">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="<%= root_url %>">Burse</a>
-  </div>
-  <div class="collapse navbar-collapse">
+<div id="outer-wrap">
+  <div id="inner-wrap">
 
-    <ul class="nav navbar-nav pull-right">
+    <header id="top" role="banner">
+      <div class="block-top">
+        <a href='#' class='clickable'></a>
+        <a class="nav-btn" id="nav-open-btn" href="#nav"></a>
+      </div>
+    </header>
 
-      <li class="dropdown" id="fat-menu">
-        <div class="pull-right">
-        <%= link_to gravatar_image_tag(@current_user.first_name , :class => 'gravatar'), {controller:'user_sessions', action:'show_profile'} %>
-        <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><%= @current_user.first_name + " " + @current_user.last_name %>
-          <b class="caret"></b></a>
-          <ul aria-labelledby="drop3" role="menu" class="dropdown-menu">
-            <li><a href="/profile">Profil</a></li>
-            <li><a href="<%= root_url %>logout">Iesire</a></li>
-          </ul>
+    <nav id="nav" role="navigation">
+      <div class="block">
+        <div class='avatar'>
+          <%= link_to gravatar_image_tag(@current_user.first_name , :class => 'avatar'), {controller:'user_sessions', action:'show_profile'} %>
         </div>
-        </li>
+        <div class='username'>
+          <a href="/profile">
+            <%= @current_user.first_name + " " + @current_user.last_name %>
+          </a>
+          <ul>
+            <% if @current_user.is_admin == true %>
+            <li class="is-active"><a href="<%= root_url %>admin">Dashboard</a></li>
+            <li><a href="<%= root_url %>scholarships">Burse</a></li>
+            <li><a href="<%= root_url %>domains">Domenii</a></li>
+            <li><a href="<%= root_url %>periods">Sesiuni</a></li>
+            <li>
+              <a aria-expanded="false" class="collapsed" href="javascript:;" data-toggle="collapse" data-target="#ddlCereri"><i class="fa fa-fw fa-arrows-v"></i> Cereri <i class="fa fa-fw fa-caret-down"></i></a>
+              <ul id="ddlCereri" style="height: 0px;" aria-expanded="false" aria-labelledby="drop3" class="collapse">
+                <li class="list-item-cereri"><a href="<%= root_url %>waiting/">In asteptare</a></li>
+                <li class="list-item-cereri"><a href="<%= root_url %>valid/">Valide</a></li>
+                <li class="list-item-cereri"><a href="<%= root_url %>requests/">Toate</a></li>
+              </ul>
+            </li>
+            <li><a href="<%= root_url %>generate">Generare Burse</a></li>
 
-      </ul>
-    </div>
-  </div>
+            <% elsif @current_user.is_student == true %>
+            <li><a href="<%= root_url %>">Dashboard</a></li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">Aplicatii<b class="caret"></b></a>
+              <ul>
+                <%
+                if @my_applications and not @my_applications.empty?
+                  @my_applications.each do |app|
+                    %>
+                    <li><a href="<%= root_url %>applications/<%= app.id %>/edit">
+                      <%= app.scholarship.stype %></a></li>
+                      <%
+                    end
+
+                    if @available_appl and not @available_appl.empty?
+                      %>
+                      <li class="divider"></li>
+                      <%
+                    end
+                  end
+
+                  if @available_appl and not @available_appl.empty?
+                    @available_appl.each do |app|
+                      %>
+                      <li><a href="<%= root_url %>applications/<%= app.id %>/new">
+                        <%= app.stype %></a></li>
+                        <%
+                      end
+                    end
+                    %>
+                  </ul>
+                </li>
+
+                <% elsif @current_user.is_management == true %>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Cereri</a></li>
+                <% end %>
+                <li>
+                  <a href="<%= root_url %>logout">Iesire</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
 
