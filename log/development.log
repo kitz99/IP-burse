@@ -16080,3 +16080,1242 @@ Completed 200 OK in 39ms (Views: 36.6ms | ActiveRecord: 0.4ms)
 
 
 Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2015-03-17 11:12:14 +0200
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-17 11:13:44 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 93ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-17 11:13:44 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+  [1m[36mNews Load (0.3ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  Rendered news/_all.html.erb (4.0ms)
+  Rendered news/_form.html.erb (19.2ms)
+  Rendered home/admin_index.html.erb within layouts/application (28.1ms)
+  Rendered shared/_head.html.erb (944.6ms)
+  Rendered shared/_header.html.erb (5.2ms)
+Completed 200 OK in 998ms (Views: 990.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-17 11:13:45 +0200
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-17 11:13:45 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  [1m[35mNews Load (0.2ms)[0m  SELECT "news".* FROM "news"
+  Rendered news/_all.html.erb (1.5ms)
+  Rendered news/_form.html.erb (2.2ms)
+  Rendered home/admin_index.html.erb within layouts/application (5.4ms)
+  Rendered shared/_head.html.erb (27.2ms)
+  Rendered shared/_header.html.erb (0.9ms)
+Completed 200 OK in 40ms (Views: 37.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2015-03-17 11:13:45 +0200
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-17 11:35:07 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 60ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-17 11:35:07 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+  [1m[36mNews Load (0.4ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  Rendered news/_all.html.erb (13.5ms)
+  Rendered news/_form.html.erb (33.6ms)
+  Rendered home/admin_index.html.erb within layouts/application (55.7ms)
+  Rendered shared/_head.html.erb (663.3ms)
+  Rendered shared/_header.html.erb (3.6ms)
+Completed 200 OK in 753ms (Views: 740.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-17 11:35:07 +0200
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-17 11:35:07 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  [1m[35mNews Load (0.2ms)[0m  SELECT "news".* FROM "news"
+  Rendered news/_all.html.erb (1.4ms)
+  Rendered news/_form.html.erb (1.9ms)
+  Rendered home/admin_index.html.erb within layouts/application (4.7ms)
+  Rendered shared/_head.html.erb (27.4ms)
+  Rendered shared/_header.html.erb (0.8ms)
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/admin_manager.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/applications.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/attachments.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/applications_edit.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/news.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/periods.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/sb-admin.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/template.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:08 +0200
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/news.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/periods.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:09 +0200
+
+
+Started GET "/generate" for 127.0.0.1 at 2015-03-17 11:35:13 +0200
+Processing by HomeController#generate as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+Redirected to http://localhost:3000/logout
+  [1m[35mDomain Load (1.5ms)[0m  SELECT "domains".* FROM "domains"  ORDER BY "domains"."order_number" DESC
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 17]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 18]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 19]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 20]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 21]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 34]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 35]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 36]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 37]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 38]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 7]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 10]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 11]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 22]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 23]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 24]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 25]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 26]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 27]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 39]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 40]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 41]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 43]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')  [["domain_id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "applications" WHERE "applications"."domain_id" = ? AND (lower(status) like 'valida')[0m  [["domain_id", 12]]
+Completed 500 Internal Server Error in 413ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/home_controller.rb:178:in `get_seat_nr_for_id'
+  app/controllers/home_controller.rb:63:in `block in generate'
+  app/controllers/home_controller.rb:54:in `generate'
+
+
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.2ms)
+
+
+Started GET "/waiting/" for 127.0.0.1 at 2015-03-17 11:35:25 +0200
+Processing by HomeController#admin_waiting as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+  Rendered home/admin_waiting.html.erb within layouts/application (0.9ms)
+  Rendered shared/_head.html.erb (27.3ms)
+  Rendered shared/_header.html.erb (0.9ms)
+Completed 200 OK in 35ms (Views: 33.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/admin_manager.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/attachments.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/applications.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/periods.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/applications_edit.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/sb-admin.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/news.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/template.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.css?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/news.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/periods.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+
+Started GET "/waiting/img/logo.png" for 127.0.0.1 at 2015-03-17 11:35:26 +0200
+
+ActionController::RoutingError (No route matches [GET] "/waiting/img/logo.png"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/server.rb:320:in `block in start_thread'
+
+
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.0ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (27.3ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (119.1ms)
+
+
+Started GET "/waiting/" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+Processing by HomeController#admin_waiting as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  Rendered home/admin_waiting.html.erb within layouts/application (0.3ms)
+  Rendered shared/_head.html.erb (32.5ms)
+  Rendered shared/_header.html.erb (0.9ms)
+Completed 200 OK in 40ms (Views: 38.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+
+
+Started GET "/assets/admin_manager.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+
+
+Started GET "/assets/attachments.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+
+
+Started GET "/assets/applications.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+
+
+Started GET "/assets/applications_edit.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+
+
+Started GET "/assets/news.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:28 +0200
+
+
+Started GET "/assets/periods.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/sb-admin.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/template.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.css?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/news.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/assets/periods.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/waiting/img/logo.png" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+ActionController::RoutingError (No route matches [GET] "/waiting/img/logo.png"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/server.rb:320:in `block in start_thread'
+
+
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.1ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (59.2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+
+Started GET "/datatable_i18n" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+Processing by HomeController#datatable_i18n as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/waiting/img/logo.png" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+
+ActionController::RoutingError (No route matches [GET] "/waiting/img/logo.png"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/server.rb:320:in `block in start_thread'
+
+
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb (11.4ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.2ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/bogdan/.rvm/gems/ruby-2.2.0-preview1/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (99.3ms)
+
+
+Started GET "/waiting.json?sEcho=1&iColumns=4&sColumns=&iDisplayStart=0&iDisplayLength=10&mDataProp_0=0&mDataProp_1=1&mDataProp_2=2&mDataProp_3=3&sSearch=&bRegex=false&sSearch_0=&bRegex_0=false&bSearchable_0=true&sSearch_1=&bRegex_1=false&bSearchable_1=true&sSearch_2=&bRegex_2=false&bSearchable_2=true&sSearch_3=&bRegex_3=false&bSearchable_3=true&iSortCol_0=0&sSortDir_0=asc&iSortingCols=1&bSortable_0=true&bSortable_1=true&bSortable_2=true&bSortable_3=true&_=1426585589143" for 127.0.0.1 at 2015-03-17 11:46:29 +0200
+Processing by HomeController#admin_waiting as JSON
+  Parameters: {"sEcho"=>"1", "iColumns"=>"4", "sColumns"=>"", "iDisplayStart"=>"0", "iDisplayLength"=>"10", "mDataProp_0"=>"0", "mDataProp_1"=>"1", "mDataProp_2"=>"2", "mDataProp_3"=>"3", "sSearch"=>"", "bRegex"=>"false", "sSearch_0"=>"", "bRegex_0"=>"false", "bSearchable_0"=>"true", "sSearch_1"=>"", "bRegex_1"=>"false", "bSearchable_1"=>"true", "sSearch_2"=>"", "bRegex_2"=>"false", "bSearchable_2"=>"true", "sSearch_3"=>"", "bRegex_3"=>"false", "bSearchable_3"=>"true", "iSortCol_0"=>"0", "sSortDir_0"=>"asc", "iSortingCols"=>"1", "bSortable_0"=>"true", "bSortable_1"=>"true", "bSortable_2"=>"true", "bSortable_3"=>"true", "_"=>"1426585589143"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "applications" WHERE (lower(status) like 'in asteptare')
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "applications" INNER JOIN "users" ON "users"."id" = "applications"."user_id" INNER JOIN "scholarships" ON "scholarships"."id" = "applications"."scholarship_id" WHERE (lower(applications.status) like 'in asteptare')[0m
+  [1m[35mApplication Load (0.4ms)[0m  SELECT  "applications".* FROM "applications" INNER JOIN "users" ON "users"."id" = "applications"."user_id" INNER JOIN "scholarships" ON "scholarships"."id" = "applications"."scholarship_id" WHERE (lower(applications.status) like 'in asteptare')  ORDER BY users.last_name asc LIMIT 10 OFFSET 0
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mScholarship Load (0.1ms)[0m  SELECT  "scholarships".* FROM "scholarships" WHERE "scholarships"."id" = ? LIMIT 1  [["id", 1]]
+Completed 200 OK in 102ms (Views: 95.9ms | ActiveRecord: 2.2ms)
+DEPRECATION WARNING: You didn't set `secret_key_base`. Read the upgrade documentation to learn more about this new config option. (called from service at /home/bogdan/.rvm/rubies/ruby-2.2.0-preview1/lib/ruby/2.2.0/webrick/httpserver.rb:138)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-17 11:49:18 +0200
+Processing by HomeController#index as HTML
+Redirected to http://localhost:3000/auth/autentificare/
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/autentificare/" for 127.0.0.1 at 2015-03-17 11:49:18 +0200
+
+
+Started GET "/auth/autentificare/callback?code=af6fa5c85abc10e3f1d44ba6d4c3a243&response_type=code&state=1e38f28fcf4d1acae41cec36fc04b6b8ae4fff0ae7657fa2" for 127.0.0.1 at 2015-03-17 11:50:20 +0200
+Processing by UserSessionsController#create as HTML
+  Parameters: {"code"=>"af6fa5c85abc10e3f1d44ba6d4c3a243", "response_type"=>"code", "state"=>"1e38f28fcf4d1acae41cec36fc04b6b8ae4fff0ae7657fa2", "provider"=>"autentificare"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "token" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["token", "03377ec3ab437dc4d7e0599420b5802c"], ["updated_at", "2015-03-17 09:50:21.124586"], ["id", 2]]
+  [1m[35m (2.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 42ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-03-17 11:50:21 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "86"]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 6ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-03-17 11:50:21 +0200
+Processing by HomeController#admin_index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "86"]]
+  [1m[36mNews Load (0.2ms)[0m  [1mSELECT "news".* FROM "news"[0m
+  Rendered news/_all.html.erb (3.7ms)
+  Rendered news/_form.html.erb (18.4ms)
+  Rendered home/admin_index.html.erb within layouts/application (27.5ms)
+  Rendered shared/_head.html.erb (513.1ms)
+  Rendered shared/_header.html.erb (3.6ms)
+Completed 200 OK in 566ms (Views: 557.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:21 +0200
+
+
+Started GET "/assets/admin_manager.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/attachments.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/applications_edit.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/applications.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/news.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/periods.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/sb-admin.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/template.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.css?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.accordion.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.button.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.datepicker.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.mouse.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.draggable.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.resizable.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.dialog.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.droppable.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-blind.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-bounce.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-clip.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-drop.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-explode.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fade.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-fold.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-highlight.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-pulsate.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-scale.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-shake.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-slide.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.effect-transfer.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.progressbar.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.selectable.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.slider.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.sortable.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.spinner.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.tabs.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery.ui.all.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:22 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.bootstrap3.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/news.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/periods.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/dataTables/jquery.dataTables.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
+
+
+Started GET "/assets/main.js?body=1" for 127.0.0.1 at 2015-03-17 11:50:23 +0200
