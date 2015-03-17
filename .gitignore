@@ -1,4 +1,4 @@
-*.slqlite3
+db/
 tmp/
-*.log
+log/
 
