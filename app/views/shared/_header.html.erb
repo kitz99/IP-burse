@@ -14,9 +14,13 @@
           <%= link_to gravatar_image_tag(@current_user.first_name , :class => 'avatar'), {controller:'user_sessions', action:'show_profile'} %>
         </div>
         <div class='username'>
+          <% if not @current_user.is_admin %>
           <a href="/profile">
             <%= @current_user.first_name + " " + @current_user.last_name %>
           </a>
+          <% else %>
+          <%= @current_user.first_name + " " + @current_user.last_name %>
+          <% end %>
           <ul>
             <% if @current_user.is_admin == true %>
             <li class="is-active"><a href="<%= root_url %>admin">Dashboard</a></li>
