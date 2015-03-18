@@ -7,8 +7,9 @@
 	<%= render "shared/header" %>
 	<!-- STARTS here -->
 	<div id="main" role="main" class="block">
-		
+		<% unless notice.nil? %>
 		<div class="alert alert-success"><%= notice %></div>
+		<%end%>
 		<%= yield %>
 	</div>
 
