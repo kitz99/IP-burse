@@ -41,7 +41,8 @@
       <div class="form-group col-md-6">
         <label class="col-md-12 control-label">Nume</label>
         <div class="col-md-12">
-          <input type="text" api="1" class="form-control" name="api[last_name]" value="<%= @info["last_name"] %>" disabled>
+        
+          <input type="text" api="1" class="form-control" name="api[last_name]" value="<%= @info["last_name"] %>">
         </div>
       </div>
 
@@ -205,6 +206,8 @@
 
   <% end %>
 </div>
+
+
   <script>
 
     function edit_api(){

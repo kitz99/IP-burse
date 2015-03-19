@@ -4,15 +4,21 @@
 		<% case params[:scholarship_id] %>
 		<% when "1" %>  
 		Bursa de perfomanta
+		<% session["aplic_id"] = '1' %>
 		<% when "2" %>  
 		Bursa de studiu/merit
+		<% session["aplic_id"] = '2' %>
 		<% when "3" %>  
 		Bursa sociala</p>
+		<% session["aplic_id"] = '3' %>
 		<% when "4" %> 
 		Bursa sociala ocazionala
+		<% session["aplic_id"] = '4' %>
 		<% when "5" %> 
 		Bursa medicala
+		<% session["aplic_id"] = '5' %>
 		<% when "6" %>  
+		<% session["aplic_id"] = '6' %>
 		Bursa sociala orfan
 
 		<% end %>
@@ -28,14 +34,18 @@
 				<div class="form-group col-md-6">
 					<label class="col-md-12 control-label">Nume</label>
 					<div class="col-md-12">
-						<input type="text" api="1" class="form-control" name="api[last_name]" value="<%= @info["last_name"] %>" disabled>
+					<a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="last_name" data-url="/inline" data-title="nume">
+						<input type="text" api="1" class="form-control" name="api[last_name]" value="<%= @info["last_name"] %>">
+						</a>
 					</div>
 				</div>
 
 				<div class="form-group col-md-6">
 					<label class="col-md-12 control-label">Prenume</label>
 					<div class="col-md-12">
-						<input type="text" api="1" class="form-control" name="api[first_name]" value="<%= @info["first_name"] %>" disabled>
+					<a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="first_name" data-url="/inline" data-title="prenume">
+						<input type="text" api="1" class="form-control" name="api[first_name]" value="<%= @info["first_name"] %>">
+					</a>
 					</div>
 				</div>
 			</div>
@@ -85,16 +95,16 @@
 				</div>
 
 				<div class="form-group col-md-6">
-					<label class="col-md-12 control-label">BI/CI seria si nr</label>
-					<div class="col-md-12">
-						<input type="text" api="1" class="form-control" name="api[serienumar]" value="<%= @info['bi serie'].to_s + @info['bi numar'].to_s %>" disabled>
+					<label class="col-md-6 control-label">BI/CI nr</label>
+					<div class="col-md-6">
+					    <a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="bi_serie" data-url="/inline" data-title="Numar">
+						<input type="text" api="1" class="form-control" name="api[serienumar]" value="<%= @info['bi serie'].to_s + @info['bi numar'].to_s %>"> </a>
 					</div>
-				</div>
-			</div>
-			<input type="hidden" class="form-control" name="api[is]" value="0">
-			<div class="form-group" id="editApi">
-				<div class="col-md-7" style="text-align:right">
-					<a href="javascript:void(0)"  onclick="edit_api();">Editeaza informatii</a>
+					<label class="col-md-6 control-label">BI/CI nr</label>
+					<div class="col-md-6">
+					    <a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="bi_numar" data-url="/inline" data-title="serie">
+						<input type="text" api="1" class="form-control" name="api[serienumar]" value="<%= @info['bi numar'].to_s %>"></a>
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -159,39 +169,27 @@
 	</div>
 
 	<% end %>
-	<script>
 
-		function edit_api(){
-			$("#editApi").hide();
+<script>
+  $(function() {
+  return $("[data-xeditable=true]").each(function() {
+    return $(this).editable({
+      ajaxOptions: {
+        type: "PUT",
+        dataType: "json"
+      },
+      params: function(params) {
+        var railsParams;
+        railsParams = {};
+        railsParams[$(this).data("model")] = {};
+        railsParams[$(this).data("model")][params.name] = params.value;
+        return railsParams;
+      }
+    });
+  });
+});
+</script>
 
-			$("[name='api[is]']").val('1');
-
-			$("[api='1']").each(function(){
-				$(this).prop('disabled', false);
-			});
-
-	    //make all available
-	  }
-
-	  function check_iban(){
-	  	if($("#application_on_card").val() == 0){
-	  		$("#bankDiv").hide();
-	  		$("#ibanDiv").hide();
-	  	}
-	  	else{
-	  		$("#bankDiv").show();
-	  		$("#ibanDiv").show();
-	  	}
-	  }
-
-	  $(document).ready(function(){
-	  	check_iban();
-	  });
-
-	  $("#application_on_card").change(function(){
-	  	check_iban();
-	  });
-
-	</script>
+	
 </div>
 

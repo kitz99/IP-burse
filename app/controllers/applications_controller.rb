@@ -9,6 +9,73 @@ class ApplicationsController < ApplicationController
     end
   end
 
+
+  def inline_edit
+    nume = params['user']['last_name']
+    prenume = params['user']['first_name']
+    email = params['user']['email']
+    iban = params['user']['iban']
+    banca = params['user']['bank']
+    bi_serie = params['user']['bi_serie']
+    bi_numar = params['user']['bi_numar']
+
+    user = current_user
+    body = Hash.new
+    b = false
+
+    if not nume.nil?
+      user.update_attributes(:last_name => nume)
+      body["last_name"] = nume
+      b = true
+    end
+
+    if not prenume.nil?
+      user.update_attributes(:first_name => prenume)
+      body["first_name"] = prenume
+      b = true
+    end
+    if not email.nil?
+      user.update_attributes(:email => email)
+      body["email"] = email
+      b = true
+    end
+
+    if not bi_serie.nil?
+      body["bi serie"] = bi_serie
+      b = true
+    end
+
+    if not bi_numar.nil?
+      body["bi numar"] = bi_serie
+      b = true
+    end
+
+    if not iban.nil?
+      if user.update_attributes(:iban => iban)
+        body["pass"] = "ok"
+      end
+    end
+    if not banca.nil?
+      if user.update_attributes(:bank=> banca)
+        body["pass1"] = "ok"
+      end
+    end
+
+    respond_to do |format|
+      if send_infos(body, user) == true
+        format.html { redirect_to "/applications/#{session['aplic_id']}/new" }
+        format.json { head :no_content }
+      elsif (body["pass1"] = "ok" or body["pass"] = "ok") and b == false
+        format.html { redirect_to "/applications/#{session['aplic_id']}/new" }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to "/logout" }
+        format.json { head :no_content }
+      end
+    end
+
+  end
+
   def get_for_generate
     if ! params[:domain_id] || !params[:not_users] || @current_user.is_admin != true
       render :json => ""
@@ -158,6 +225,7 @@ class ApplicationsController < ApplicationController
 
 
   def edit
+
     @application = Application.find_by_id params[:id]
 
     if check_permission(@application) == false
@@ -178,51 +246,64 @@ class ApplicationsController < ApplicationController
   end
 
 
+
   def create
 
-    @body = params[:api]
+    user = current_user
+    str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
+
+    info = JSON.parse(open(str).read)
+
+    if ! info['error'].nil? 
+      redirect_to root_url + 'logout'
+    end
+
+
+
+
+    # @body = params[:api]
     
-    if @body['is'].to_i == 1
-      resp = send_info(@body)
-    end
+    # if @body['is'].to_i == 1
+    #   resp = send_info(@body)
+    # end
 
-    check_scholarship = Scholarship.find_by_id params[:application]['scholarship_id']
-    another_app = Application.where(scholarship_id: params[:application]['scholarship_id'], user_id: @current_user.id)
+    # check_scholarship = Scholarship.find_by_id params[:application]['scholarship_id']
+    # another_app = Application.where(scholarship_id: params[:application]['scholarship_id'], user_id: @current_user.id)
 
-    # check permissions
-    if check_scholarship.nil? || ! another_app.empty?
-      respond_to do |format|
-        format.html { redirect_to root_url , notice: 'You are not allowed there' }
-      end
-      return 
-    end 
+    # # check permissions
+    # if check_scholarship.nil? || ! another_app.empty?
+    #   respond_to do |format|
+    #     format.html { redirect_to root_url , notice: 'You are not allowed there' }
+    #   end
+    #   return 
+    # end 
 
-    app = Application.new
-    app.reason = params[:application]['reason']
-    app.status = "In asteptare"
-    app.submission_date = Date.today.to_s
-    app.user_id = @current_user.id
-    app.scholarship_id = params[:application]['scholarship_id']
-    app.on_card = params[:application]['on_card']
+    # app = Application.new
+    # app.reason = params[:application]['reason']
+    # app.status = "In asteptare"
+    # app.submission_date = Date.today.to_s
+    # app.user_id = @current_user.id
+    # app.scholarship_id = params[:application]['scholarship_id']
+    # app.on_card = params[:application]['on_card']
 
-    respond_to do |format|
-      if app.save
-        if app.on_card == 1
-          app.user.iban = params[:application][:users]['iban']
-          app.user.bank = params[:application][:users]['bank']
-          app.user.save
-        end
+    # respond_to do |format|
+    #   if app.save
+    #     if app.on_card == 1
+    #       app.user.iban = params[:application][:users]['iban']
+    #       app.user.bank = params[:application][:users]['bank']
+    #       app.user.save
+    #     end
 
-        if params[:attachments]
-          params[:attachments]['path'].each do |attachment|
-            @attachment = app.attachments.create!(:path => attachment, :application_id => app.id, :name => File.basename(attachment.path))
-          end
-        end
-        format.html { redirect_to app, notice: 'Application was successfully created.' }
-      else
-        format.html { render action: "new" }
-      end
-    end
+    #     if params[:attachments]
+    #       params[:attachments]['path'].each do |attachment|
+    #         @attachment = app.attachments.create!(:path => attachment, :application_id => app.id, :name => File.basename(attachment.path))
+    #       end
+    #     end
+    #     format.html { redirect_to app, notice: 'Application was successfully created.' }
+    #   else
+    #     format.html { render action: "new" }
+    #   end
+    # end
   end
 
 
@@ -309,6 +390,29 @@ class ApplicationsController < ApplicationController
   require 'net/http'
   require 'rest_client'
   require 'json'
+
+
+  def send_infos (b, user) 
+    # Metoda care trimite jsonul catre repo pentru update
+    # Metoda verifica raspunsul primit si returneaza un mesaj ca atare
+
+    if b.nil?
+      return false
+    end
+
+    url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{user.uid}?oauth_token=#{user.token}"
+    body = b.to_json
+    
+    response = JSON.parse(RestClient.post url, body, {:content_type => :json})
+
+    # puts "Mesajul de la repo-------------------> #{response}"
+
+    if response['message'] == "error while updating student"
+      return false
+    end
+
+    return true
+  end
 
   def get_info 
     str = "#{CUSTOM_PROVIDER_URL}/students/#{@current_user.uid}?oauth_token=#{@current_user.token}"
