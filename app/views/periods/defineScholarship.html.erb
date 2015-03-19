@@ -1,0 +1,79 @@
+
+<div class="container">
+	<h1 >Defineste o bursa</h1>
+	<br>
+	<br>
+	<div class="col-md-12">
+		<form action="/define-scholarship" method="post" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-md-2 control-label"> Tipul bursei </label> 
+				<div class="col-md-7">
+					<select name="domain[scholarship_id]" id="selectType"  class="form-control">
+						<% @scholarships.each do |e| %>
+						<option value="<%= e.id %>" >
+							<% if @domain.scholarship_id == e.id %> selected <% end %>>
+							<%= e.stype%>
+						</option>
+						<% end %>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">Sesiune</label>
+				<div class="col-md-7">
+					<select name="domain[period_id]"   class="form-control">
+						<% @periods.each do |p| %>
+						<option value="<%= p.id %>" selected>
+							Sesiunea <%= p.id %>
+						</option>
+						<% end %>  
+					</select>
+				</div>
+			</div>
+
+			
+			<div id="divNewDocuments"> <!-- div where are generated all textboxes for documents -->
+				<div class="form-group" >
+					<label class="col-md-2 control-label"> Document 0 </label>
+					<div class="col-md-6">
+						<input type="text" name="doc1" class="form-control">
+					</div>
+					<div class="col-md-2">
+						&nbsp; <a id="btnPlus" value="Plus" class="btn btn-info"><i class="fa fa-plus-circle fa-2x"></i></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-6 col-md-offset-2">
+					<input value="Trimite" type="submit" class="btn btn-primary">
+				</div>
+			</div>
+			<input type="hidden" value="0" id="hdnNumberOfDocs">
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function (){
+		var contor = 1;
+
+		$("#selectType").change( function() {
+			if($("#selectType").val() == 2) 
+			{
+				$("#divNewDocuments").fadeOut(800);
+				// $("#divNewDocuments").css('display','none');
+			}
+			else
+			{
+				$("#divNewDocuments").fadeIn(800);
+				// $("#divNewDocuments").css('display','block');
+			}
+		});
+
+		$("#btnPlus").on("click", function() {
+				$("#divNewDocuments").append("<div class='form-group'><label class='col-md-2 control-label'> Document "+contor+" </label><div class='col-md-7'><input type='text' name='doc"+contor+"' class='form-control'></div></div>");
+				contor++;
+				$("#hdnNumberOfDocs").val(contor);
+			})
+	});
+</script>

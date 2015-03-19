@@ -73,3 +73,20 @@
     width: 50px;
     height: 50px;
 }
+.article-1x, .article-date-1x, .article-user-1x
+{
+    font-size: 1em;
+}
+.article-2x ,.article-date-2x, .article-user-2x
+{
+    font-size: 1.5em;
+}
+.article-3x ,.article-date-3x, .article-user-3x
+{
+    font-size: 3em;
+}
+.article-date-1x,.article-date-2x,.article-date-3x,
+.article-user-1x,.article-user-2x,.article-user-3x
+{
+    color: black;
+}

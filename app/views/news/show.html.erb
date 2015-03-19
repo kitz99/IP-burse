@@ -1,31 +1,48 @@
-
-<p>
-  <strong>Title:</strong>
-  <%= @news.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @news.content %>
-</p>
-
-<p>
-  <strong>Post date:</strong>
-  <%= @news.post_date %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @news.user %>
-</p>
-
-<% if @current_user.is_admin == true%>
-<a href="#" data-toggle="modal" data-target="#edit">Edit</a>
-<%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <%= render 'news/form' %>
+<div class="container">
+  <div class="row">
+    <span>
+      <i class="fa fa-newspaper-o fa-5x" ></i> &nbsp; &nbsp;<strong class="article-3x"><%= @news.title %></strong>
+    </span>
   </div>
+  <div class="row" >
+    <span class="article-date-2x">
+      <%= @news.post_date %>
+    </span>
+    &nbsp; &nbsp;
+    <span class="article-user-2x">
+      <%= @news.user.first_name %>
+      <%= @news.user.last_name %>
+    </span>
+  </div>
+  <br><br><br>
+  <div class="row">
+    <p class="article-2x"><%= @news.content %></p>
+  </div>
+
+  <br><br>
+  <div  class="row">
+    <% if @current_user.is_admin == true%>
+    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#edit">Edit</a>
+    <%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-info" %>
+    <% end %>
+  </div>
+ 
 </div>
+ <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'news/form' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -30,7 +30,8 @@ Team9Scholarships::Application.routes.draw do
 
   get 'datatable_i18n', to: 'home#datatable_i18n'
 
-
+  get '/config-scholarship' => 'periods#defineScholarship'
+  post '/define-scholarship' => 'periods#defineDocumentsForScholarship'
 
   get '/applications/:scholarship_id/new' => 'applications#new'
   put '/applications/:scholarship_id/new' => 'applications#new'
