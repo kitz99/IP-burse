@@ -671,3 +671,17 @@ border-radius: 50%;
 .modal-backdrop{
   display:none !important;
 }
+
+/* my style */
+.ptr-form{
+  background-color: rgb(238, 238, 238);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 95% !important;
+  margin-left: 3% !important;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+}
+.ptr-form a {
+    border-bottom-style: none !important;
+}

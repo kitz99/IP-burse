@@ -249,15 +249,22 @@ class ApplicationsController < ApplicationController
 
   def create
 
-    user = current_user
-    str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
+    # user = current_user
+    # str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
 
-    info = JSON.parse(open(str).read)
+    # info = JSON.parse(open(str).read)
 
-    if ! info['error'].nil? 
-      redirect_to root_url + 'logout'
-    end
+    # if ! info['error'].nil? 
+    #   redirect_to root_url + 'logout'
+    # end
 
+    # submission_date = Date.today.to_s
+    # status = "In asteptare"
+    # reason =  params[:application]['reason']
+    # scholarship_id =
+    # user_id = @current_user.id
+    # on_card = params[:application]['on_card']
+    # domain_id = session["aplic_id"]
 
 
 
@@ -304,6 +311,7 @@ class ApplicationsController < ApplicationController
     #     format.html { render action: "new" }
     #   end
     # end
+    redirect_to "/"
   end
 
 
