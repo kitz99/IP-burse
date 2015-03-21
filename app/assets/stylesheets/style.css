@@ -217,7 +217,6 @@ body {
   position: relative;
   width: 100%;
   min-width: 20em;  
-  background: #ffffff;
 }
 
 .highlight {
@@ -360,6 +359,7 @@ body {
 }
 
 #inner-wrap {
+  min-height: 100vh;
   position: relative;
   width: 100%;
 }
@@ -445,7 +445,7 @@ body {
 
 #main {
   background: #fff;
-  min-height: 45em;
+  min-height: 100vh;
 }
 #main .block {
   padding: 2.625em 1.875em;
@@ -667,10 +667,6 @@ border-radius: 50%;
   text-align: center;
 }
 
-
-/*.modal-backdrop{
-  display:none !important;
-}*/
 
 /* my style */
 .ptr-form{
