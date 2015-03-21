@@ -28,24 +28,24 @@
 	<div class="row text-left">
 		<div>
 
-			<%= form_for(@application) do |f| %> 
+			
 
 			<div class="row">
 				<div class="form-group col-md-6">
 					<label class="col-md-12 control-label">Nume</label>
 					<div class="col-md-12 ptr-form">
-						<a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="last_name" data-url="/inline" data-title="nume">
-						<%= @info["last_name"] %>
-						</a>
+					    <span id="nume" data-number="1" class="rest-in-place" data-url="/inline" data-object="user" data-attribute="last_name" data-placeholder="Nume de familie...">
+							<%= @info["last_name"] %>
+						</span>
 					</div>
 				</div>
 
 				<div class="form-group col-md-6">
 					<label class="col-md-12 control-label">Prenume</label>
 					<div class="col-md-12 ptr-form">
-						<a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="first_name" data-url="/inline" data-title="prenume">
+						<span id="nume" data-number="1" class="rest-in-place" data-url="/inline" data-object="user" data-attribute="first_name" data-placeholder="Nume de familie...">
 							<%= @info["first_name"] %>
-						</a>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -99,21 +99,24 @@
 						<div class="form-group col-md-6">
 							<label class="col-md-12 control-label">BI/CI serie</label>
 							<div class="col-md-12 ptr-form">
-								<a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="bi_serie" data-url="/inline" data-title="serie">
-							<%=  @info['bi serie'].to_s %></a>
+								<span class="rest-in-place" data-number="4" data-url="/inline" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
+									<%=  @info['bi serie'].to_s %>
+									</span>
+								</div>
 							</div>
-						</div>
 
-						<div class="form-group col-md-6">
-							<label class="col-md-12 control-label">BI/CI numar</label>
-							<div class="col-md-12 ptr-form">
-								<a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="bi_serie" data-url="/inline" data-title="serie">
-							<%=  @info['bi numar'].to_s %></a>
+							<div class="form-group col-md-6">
+								<label class="col-md-12 control-label">BI/CI numar</label>
+								<div class="col-md-12 ptr-form">
+									<span class="rest-in-place" data-number="5" data-url="/inline" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
+										<%=  @info['bi numar'].to_s %>
+										</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					</div>
-					</div>
+					<%= form_for(@application,  :html => { :id => "formul-burse" }) do |f| %> 
 					<div class="row">
 						<div class="form-group">
 							<label class="col-md-12 control-label">Motive</label>
@@ -129,21 +132,21 @@
 								<%= f.select(:on_card, [['Nu', 0], ['Da', 1]] , {:selected => if @iban == '' then 0 else 1 end}, { :class => 'form-control' }) %>  
 							</div>
 						</div>
-
+							
 						<div class="form-group col-md-3" id="bankDiv">
 							<label class="col-md-12 control-label">Banca</label>
 							<div class="col-md-12 ptr-form">
-							<a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="bank" data-url="/inline" data-title="banca">
-								<%= @bank %>
-								</a>
+								<span class="rest-in-place" data-number="7" data-url="/inline" data-object="user" data-attribute="bank" data-placeholder="Banca...">
+									<%= @bank %>
+								</span>
 							</div>
 						</div>
 
 						<div class="form-group col-md-3" id="ibanDiv">
 							<label class="col-md-12 control-label">Iban</label>
 							<div class="col-md-12 ptr-form">
-							<a href="#" data-xeditable="true" data-pk="@info['id']" data-model="user" data-name="iban" data-url="/inline" data-title="Iban">
-								<%= @iban %>
+								<span class="rest-in-place" data-number="6" data-url="/inline" data-object="user" data-attribute="iban" data-placeholder="IBAN...">
+									<%= @iban %>
 								</a>
 							</div>
 						</div>
@@ -181,26 +184,13 @@
 
 			<% end %>
 
-			<script>
-				$(function() {
-					return $("[data-xeditable=true]").each(function() {
-						return $(this).editable({
-							ajaxOptions: {
-								type: "PUT",
-								dataType: "json"
-							},
-							params: function(params) {
-								var railsParams;
-								railsParams = {};
-								railsParams[$(this).data("model")] = {};
-								railsParams[$(this).data("model")][params.name] = params.value;
-								return railsParams;
-							}
-						});
-					});
-				});
-			</script>
-
-
 		</div>
-
+<script>
+	$('#formul-burse').on("keyup keypress", function(e) {
+  var code = e.keyCode || e.which; 
+  if (code  == 13) {               
+    e.preventDefault();
+    return false;
+  }
+});
+</script>

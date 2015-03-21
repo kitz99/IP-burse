@@ -11,6 +11,11 @@ class ApplicationsController < ApplicationController
 
 
   def inline_edit
+    # metoda ce updateasa inline profilul utilizatorului
+    # Iau din params ceea ce trebuie sa updatez
+    # Verific daca se poate face update-ul si apoi incerc sa scriu in repo
+    # TODO:  De vorbit cu cei de la repo sa vada de ce nu se intampla update-ul la user profile
+
     nume = params['user']['last_name']
     prenume = params['user']['first_name']
     email = params['user']['email']
@@ -25,49 +30,44 @@ class ApplicationsController < ApplicationController
 
     if not nume.nil?
       user.update_attributes(:last_name => nume)
-      body["last_name"] = nume
-      b = true
+      body["last_name"], b = nume, true
     end
 
     if not prenume.nil?
       user.update_attributes(:first_name => prenume)
-      body["first_name"] = prenume
-      b = true
+      body["first_name"], b = prenume, true
     end
+
     if not email.nil?
       user.update_attributes(:email => email)
-      body["email"] = email
-      b = true
+      body["email"], b = email, true
     end
 
     if not bi_serie.nil?
-      body["bi serie"] = bi_serie
-      b = true
+      body["bi serie"], body["bi_serie"], b = bi_serie, bi_serie, true
     end
 
     if not bi_numar.nil?
-      body["bi numar"] = bi_serie
-      b = true
+      body["bi numar"], body["bi_numar"], b = bi_numar, bi_numar, true
     end
 
     if not iban.nil?
       if user.update_attributes(:iban => iban)
-        body["pass"] = "ok"
+        body["pass"], body["iban"], b = "ok", iban, true
       end
     end
+
     if not banca.nil?
       if user.update_attributes(:bank=> banca)
-        body["pass1"] = "ok"
+        body["pass1"], body["bank"], b = "ok", banca, true
       end
     end
 
     respond_to do |format|
       if send_infos(body, user) == true
-        format.html { redirect_to "/applications/#{session['aplic_id']}/new" }
-        format.json { head :no_content }
+        format.json { render json: body }
       elsif (body["pass1"] = "ok" or body["pass"] = "ok") and b == false
-        format.html { redirect_to "/applications/#{session['aplic_id']}/new" }
-        format.json { head :no_content }
+        format.json { render json: body }
       else
         format.html { redirect_to "/logout" }
         format.json { head :no_content }
