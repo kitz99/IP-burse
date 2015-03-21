@@ -19,6 +19,7 @@ Team9Scholarships::Application.routes.draw do
 
 
   put '/update' => "user_sessions#update"
+  get '/update' => "user_sessions#show_profile"
 
   get '/logout' => 'user_sessions#destroy'
 

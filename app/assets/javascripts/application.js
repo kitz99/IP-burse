@@ -14,7 +14,7 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require bootstrap
-//= require bootstrap3-editable/bootstrap-editable
+//= require 'rest_in_place'
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
 //= require_tree .

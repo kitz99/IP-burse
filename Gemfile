@@ -28,7 +28,11 @@ gem 'carrierwave'
 gem "rmagick", "2.13.2", :require => 'RMagick'
 
 gem 'gravatar_image_tag'
-gem 'bootstrap-x-editable-rails'
+
+# gem 'bootstrap-x-editable-rails' # old gem
+# new gem
+gem 'rest_in_place'
+
 # for put on server 
 gem 'rest-client', '~> 1.6.7'
 

@@ -35,6 +35,8 @@ class UserSessionsController < ApplicationController
   end
 
   def show_profile
+
+    puts "------------------------> Astia sunt parametrii cu care ajung aici: #{YAML::dump(params)}"
     @user = current_user
     str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
 
@@ -95,32 +97,38 @@ class UserSessionsController < ApplicationController
 
     if not bi_serie.nil?
       body["bi serie"] = bi_serie
+      body["bi_serie"] = bi_serie
       b = true
     end
 
     if not bi_numar.nil?
-      body["bi numar"] = bi_serie
+      body["bi numar"] = bi_numar
+      body["bi_numar"] = bi_numar
       b = true
     end
 
     if not iban.nil?
       if user.update_attributes(:iban => iban)
         body["pass"] = "ok"
+        body["iban"] = iban
+        b = true
       end
     end
     if not banca.nil?
       if user.update_attributes(:bank=> banca)
         body["pass1"] = "ok"
+        body["bank"] = banca
+        b = true
       end
     end
 
     respond_to do |format|
       if send_info(body, user) == true
         format.html { redirect_to '/profile' }
-        format.json { head :no_content }
+        format.json { render json: body }
       elsif (body["pass1"] = "ok" or body["pass"] = "ok") and b == false
         format.html { redirect_to '/profile' }
-        format.json { head :no_content }
+        format.json { render json: body }
       else
         format.html { redirect_to "/logout" }
         format.json { head :no_content }

@@ -1,46 +1,46 @@
 <h1>User profile</h1>
 <ul>
 	<li>Nume: 
-	 <a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="last_name" data-url="/update" data-title="nume">
-            <%= @info["last_name"] %>
-          </a>
+	<span id="nume" data-number="1" class="rest-in-place" data-url="/update" data-object="user" data-attribute="last_name" data-placeholder="Nume de familie...">
+			<%= @info["last_name"] %>
+		</span> <span id="editable1"><i class="fa fa-pencil"></i></span>      
 	</li>
 	<li>
-	Prenume: 
-	<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="first_name" data-url="/update" data-title="prenume">
-            <%= @info["first_name"]%>
-          </a>
+		Prenume: 
+		<span class="rest-in-place" data-number="2" data-url="/update" data-object="user" data-attribute="first_name" data-placeholder="Prenume...">
+			<%= @info["first_name"]%>
+		</span> <span id="editable2"><i class="fa fa-pencil"></i></span>
 	</li>
 	<li>
-	Email: 
-	<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="email" data-url="/update" data-title="email">
-            <%= @info['email'] %>
-          </a>
+		Email: 
+		<span class="rest-in-place" data-number="3" data-url="/update" data-object="user" data-attribute="email" data-placeholder="Email...">
+			<%= @info['email'] %>
+		</span><span id="editable3"><i class="fa fa-pencil"></i></span>
 	</li>
 	<li>
-	    Tip cont: 
+		Tip cont: 
 		<% if @user.is_student %>
-			STUDENT
+		STUDENT
 		<% end %>
 
 		<% if @user.is_admin %>
-			ADMINISTRATOR
+		ADMINISTRATOR
 		<% end %>
 
 		<% if @user.is_management %>
-			SECRETARIAT
+		SECRETARIAT
 		<% end %>
 		
 		<li>Serie BI/CI: 
-			<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="bi_serie" data-url="/update" data-title="serie">
-            <%= @info['bi serie'] %> 
-          </a>
+			<span class="rest-in-place" data-number="4" data-url="/update" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
+				<%= @info['bi serie'] %> 
+			</span><span id="editable4"><i class="fa fa-pencil"></i></span>
 
 		</li>
 		<li>Numar BI/CI:
-			<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="bi_numar" data-url="/update" data-title="numar">
-            <%= @info['bi numar'] %> 
-          </a> 
+			<span class="rest-in-place" data-number="5" data-url="/update" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
+				<%= @info['bi numar'] %> 
+			</span> <span id="editable5"><i class="fa fa-pencil"></i></span>
 		</li>
 		<li>Specializare: <%= @info['specialization'] %></li>
 		<li>An de studiu: <%= @info['group_year'] %></li>
@@ -48,33 +48,28 @@
 		<li>Grupa: <%= @info['group_number'] %></li>
 
 		<li>IBAN: 
-			<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="iban" data-url="/update" data-title="iban">
-            <%= @user.iban %>
-          </a>
+			<span class="rest-in-place" data-number="6" data-url="/update" data-object="user" data-attribute="iban" data-placeholder="IBAN...">
+				<%= @user.iban %>
+			</span><span id="editable6"><i class="fa fa-pencil"></i></span>
 		</li>
 		<li>Banca: 
-			<a href="#" data-xeditable="true" data-pk="<%= @user.id %>" data-model="user" data-name="bank" data-url="/update" data-title="banca">
-            <%= @user.bank %>
-          </a>
+			<span class="rest-in-place" data-number="7" data-url="/update" data-object="user" data-attribute="bank" data-placeholder="Banca...">
+				<%= @user.bank %>
+			</span><span id="editable7"><i class="fa fa-pencil"></i></span>
 		</li>
 	</li>
 </ul>
-<script>
-	$(function() {
-  return $("[data-xeditable=true]").each(function() {
-    return $(this).editable({
-      ajaxOptions: {
-        type: "PUT",
-        dataType: "json"
-      },
-      params: function(params) {
-        var railsParams;
-        railsParams = {};
-        railsParams[$(this).data("model")] = {};
-        railsParams[$(this).data("model")][params.name] = params.value;
-        return railsParams;
-      }
-    });
-  });
-});
+
+<script type="text/javascript">
+	for(var i = 0; i <= 7; i++){
+		$("#editable" + i).hide();
+	}
+	$(".rest-in-place").on({
+		mouseenter: function () {
+			$("#editable" + $(this).data('number')).show();
+		},
+		mouseleave: function () {
+			$("#editable" + $(this).data('number')).hide();
+		}
+	});
 </script>

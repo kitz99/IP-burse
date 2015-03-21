@@ -72,8 +72,6 @@ GEM
     arel (6.0.0)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
-    bootstrap-x-editable-rails (1.5.1.1)
-      railties (>= 3.0)
     builder (3.2.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -191,6 +189,8 @@ GEM
       railties (>= 4.2.0, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rest_in_place (2.5.0)
+      rails (>= 3.1)
     rmagick (2.13.2)
     rubyzip (0.9.9)
     sass (3.2.19)
@@ -231,7 +231,6 @@ DEPENDENCIES
   activerecord-session_store (~> 0.0.1)
   activeresource (~> 4.0.0.beta1)
   bootstrap-sass
-  bootstrap-x-editable-rails
   carrierwave
   coffee-rails (~> 4.0.0)
   gravatar_image_tag
@@ -252,6 +251,7 @@ DEPENDENCIES
   rails_12factor
   responders (~> 2.0)
   rest-client (~> 1.6.7)
+  rest_in_place
   rmagick (= 2.13.2)
   sass-rails (~> 4.0.0)
   sqlite3
