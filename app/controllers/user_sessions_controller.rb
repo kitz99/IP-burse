@@ -35,8 +35,6 @@ class UserSessionsController < ApplicationController
   end
 
   def show_profile
-
-    puts "------------------------> Astia sunt parametrii cu care ajung aici: #{YAML::dump(params)}"
     @user = current_user
     str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
 
@@ -45,19 +43,6 @@ class UserSessionsController < ApplicationController
     if ! @info['error'].nil? 
       redirect_to root_url + 'logout'
     end
-  end
-
-  def show_edit_profile
-    @user = current_user
-
-    str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
-
-    @info = JSON.parse(open(str).read)
-
-    if ! @info['error'].nil? 
-      redirect_to root_url + 'logout'
-    end
-
   end
 
   def update
@@ -80,54 +65,45 @@ class UserSessionsController < ApplicationController
 
     if not nume.nil?
       user.update_attributes(:last_name => nume)
-      body["last_name"] = nume
-      b = true
+      body["last_name"], b = nume, true
     end
 
     if not prenume.nil?
       user.update_attributes(:first_name => prenume)
-      body["first_name"] = prenume
-      b = true
+      body["first_name"], b = prenume, true
     end
+
     if not email.nil?
       user.update_attributes(:email => email)
-      body["email"] = email
-      b = true
+      body["email"], b = email, true
     end
 
     if not bi_serie.nil?
-      body["bi serie"] = bi_serie
-      body["bi_serie"] = bi_serie
-      b = true
+      body["bi serie"], body["bi_serie"], b = bi_serie, bi_serie, true
     end
 
     if not bi_numar.nil?
-      body["bi numar"] = bi_numar
-      body["bi_numar"] = bi_numar
-      b = true
+      body["bi numar"], body["bi_numar"], b = bi_numar, bi_numar, true
     end
 
     if not iban.nil?
       if user.update_attributes(:iban => iban)
-        body["pass"] = "ok"
-        body["iban"] = iban
-        b = true
+        body["pass"], body["iban"], b = "ok", iban, true
       end
     end
+
     if not banca.nil?
       if user.update_attributes(:bank=> banca)
-        body["pass1"] = "ok"
-        body["bank"] = banca
-        b = true
+        body["pass1"], body["bank"], b = "ok", banca, true
       end
     end
 
     respond_to do |format|
       if send_info(body, user) == true
-        format.html { redirect_to '/profile' }
+        # format.html { redirect_to '/profile' }
         format.json { render json: body }
       elsif (body["pass1"] = "ok" or body["pass"] = "ok") and b == false
-        format.html { redirect_to '/profile' }
+        # format.html { redirect_to '/profile' }
         format.json { render json: body }
       else
         format.html { redirect_to "/logout" }
@@ -149,7 +125,7 @@ class UserSessionsController < ApplicationController
     redirect_to "#{CUSTOM_PROVIDER_URL}/users/sign_out"
   end
 
-private
+  private
   def send_info (b, user) 
     # Metoda care trimite jsonul catre repo pentru update
     # Metoda verifica raspunsul primit si returneaza un mesaj ca atare
