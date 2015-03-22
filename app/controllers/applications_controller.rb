@@ -216,7 +216,8 @@ class ApplicationsController < ApplicationController
     @bank = @current_user.bank
 
     @attachment = @application.attachments.build
-
+    # @allScholarships = 
+    # period = Period.where(:activ =>true)
 
     respond_to do |format|
       format.html 
