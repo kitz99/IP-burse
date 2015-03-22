@@ -19,10 +19,10 @@
             <%= @current_user.first_name + " " + @current_user.last_name %>
           </a>
           <% else %>
-          <%= @current_user.first_name + " " + @current_user.last_name %>
+          <%= @current_user.firs nott_name + " " + @current_user.last_name %>
           <% end %>
           <ul>
-            <% if @current_user.is_admin == true %>
+            <% if not @current_user.is_admin == true %>
             <li class="is-active"><a href="<%= root_url %>admin">Dashboard</a></li>
             <li><a href="<%= root_url %>scholarships">Burse</a></li>
             <li><a href="<%= root_url %>domains">Domenii</a></li>
