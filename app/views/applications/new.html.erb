@@ -1,46 +1,20 @@
 <div class="container col-md-10 col-md-offset-1 text-center">
-
-	<h3>
-		<% case params[:scholarship_id] %>
-		<% when "1" %>  
-		Bursa de perfomanta
-		<% session["aplic_id"] = '1' %>
-		<% when "2" %>  
-		Bursa de studiu/merit
-		<% session["aplic_id"] = '2' %>
-		<% when "3" %>  
-		Bursa sociala</p>
-		<% session["aplic_id"] = '3' %>
-		<% when "4" %> 
-		Bursa sociala ocazionala
-		<% session["aplic_id"] = '4' %>
-		<% when "5" %> 
-		Bursa medicala
-		<% session["aplic_id"] = '5' %>
-		<% when "6" %>  
-		<% session["aplic_id"] = '6' %>
-		Bursa sociala orfan
-
-		<% end %>
-	</h3>
-
-
-	<div class="row text-left">
-		<div>
-
-			
-
-			<div class="row">
-				<div class="form-group col-md-6">
-					<label class="col-md-12 control-label">Nume</label>
-					<div class="col-md-12 ptr-form">
-					    <span id="nume" data-number="1" class="rest-in-place" data-url="/inline" data-object="user" data-attribute="last_name" data-placeholder="Nume de familie...">
+	<div id="common-infos">
+		<hr />
+		<h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Date Personale</strong></h4>
+		<hr />
+		<div class="row" style="text-align: left;">
+			<!-- nume -->
+			<div class="form-group col-md-6">
+				<label class="col-md-12 control-label">Nume</label>
+				<div class="col-md-12 ptr-form">
+					<span id="nume" data-number="1" class="rest-in-place" data-url="/inline" data-object="user" data-attribute="last_name" data-placeholder="Nume de familie...">
 							<%= @info["last_name"] %>
-						</span>
-					</div>
+				     </span>
 				</div>
-
-				<div class="form-group col-md-6">
+			</div>
+			<!-- prenume -->
+			<div class="form-group col-md-6">
 					<label class="col-md-12 control-label">Prenume</label>
 					<div class="col-md-12 ptr-form">
 						<span id="nume" data-number="1" class="rest-in-place" data-url="/inline" data-object="user" data-attribute="first_name" data-placeholder="Nume de familie...">
@@ -48,149 +22,79 @@
 						</span>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-md-4">
-					<label class="col-md-12 control-label">Specializarea</label>
-					<div class="col-md-12 ptr-form">
-						<%= @info['specialization'] %>
+		</div>
+		<div class="row text-left">
+			<div class="form-group col-md-3">
+					<label class="col-md-12 control-label">Grupa</label>
+					<div class="col-md-12 ptr-form" style="margin-left:7% !important;">
+						<%= @info['group_year'].to_s + @info['group_series'].to_s + @info['group_number'].to_s %>
 					</div>
-				</div>
+			</div> 
 
-				<div class="form-group col-md-2">
+			<div class="form-group col-md-3">
 					<label class="col-md-12 control-label">Anul</label>
 					<div class="col-md-12 ptr-form">
 						<%= @info['group_year'] %>
 					</div>
-				</div>  
+		    </div>  
 
-				<div class="form-group col-md-2">
-					<label class="col-md-12 control-label">Grupa</label>
-					<div class="col-md-12 ptr-form">
-						<%= @info['group_year'].to_s + @info['group_series'].to_s + @info['group_number'].to_s %>
-					</div>
-				</div>  
-
-				<div class="form-group col-md-2">
+		    <div class="form-group col-md-3">
 					<label class="col-md-12 control-label">Media</label>
-					<div class="col-md-12">
-						<input type="text" api="1" class="form-control" name="api[medie]" value="<%= @info['mean'] %>" disabled>
+					<div class="col-md-12 ptr-form">
+						<% if @info['mean'] %>
+							<%= @info['mean'] %>
+						<% else %>
+							Not specified
+						<% end %>
 					</div>
-				</div>  
+		    </div> 
 
-				<div class="form-group col-md-2">
+		    <div class="form-group col-md-3">
 					<label class="col-md-12 control-label">Nr credite</label>
-					<div class="col-md-12">
-						<input type="text" api="1" class="form-control" name="api[credite]" value="<%= @info['credits'] %>" disabled>
+					<div class="col-md-12 ptr-form">
+						<% if @info['credits'] %>
+							<%= @info['credits'] %>
+						<% else %>
+							Not specified
+						<% end %>
 					</div>
+			</div>
+		</div>
+
+		<div class="row text-left">
+			<div class="form-group col-md-6">
+				<label class="col-md-12 control-label">CNP</label>
+				<div class="col-md-12 ptr-form">
+					<%= @info['cnp'] %>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="form-group col-md-6">
-					<label class="col-md-12 control-label">CNP</label>
-					<div class="col-md-12 ptr-form">
-						<%= @info['cnp'] %>
-					</div>
+			<div class="form-group col-md-3">
+				<label class="col-md-12 control-label">BI/CI serie</label>
+				<div class="col-md-12 ptr-form">
+					<span class="rest-in-place" data-number="4" data-url="/inline" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
+						<%=  @info['bi serie'].to_s %>
+					</span>
 				</div>
+			</div>
 
-				<div class="form-group col-md-6">
-					<div class="row">
-						<div class="form-group col-md-6">
-							<label class="col-md-12 control-label">BI/CI serie</label>
-							<div class="col-md-12 ptr-form">
-								<span class="rest-in-place" data-number="4" data-url="/inline" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
-									<%=  @info['bi serie'].to_s %>
-									</span>
-								</div>
-							</div>
-
-							<div class="form-group col-md-6">
-								<label class="col-md-12 control-label">BI/CI numar</label>
-								<div class="col-md-12 ptr-form">
-									<span class="rest-in-place" data-number="5" data-url="/inline" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
+			<div class="form-group col-md-3">
+				<label class="col-md-12 control-label">BI/CI numar</label>
+				<div class="col-md-12 ptr-form">
+					<span class="rest-in-place" data-number="5" data-url="/inline" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
 										<%=  @info['bi numar'].to_s %>
 										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<%= form_for(@application,  :html => { :id => "formul-burse" }) do |f| %> 
-					<div class="row">
-						<div class="form-group">
-							<label class="col-md-12 control-label">Motive</label>
-							<div class="col-md-12">
-								<%= f.text_area :reason, :rows => 5 , :class => "form-control" %>
-							</div>
-						</div>
-					</div>
-					<div class="row	">
-						<div class="form-group col-md-2">
-							<label class=" control-label">Bursa pe card?</label>
-							<div class="col-md-12">
-								<%= f.select(:on_card, [['Nu', 0], ['Da', 1]] , {:selected => if @iban == '' then 0 else 1 end}, { :class => 'form-control' }) %>  
-							</div>
-						</div>
-							
-						<div class="form-group col-md-3" id="bankDiv">
-							<label class="col-md-12 control-label">Banca</label>
-							<div class="col-md-12 ptr-form">
-								<span class="rest-in-place" data-number="7" data-url="/inline" data-object="user" data-attribute="bank" data-placeholder="Banca...">
-									<%= @bank %>
-								</span>
-							</div>
-						</div>
-
-						<div class="form-group col-md-3" id="ibanDiv">
-							<label class="col-md-12 control-label">Iban</label>
-							<div class="col-md-12 ptr-form">
-								<span class="rest-in-place" data-number="6" data-url="/inline" data-object="user" data-attribute="iban" data-placeholder="IBAN...">
-									<%= @iban %>
-								</a>
-							</div>
-						</div>
-
-						<div class="form-group col-md-4">
-							<label class="col-md-12 control-label">Documente</label>
-							<div class="col-md-12">
-								<%= f.fields_for :attachments do |p| %>
-								<%= p.file_field :path, :multiple => true, name: "attachments[path][]", class: "btn btn-default pull-left" %>
-								<% end %>    
-							</div>
-
-						</div>
-					</div>
-
-
-					<%= f.hidden_field :scholarship_id, :value => @scholarship_id %>
-
-
-				</div>
-
-
-			</div>
-
-
-			<div class="clearfix"></div>
-			<br />
-			<br />
-
-			<div class="row">
-				<div class="col-md-12" style="text-align:center">    
-					<%= f.submit "Salveaza", :class => 'btn btn-lg btn-primary' %>
 				</div>
 			</div>
-
-			<% end %>
 
 		</div>
-<script>
-	$('#formul-burse').on("keyup keypress", function(e) {
-  var code = e.keyCode || e.which; 
-  if (code  == 13) {               
-    e.preventDefault();
-    return false;
-  }
-});
-</script>
+				<hr />
+		<h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Alege tip bursa</strong></h4>
+		<hr />
+	</div>
+	<ul class="nav nav-tabs">
+	  <li role="presentation" class="active"><a href="#">Home</a></li>
+	  <li role="presentation"><a href="#">Profile</a></li>
+	  <li role="presentation"><a href="#">Messages</a></li>
+	</ul>
+</div>
