@@ -8,6 +8,7 @@
   <div class="col-md-4">
     <h3>Aplicatii active</h3>
 
+    <% if @my_applications %>
     <% @my_applications.each do |app| %>
     <div class="row">
       <div class="col-md-6">
@@ -31,6 +32,7 @@
         </div>
       </div>
     </div>
+    <% end %>
     <%
   end
   %>    

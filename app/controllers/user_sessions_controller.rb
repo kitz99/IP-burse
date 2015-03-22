@@ -6,6 +6,8 @@ class UserSessionsController < ApplicationController
   def create
     omniauth = env['omniauth.auth']
 
+    puts "-------------------------------------------> #{YAML::dump(omniauth)}"
+
     user = User.find_by_uid(omniauth['uid'])
     if not user
       if omniauth['extra']['student'] == 'true'
@@ -136,10 +138,12 @@ class UserSessionsController < ApplicationController
 
     url = "#{CUSTOM_PROVIDER_URL}/update_stud/#{user.uid}?oauth_token=#{user.token}"
     body = b.to_json
+
+    puts "Ce trimit catre repo pentru update----------------------> #{body}"
     
     response = JSON.parse(RestClient.post url, body, {:content_type => :json})
 
-    # puts "Mesajul de la repo-------------------> #{response}"
+    puts "Raspuns repo-------------------> #{response}"
 
     if response['message'] == "error while updating student"
       return false
