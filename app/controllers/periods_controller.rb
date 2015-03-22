@@ -100,7 +100,24 @@ class PeriodsController < ApplicationController
   end
 
   def defineDocumentsForScholarship
+    domain = Domain.new(domain_params)
+    noDoc = params[:NrDoc].to_i
+    docs = ""
+    template = "doc"
+    doci = ""
+    noDoc.times do | i |
+    doci = template + i.to_s
+    docs = docs +  params[:"#{doci}"] + "~"
+    end
+
     
+    documents = Document.new
+    documents.name = docs
+    documents.period_id = domain.period_id
+    documents.scholarship_id = domain.scholarship_id
+    documents.save
+
+    redirect_to "/"
   end
 
   private
@@ -112,5 +129,9 @@ class PeriodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def period_params
       params.require(:period).permit(:start, :end, :buget, :activ, :nr_stud, :min_salary)
+    end
+
+    def domain_params
+      params.require(:domain).permit(:scholarship_id, :period_id)
     end
 end
