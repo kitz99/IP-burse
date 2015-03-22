@@ -3,8 +3,9 @@
 	<h1 >Defineste o bursa</h1>
 	<br>
 	<br>
+
 	<div class="col-md-12">
-		<form action="/define-scholarship" method="post" class="form-horizontal">
+		<%= form_tag("/define-scholarship", method: "post", class:"form-horizontal") do 	%>
 			<div class="form-group">
 				<label class="col-md-2 control-label"> Tipul bursei </label> 
 				<div class="col-md-7">
@@ -36,7 +37,7 @@
 				<div class="form-group" >
 					<label class="col-md-2 control-label"> Document 0 </label>
 					<div class="col-md-6">
-						<input type="text" name="doc1" class="form-control">
+						<input type="text" name="doc0" class="form-control">
 					</div>
 					<div class="col-md-2">
 						&nbsp; <a id="btnPlus" value="Plus" class="btn btn-info"><i class="fa fa-plus-circle fa-2x"></i></a>
@@ -49,8 +50,8 @@
 					<input value="Trimite" type="submit" class="btn btn-primary">
 				</div>
 			</div>
-			<input type="hidden" value="0" id="hdnNumberOfDocs">
-		</form>
+			<input type="hidden" name="NrDoc" value="1" id="hdnNumberOfDocs"/>
+		<% end %>
 	</div>
 </div>
 <script type="text/javascript">
@@ -71,9 +72,9 @@
 		});
 
 		$("#btnPlus").on("click", function() {
-				$("#divNewDocuments").append("<div class='form-group'><label class='col-md-2 control-label'> Document "+contor+" </label><div class='col-md-7'><input type='text' name='doc"+contor+"' class='form-control'></div></div>");
+				$("#divNewDocuments").append("<div class='form-group'><label class='col-md-2 control-label'> Document "+contor+" </label><div class='col-md-7'><input type='text' name='doc"+contor+"' class='form-control'/></div></div>");
 				contor++;
 				$("#hdnNumberOfDocs").val(contor);
-			})
+			});
 	});
 </script>
