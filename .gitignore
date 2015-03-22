@@ -1,4 +1,4 @@
-db/
+db/development.sqlite3
 tmp/
 log/
 
