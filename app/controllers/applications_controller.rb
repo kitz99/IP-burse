@@ -207,7 +207,7 @@ class ApplicationsController < ApplicationController
 
 
   def new
-    @application = Application.new
+    # @application = Application.new
     
     @info = get_info
 
@@ -272,6 +272,45 @@ class ApplicationsController < ApplicationController
 
 
   def create
+    # iau toate bursele si verific la care a aplicat
+    # pentru fiecare tip de bursa la a aplicat, scot si documentele pe care tre sa le verific
+    # pun totul in array-ul de hash-uri applied_at, care la campul type contine numele iar la campul papers contine actele necesare(array)
+
+    # TODO - Urmeaza sa verific actele "incarcate", care sunt in inputuri de forma 'params[<nume_bursa>~<nume_act>]'
+    # pentru fiecare act necesar din array-ul de mai sus, verific daca a incarcat. Daca e totul ok, linkez
+    # datele comune cu datele astea particulare si creez o aplicatie. Daca nu, trec la urmatoarea, si retin erorile.
+    
+    period = Period.find_by(:activ =>true).id
+    allScholarshipIds = Domain.select("scholarship_id").where(:period_id => period).uniq
+    applied_at = Array.new()
+
+    allScholarshipIds.each do |elem|
+      could_apply_at = Scholarship.find_by(:id => elem.scholarship_id).stype
+      
+      if params[could_apply_at]["yes"] == "1"
+        acte_cu_tilda =  Document.find_by(:period_id => period, :scholarship_id => elem.scholarship_id)
+
+        if acte_cu_tilda 
+          acte = acte_cu_tilda.name.split("~")
+        end
+
+        applied_at << {
+          "type" => could_apply_at,
+          "papers" => acte
+        }
+      end
+    end
+
+    # puts "================================================="
+    #   applied_at.each do |a|
+    #     puts "A aplicat la #{a['type']} si tre sa verific actele: #{a['papers']}"
+    #     puts "------------------------------------------------------------------"
+    #   end
+    # puts "================================================="
+
+
+
+
 
     # user = current_user
     # str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
@@ -418,6 +457,11 @@ class ApplicationsController < ApplicationController
 
 
   private
+
+  def get_scholarships_for_active_period
+    period = Period.find_by(:activ =>true).id
+    return Domain.select("scholarship_id").where(:period_id => period).uniq
+  end
   
   require 'net/http'
   require 'rest_client'

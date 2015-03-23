@@ -29,6 +29,8 @@ Team9Scholarships::Application.routes.draw do
   get '/valid' => 'home#admin_valid'
   get '/generate' => 'home#generate'
 
+  post '/send_applications' => 'applications#create'
+
   get 'datatable_i18n', to: 'home#datatable_i18n'
 
   get '/config-scholarship' => 'periods#defineScholarship'

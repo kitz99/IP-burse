@@ -1,7 +1,3 @@
-<pre>
-	<%= @scholarship_titles.inspect %>
-</pre>
-
 <div class="container col-md-10 col-md-offset-1 text-center">
 	<div id="common-infos">
 		<hr />
@@ -25,8 +21,33 @@
 							<%= @info["first_name"] %>
 						</span>
 					</div>
-				</div>
+			</div>
 		</div>
+		<div class="row text-left">
+			<div class="form-group col-md-6">
+				<label class="col-md-12 control-label">CNP</label>
+				<div class="col-md-12 ptr-form">
+					<%= @info['cnp'] %>
+				</div>
+			</div>
+
+			<div class="form-group col-md-3">
+				<label class="col-md-12 control-label">BI/CI serie</label>
+				<div class="col-md-12 ptr-form">
+					<span class="rest-in-place" data-number="4" data-url="/inline" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
+						<%=  @info['bi serie'].to_s %>
+					</span>
+				</div>
+			</div>
+
+			<div class="form-group col-md-3">
+				<label class="col-md-12 control-label">BI/CI numar</label>
+				<div class="col-md-12 ptr-form">
+					<span class="rest-in-place" data-number="5" data-url="/inline" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
+										<%=  @info['bi numar'].to_s %>
+										</span>
+				</div>
+			</div>
 		<div class="row text-left">
 			<div class="form-group col-md-3">
 					<label class="col-md-12 control-label">Grupa</label>
@@ -65,31 +86,7 @@
 			</div>
 		</div>
 
-		<div class="row text-left">
-			<div class="form-group col-md-6">
-				<label class="col-md-12 control-label">CNP</label>
-				<div class="col-md-12 ptr-form">
-					<%= @info['cnp'] %>
-				</div>
-			</div>
-
-			<div class="form-group col-md-3">
-				<label class="col-md-12 control-label">BI/CI serie</label>
-				<div class="col-md-12 ptr-form">
-					<span class="rest-in-place" data-number="4" data-url="/inline" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
-						<%=  @info['bi serie'].to_s %>
-					</span>
-				</div>
-			</div>
-
-			<div class="form-group col-md-3">
-				<label class="col-md-12 control-label">BI/CI numar</label>
-				<div class="col-md-12 ptr-form">
-					<span class="rest-in-place" data-number="5" data-url="/inline" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
-										<%=  @info['bi numar'].to_s %>
-										</span>
-				</div>
-			</div>
+		
 
 		</div>
 				<hr />
@@ -108,44 +105,74 @@
 	  <% end %>
 	</ul>
 
-<%= form_tag("#", method: "post", class:"form-horizontal") do %>
+<%= form_tag("/send_applications", method: "post", class:"form-horizontal") do %>
 	<div id="myTabContent" class="tab-content">
 		<% i = true %>
 		<% @scholarship_titles.each do |nume| %>
 			<% if i == true %>
 				<div class="tab-pane fade active in" id="goto-<%= nume['identificator'] %>">
+					<div class="row">
+						<div class="col-md-12 text-left">
+							<%= check_box "#{nume['nume']}", "yes" %> Trimite aplicarea pentru acest tip de bursa
+						</div>
+					</div>
 	                <div class="row">
 	                	<div class="form-group col-md-6">
 	                		<% if not nume['acte'].nil? %>
 				                <% nume['acte'].each do |act| %>
 									<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
 										<div class="col-md-12">
-				    			 			<input type="file" class="form-control" name="<%= act %>">
+				    			 			<input type="file" class="form-control" name="<%= nume['nume'] + "~" + act %>">
 										</div>
 				                <% end %>
 		                    <% end %>
+						</div>
+						<div class="col-md-6 text-left">
+						<br />
+							<h4>Instructiuni de completare</h4>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quas, animi cupiditate quam deleniti! Natus aperiam recusandae quam vel quod enim, autem ipsa quis provident, suscipit, sunt alias est quaerat?
 						</div>
 	                </div>
 	            </div>
 	            <% i = false %>
 	            <% else %>
 	            	<div class="tab-pane fade" id="goto-<%= nume['identificator'] %>">
-	                <div class="row">
-	                	<div class="form-group col-md-6">
-	                		<% if not nume['acte'].nil? %>
-				                <% nume['acte'].each do |act| %>
-									<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
-										<div class="col-md-12">
-				    			 			<input type="file" class="form-control" name="<%= act %>">
-										</div>
-				                <% end %>
-		                    <% end %>
+	            		<div class="row">
+						<div class="col-md-12 text-left">
+							<%= check_box "#{nume['nume']}", "yes" %> Trimite aplicarea pentru acest tip de bursa
 						</div>
-	                </div>
-	            </div>
-              <% end %>
+					</div>
+		                <div class="row">
+		                    <% if not nume['acte'].nil? %>
+		                	<div class="form-group col-md-6">
+					                <% nume['acte'].each do |act| %>
+										<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
+											<div class="col-md-12">
+					    			 			<input type="file" class="form-control" name="<%= nume['nume'] + "~" + act %>">
+											</div>
+					                <% end %>
+							</div>
+							<div class="col-md-6 text-left">
+								<br />
+									<h4>Instructiuni de completare</h4>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quas, animi cupiditate quam deleniti! Natus aperiam recusandae quam vel quod enim, autem ipsa quis provident, suscipit, sunt alias est quaerat?
+							</div>
+							<% else %>
+							<div class="col-md-12 text-left">
+								<br />
+									<h4>Instructiuni de completare</h4>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quas, animi cupiditate quam deleniti! Natus aperiam recusandae quam vel quod enim, autem ipsa quis provident, suscipit, sunt alias est quaerat?
+							</div>
+							<% end %>
+		                </div>
+	            	</div>
+                <% end %>
 		<% end %>
 	</div>
+	<div class="submit-button">
+		<input type="submit" value="Trimite" class="">
+	</div>
+	
 <% end %>
 
 	<script type="text/javascript">
@@ -155,3 +182,4 @@
 		})
 	</script>
 </div>
+<div class="clearfix"></div>
