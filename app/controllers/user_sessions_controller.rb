@@ -81,11 +81,11 @@ class UserSessionsController < ApplicationController
     end
 
     if not bi_serie.nil?
-      body["bi serie"], body["bi_serie"], b = bi_serie, bi_serie, true
+      body["ic_serie"], body["bi_serie"], b = bi_serie, bi_serie, true
     end
 
     if not bi_numar.nil?
-      body["bi numar"], body["bi_numar"], b = bi_numar, bi_numar, true
+      body["ic_number"], body["bi_numar"], b = bi_numar, bi_numar, true
     end
 
     if not iban.nil?

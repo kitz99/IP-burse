@@ -4,6 +4,7 @@ module OmniAuth
     class Autentificare < OmniAuth::Strategies::OAuth2
 
       PROVIDER_URL = 'http://fmi-api.herokuapp.com'
+      # PROVIDER_URL = 'http://193.226.51.30'
 
       option :client_options, {
         :site =>  PROVIDER_URL,

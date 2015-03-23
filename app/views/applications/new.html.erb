@@ -1,3 +1,7 @@
+<pre>
+	<%= @scholarship_titles.inspect %>
+</pre>
+
 <div class="container col-md-10 col-md-offset-1 text-center">
 	<div id="common-infos">
 		<hr />
@@ -92,9 +96,62 @@
 		<h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Alege tip bursa</strong></h4>
 		<hr />
 	</div>
-	<ul class="nav nav-tabs">
-	  <li role="presentation" class="active"><a href="#">Home</a></li>
-	  <li role="presentation"><a href="#">Profile</a></li>
-	  <li role="presentation"><a href="#">Messages</a></li>
+	<ul class="nav nav-tabs" id="myTab">
+		<% i = true %>
+	  <% @scholarship_titles.each do |nume| %>
+			<li role="presentation" data-toggle="tab"
+			  <% if i == true %>
+			  	class="active"
+			  	<% i = false %>
+			  	<% end %>
+			  ><a href="#goto-<%= nume['identificator'] %>"><%= nume["nume"] %></a></li>
+	  <% end %>
 	</ul>
+
+<%= form_tag("#", method: "post", class:"form-horizontal") do %>
+	<div id="myTabContent" class="tab-content">
+		<% i = true %>
+		<% @scholarship_titles.each do |nume| %>
+			<% if i == true %>
+				<div class="tab-pane fade active in" id="goto-<%= nume['identificator'] %>">
+	                <div class="row">
+	                	<div class="form-group col-md-6">
+	                		<% if not nume['acte'].nil? %>
+				                <% nume['acte'].each do |act| %>
+									<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
+										<div class="col-md-12">
+				    			 			<input type="file" class="form-control" name="<%= act %>">
+										</div>
+				                <% end %>
+		                    <% end %>
+						</div>
+	                </div>
+	            </div>
+	            <% i = false %>
+	            <% else %>
+	            	<div class="tab-pane fade" id="goto-<%= nume['identificator'] %>">
+	                <div class="row">
+	                	<div class="form-group col-md-6">
+	                		<% if not nume['acte'].nil? %>
+				                <% nume['acte'].each do |act| %>
+									<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
+										<div class="col-md-12">
+				    			 			<input type="file" class="form-control" name="<%= act %>">
+										</div>
+				                <% end %>
+		                    <% end %>
+						</div>
+	                </div>
+	            </div>
+              <% end %>
+		<% end %>
+	</div>
+<% end %>
+
+	<script type="text/javascript">
+		$('#myTab a').click(function (e) {
+  				e.preventDefault();
+ 				 $(this).tab('show');
+		})
+	</script>
 </div>

@@ -44,11 +44,11 @@ class ApplicationsController < ApplicationController
     end
 
     if not bi_serie.nil?
-      body["bi serie"], body["bi_serie"], b = bi_serie, bi_serie, true
+      body["ic_serie"], body["bi_serie"], b = bi_serie, bi_serie, true
     end
 
     if not bi_numar.nil?
-      body["bi numar"], body["bi_numar"], b = bi_numar, bi_numar, true
+      body["ic_number"], body["bi_numar"], b = bi_numar, bi_numar, true
     end
 
     if not iban.nil?
@@ -211,13 +211,36 @@ class ApplicationsController < ApplicationController
     
     @info = get_info
 
-    @scholarship_id = params[:scholarship_id]
+    # @scholarship_id = params[:scholarship_id]
     @iban = @current_user.iban
     @bank = @current_user.bank
 
-    @attachment = @application.attachments.build
-    # @allScholarships = 
-    # period = Period.where(:activ =>true)
+    period = Period.find_by(:activ =>true).id
+
+    allScholarshipIds = Domain.select("scholarship_id").where(:period_id => period).uniq
+
+    @scholarship_titles = Array.new
+
+    allScholarshipIds.each do |elem|
+      acte_cu_tilda =  Document.find_by(:period_id => period, :scholarship_id => elem.scholarship_id)
+
+      if acte_cu_tilda 
+        acte = acte_cu_tilda.name.split("~")
+      end
+      if not acte.nil?
+        h = {"nume" => Scholarship.find_by(:id => elem.scholarship_id).stype, 
+              "identificator" => rand(10000),
+              "acte" => acte
+            }
+      else
+         h = {"nume" => Scholarship.find_by(:id => elem.scholarship_id).stype, 
+              "identificator" => rand(10000)
+             }
+      end
+
+      @scholarship_titles << h
+    end
+
 
     respond_to do |format|
       format.html 
