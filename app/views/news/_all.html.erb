@@ -1,25 +1,42 @@
-
-<p>ceva</p>
+<hr>
 <% @allnews.each do |news| %>
-<div class="alert alert-warning alert-dismissable">
-<div style="margin-bottom:20px">
-  <div class="row">
-    <div class="col-md-9">
-      <h3 style="margin-top:0px"><%= news.title %></h3>
-      <h6 style="color:green;"><i><%= news.post_date.to_date %></i></h6><br />
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
+<div>
+  <h3 style="margin-top:0px"><%= news.title %></h3>
+  <h6 style="color:green;"><i><%= news.post_date.to_date %></i></h6><br />
+  <div class="readMore<%=news.id%>">
+    <% if news.content.length > 100 %>
+      <%= news.content[0..200] %>...
+      <a class="linkExpand" data-toggle="collapse" href="#readMore<%=news.id%>" aria-expanded="false" aria-controls="readMore">
+        Citeste mai mult
+      </a>
+    <%else%>
       <%= news.content %>
-    </div>
-    
-    <div class="col-md-12">
-    <br><br>
-      <a class="btn btn-default" href="<%=root_url%>news/<%=news.id %>">Citeste tot </a>
+    <% end %>
+  </div>
+  
+  <div id="test"></div>
+  
+  <div class="collapse" id="readMore<%=news.id%>">
+    <div class="well">
+      <%= news.content  %>
+      <a class="linkCollpse" style="color:red" data-toggle="collapse" href="#readMore<%=news.id%>" aria-expanded="false" aria-controls="readMore">
+        Inchide
+      </a>
     </div>
   </div>
-</div>
+  <hr>
 </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.linkExpand').click(function(){
+      var s = $(this).attr("href");
+      $("." + s.substring(1,s.length)).fadeOut(800);
+    })
+    $('.linkCollpse').click(function(){
+      var s = $(this).attr("href");
+      $("." + s.substring(1,s.length)).fadeIn(800);
+    })
+  })  
+</script>
