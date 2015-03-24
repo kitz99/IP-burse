@@ -4,9 +4,17 @@ class UserSessionsController < ApplicationController
   respond_to :html
 
   def create
-    omniauth = env['omniauth.auth']
 
+    # x = RestClient.get 'http://193.226.51.30/auth/autentificare/access_token', {:params => {:client_id => '7ebb62c8-b53c-42a8-b0a8-ee99d9a962f9', :client_secret => '3b50f742df6db7eceee9786c039f2683209538e49659305946'}}
+    # puts "============== REQUEST NOU ================"
+    # puts "-------------------------------------------> #{YAML::dump(x)}"
+    # puts "==========================================="
+
+    omniauth = env['omniauth.auth']
+    puts "==========================================="
     puts "-------------------------------------------> #{YAML::dump(omniauth)}"
+    puts "==========================================="
+
 
     user = User.find_by_uid(omniauth['uid'])
     if not user
