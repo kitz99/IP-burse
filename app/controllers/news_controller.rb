@@ -8,6 +8,9 @@ class NewsController < ApplicationController
   def show
   end
 
+  def new
+    @news = News.new
+  end
 
   # POST /news
   # POST /news.json
