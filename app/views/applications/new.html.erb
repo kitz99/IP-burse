@@ -105,7 +105,7 @@
 	  <% end %>
 	</ul>
 
-<%= form_tag("/send_applications", method: "post", class:"form-horizontal") do %>
+<%= form_tag("/send_applications", method: "post", class:"form-horizontal", :multipart => true) do %>
 	<div id="myTabContent" class="tab-content">
 		<% i = true %>
 		<% @scholarship_titles.each do |nume| %>
@@ -122,7 +122,7 @@
 				                <% nume['acte'].each do |act| %>
 									<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
 										<div class="col-md-12">
-				    			 			<input type="file" class="form-control" name="<%= nume['nume'] + "~" + act %>">
+				    			 			<%= file_field(:application, nume['nume'].parameterize.underscore.to_sym) %>
 										</div>
 				                <% end %>
 		                    <% end %>

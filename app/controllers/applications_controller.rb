@@ -207,11 +207,7 @@ class ApplicationsController < ApplicationController
 
 
   def new
-    # @application = Application.new
-    
     @info = get_info
-
-    # @scholarship_id = params[:scholarship_id]
     @iban = @current_user.iban
     @bank = @current_user.bank
 
@@ -242,9 +238,9 @@ class ApplicationsController < ApplicationController
     end
 
 
-    respond_to do |format|
-      format.html 
-    end
+    # respond_to do |format|
+    #   format.html 
+    # end
   end
 
 
@@ -300,6 +296,17 @@ class ApplicationsController < ApplicationController
         }
       end
     end
+
+    p = Paper.new
+    p.document = params["application"]["bursa_de_performanta"]
+    p.name = "primul document"
+    p.user_uid = @current_user.uid
+    p.save!
+
+
+    puts "==================================================="
+    puts params
+    puts "==================================================="
 
     # puts "================================================="
     #   applied_at.each do |a|

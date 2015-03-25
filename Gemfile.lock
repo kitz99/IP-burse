@@ -7,6 +7,16 @@ GIT
       terminal-table (>= 1.4.5)
 
 GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: cfaed417bc36443e1e45c4c4c83e879c9f7210c7
+  specs:
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+
+GIT
   remote: git://github.com/rweng/jquery-datatables-rails.git
   revision: 477e49a649c8d862988298bc96a93e030d023e0e
   specs:
@@ -73,11 +83,6 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -231,7 +236,7 @@ DEPENDENCIES
   activerecord-session_store (~> 0.0.1)
   activeresource (~> 4.0.0.beta1)
   bootstrap-sass
-  carrierwave
+  carrierwave!
   coffee-rails (~> 4.0.0)
   gravatar_image_tag
   heroku
