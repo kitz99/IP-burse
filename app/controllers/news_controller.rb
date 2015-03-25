@@ -20,7 +20,7 @@ class NewsController < ApplicationController
 
     username = @current_user.last_name
 
-    @students = JSON.parse RestClient.get "http://fmi-api.herokuapp.com/get_students?oauth_token=#{@current_user.token}", {:accept => :json}
+    @students = JSON.parse RestClient.get "http://193.226.51.30/get_students?oauth_token=#{@current_user.token}", {:accept => :json}
       # incerc sa prelucrez studentii si sa scot emailurile intr-un array
       @mailing_list = Array.new
       @students.each do |year|
@@ -36,6 +36,10 @@ class NewsController < ApplicationController
       @mailing_list << "bogdan.timofte@hotmail.com"
       @mailing_list << "bogdan.mihai.timofte@gmail.com"
       #end try
+
+      puts "=================================================="
+      puts YAML::dump(@mailing_list)
+      puts "=================================================="
       respond_to do |format|
         if @news.save
         # here send mail

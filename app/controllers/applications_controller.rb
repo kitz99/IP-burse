@@ -13,8 +13,7 @@ class ApplicationsController < ApplicationController
   def inline_edit
     # metoda ce updateasa inline profilul utilizatorului
     # Iau din params ceea ce trebuie sa updatez
-    # Verific daca se poate face update-ul si apoi incerc sa scriu in repo
-    # TODO:  De vorbit cu cei de la repo sa vada de ce nu se intampla update-ul la user profile
+    # Verific daca se poate face update-ul si apoi incerc sa scriu in API
 
     nume = params['user']['last_name']
     prenume = params['user']['first_name']
@@ -207,11 +206,7 @@ class ApplicationsController < ApplicationController
 
 
   def new
-    # @application = Application.new
-    
     @info = get_info
-
-    # @scholarship_id = params[:scholarship_id]
     @iban = @current_user.iban
     @bank = @current_user.bank
 
@@ -276,9 +271,10 @@ class ApplicationsController < ApplicationController
     # pentru fiecare tip de bursa la a aplicat, scot si documentele pe care tre sa le verific
     # pun totul in array-ul de hash-uri applied_at, care la campul type contine numele iar la campul papers contine actele necesare(array)
 
-    # TODO - Urmeaza sa verific actele "incarcate", care sunt in inputuri de forma 'params[<nume_bursa>~<nume_act>]'
     # pentru fiecare act necesar din array-ul de mai sus, verific daca a incarcat. Daca e totul ok, linkez
     # datele comune cu datele astea particulare si creez o aplicatie. Daca nu, trec la urmatoarea, si retin erorile.
+
+    # TODO - Urmeaza sa verific actele "incarcate", care sunt in inputuri de forma 'params[<nume_bursa>~<nume_act>]'
     
     period = Period.find_by(:activ =>true).id
     allScholarshipIds = Domain.select("scholarship_id").where(:period_id => period).uniq
@@ -300,6 +296,9 @@ class ApplicationsController < ApplicationController
         }
       end
     end
+
+
+    
 
     # puts "================================================="
     #   applied_at.each do |a|

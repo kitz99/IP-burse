@@ -5,6 +5,9 @@ class HomeController < ApplicationController
 
   def index
 
+    # puts "==========================="
+    # puts YAML::dump(@students)
+    # puts "==========================="
     @allnews = News.all
 
     if @current_user.is_admin == true
