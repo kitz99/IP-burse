@@ -237,9 +237,9 @@ class ApplicationsController < ApplicationController
     end
 
 
-    respond_to do |format|
-      format.html 
-    end
+    # respond_to do |format|
+    #   format.html 
+    # end
   end
 
 
