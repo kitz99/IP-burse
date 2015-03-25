@@ -50,3 +50,11 @@
 {
     color: black;
 }
+.btn-add-article
+{
+    padding-top: 10px;
+}
+.textarea-article
+{
+    height: 80%;
+}

@@ -1,6 +1,5 @@
 <hr>
 <% @allnews.each do |news| %>
-<div>
   <h3 style="margin-top:0px"><%= news.title %></h3>
   <h6 style="color:green;"><i><%= news.post_date.to_date %></i></h6><br />
   <div class="readMore<%=news.id%>">
@@ -25,7 +24,6 @@
     </div>
   </div>
   <hr>
-</div>
 <% end %>
 
 <script type="text/javascript">
