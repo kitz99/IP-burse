@@ -269,7 +269,7 @@ class ApplicationsController < ApplicationController
 
   def create
     # iau toate bursele si verific la care a aplicat
-    # pentru fiecare tip de bursa la a aplicat, scot si documentele pe care tre sa le verific
+    # pentru fiecare tip de bursa la care a aplicat, scot si documentele pe care tre sa le verific
     # pun totul in array-ul de hash-uri applied_at, care la campul type contine numele iar la campul papers contine actele necesare(array)
 
     # TODO - Urmeaza sa verific actele "incarcate", care sunt in inputuri de forma 'params[<nume_bursa>~<nume_act>]'
@@ -297,23 +297,56 @@ class ApplicationsController < ApplicationController
       end
     end
 
-    p = Paper.new
-    p.document = params["application"]["bursa_de_performanta"]
-    p.name = "primul document"
-    p.user_uid = @current_user.uid
-    p.save!
+    errors = array.new
+
+    applied_at.each do |pos|
+      valid_aplication = true
+      valid_papers = array.new
+
+      pos["papers"].each do |act|
+        if not params["application"][act.parameterize.underscore].nil?
+          valid_papers << params["application"][act.parameterize.underscore]
+        else
+          valid_aplication = false
+          break
+      end
+
+      if valid_aplication == true
+        # aplicatie valida, trebuie sa o creez si sa bag atasamentele in tabela 
+        user = current_user
+        str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
+
+        info = JSON.parse(open(str).read)
+
+        if ! info['error'].nil? 
+          redirect_to root_url + 'logout'
+        end
+
+        submission_date = Date.today.to_s
+        status = "In asteptare"
+        # scholarship_id =
+        # user_id = @current_user.id
+        # on_card = params[:application]['on_card']
+        # domain_id = session["aplic_id"]
+
+        valid_papers.each do |p|
+
+        end
+
+      else 
+        # aplicatie invalida, pun eroarea in array-ul de erori
+
+      end
+
+    end
+
+    # p = Paper.new
+    # p.document = params["application"]["bursa_de_performanta"]
+    # p.name = "primul document"
+    # p.user_uid = @current_user.uid
+    # p.save!
 
 
-    puts "==================================================="
-    puts params
-    puts "==================================================="
-
-    # puts "================================================="
-    #   applied_at.each do |a|
-    #     puts "A aplicat la #{a['type']} si tre sa verific actele: #{a['papers']}"
-    #     puts "------------------------------------------------------------------"
-    #   end
-    # puts "================================================="
 
 
 
