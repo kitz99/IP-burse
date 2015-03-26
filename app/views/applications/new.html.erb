@@ -139,7 +139,11 @@
 		<% end %>
 	</ul>
 
+<<<<<<< HEAD
 	<%= form_tag("/send_applications", method: "post", class:"form-horizontal") do %>
+=======
+<%= form_tag("/send_applications", method: "post", class:"form-horizontal", :multipart => true) do %>
+>>>>>>> file_upload_tests
 	<div id="myTabContent" class="tab-content">
 		<% i = true %>
 		<% @scholarship_titles.each do |nume| %>
@@ -158,6 +162,7 @@
 					<div class="col-md-12">
 						<input type="file" class="form-control" name="<%= nume['nume'] + "~" + act %>">
 					</div>
+<<<<<<< HEAD
 					<% end %>
 					<% end %>
 				</div>
@@ -201,6 +206,61 @@
 			</div>
 		</div>
 		<% end %>
+=======
+	                <div class="row">
+	                	<div class="form-group col-md-6">
+	                		<% if not nume['acte'].nil? %>
+				                <% nume['acte'].each do |act| %>
+									<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
+										<div class="col-md-12">
+				    			 			<%= file_field(:application, act.parameterize.underscore.to_sym, class:"form-control") %>
+										</div>
+				                <% end %>
+		                    <% end %>
+						</div>
+						<div class="col-md-6 text-left">
+						<br />
+							<h4>Instructiuni de completare</h4>
+							<br />
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quas, animi cupiditate quam deleniti! Natus aperiam recusandae quam vel quod enim, autem ipsa quis provident, suscipit, sunt alias est quaerat?
+						</div>
+	                </div>
+	            </div>
+	            <% i = false %>
+	            <% else %>
+	            	<div class="tab-pane fade" id="goto-<%= nume['identificator'] %>">
+	            		<div class="row">
+						<div class="col-md-12 text-left">
+							<%= check_box "#{nume['nume']}", "yes" %> Trimite aplicarea pentru acest tip de bursa
+						</div>
+					</div>
+		                <div class="row">
+		                    <% if not nume['acte'].nil? %>
+		                	<div class="form-group col-md-6">
+					                <% nume['acte'].each do |act| %>
+										<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
+											<div class="col-md-12">
+					    			 			<%= file_field(:application, act.parameterize.underscore.to_sym, class:"form-control") %>
+											</div>
+					                <% end %>
+							</div>
+							<div class="col-md-6 text-left">
+								<br />
+									<h4>Instructiuni de completare</h4>
+									<br />
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quas, animi cupiditate quam deleniti! Natus aperiam recusandae quam vel quod enim, autem ipsa quis provident, suscipit, sunt alias est quaerat?
+							</div>
+							<% else %>
+							<div class="col-md-12 text-left">
+								<br />
+									<h4>Instructiuni de completare</h4>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quas, animi cupiditate quam deleniti! Natus aperiam recusandae quam vel quod enim, autem ipsa quis provident, suscipit, sunt alias est quaerat?
+							</div>
+							<% end %>
+		                </div>
+	            	</div>
+                <% end %>
+>>>>>>> file_upload_tests
 		<% end %>
 	</div>
 	<div class="submit-button">

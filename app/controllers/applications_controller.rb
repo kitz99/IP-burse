@@ -268,16 +268,16 @@ class ApplicationsController < ApplicationController
 
   def create
     # iau toate bursele si verific la care a aplicat
-    # pentru fiecare tip de bursa la a aplicat, scot si documentele pe care tre sa le verific
+    # pentru fiecare tip de bursa la care a aplicat, scot si documentele pe care tre sa le verific
     # pun totul in array-ul de hash-uri applied_at, care la campul type contine numele iar la campul papers contine actele necesare(array)
 
     # pentru fiecare act necesar din array-ul de mai sus, verific daca a incarcat. Daca e totul ok, linkez
     # datele comune cu datele astea particulare si creez o aplicatie. Daca nu, trec la urmatoarea, si retin erorile.
-
-    # TODO - Urmeaza sa verific actele "incarcate", care sunt in inputuri de forma 'params[<nume_bursa>~<nume_act>]'
+    # INEFICIENT, RELATIV PROST GANDIT, NECESITA REFACTORIZARE
     
     period = Period.find_by(:activ =>true).id
-    allScholarshipIds = Domain.select("scholarship_id").where(:period_id => period).uniq
+    allScholarshipIds = Domain.select("scholarship_id, id").where(:period_id => period).uniq
+
     applied_at = Array.new()
 
     allScholarshipIds.each do |elem|
@@ -292,25 +292,91 @@ class ApplicationsController < ApplicationController
 
         applied_at << {
           "type" => could_apply_at,
-          "papers" => acte
+          "papers" => acte,
+          "sc_id" => elem.scholarship_id,
+          "domain_id" => elem.id
         }
       end
     end
 
+    errors = Array.new
+    # TRY to validate papers
 
-    
+    applied_at.each do |pos|
 
-    # puts "================================================="
-    #   applied_at.each do |a|
-    #     puts "A aplicat la #{a['type']} si tre sa verific actele: #{a['papers']}"
-    #     puts "------------------------------------------------------------------"
-    #   end
-    # puts "================================================="
+      if student_can_apply_at(pos['domain_id'])
+        valid_aplication = true
+        valid_papers = Array.new
+
+        pos["papers"].each do |act|
+          begin
+            if not params["application"][act.parameterize.underscore].nil?     # I don't know ?!
+              valid_papers << {
+                "att" => params["application"][act.parameterize.underscore],
+                "name" => act
+              }
+            else
+              valid_aplication = false
+              break
+            end
+          rescue => e
+             valid_aplication = false
+             break
+          end
+        end
+
+        if valid_aplication == true
+          # aplicatie valida, trebuie sa o creez si sa bag atasamentele in tabela 
+          user = current_user
+          str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
+
+          info = JSON.parse(open(str).read)
+
+          if ! info['error'].nil? 
+            redirect_to root_url + 'logout'
+          end
+
+          submission_date = Date.today.to_s
+          status = "In asteptare"
+          scholarship_id = pos['sc_id']
+          user_id = @current_user.id
+          # on_card = params[:application]['on_card']
+          domain_id = pos["domain_id"]
+
+          valid_papers.each do |paper|
+            p = Paper.new
+            p.document = paper['att']
+            p.name = paper['name']
+            p.user_uid = @current_user.uid
+            p.save!
+          end
+
+          app = Application.new
+          app.status = "In asteptare"
+          app.submission_date = submission_date
+          app.user_id = user_id
+          app.scholarship_id = scholarship_id
+          app.domain_id = domain_id
+          # app.on_card = params[:application]['on_card']
+
+          if not app.save
+            flash[:notice] = "something went wrong! incredibly wrong!!"
+          end
+
+        else 
+          # aplicatie invalida, pun eroarea in array-ul de erori
+          errors << "Eroare de aplicare la #{pos['type']}"
+          flash[:notice] = "Una nu a trecut de validarea actelor"
+        end
+      else
+        flash[:notice] = "Ai mai aplicat la bursa asta odata. Nu se mai poate!"
+      end
+    end
 
 
 
 
-
+    # AICI AICI AICI AICI AICI AICI
     # user = current_user
     # str = "#{CUSTOM_PROVIDER_URL}/students/#{current_user.uid}?oauth_token=#{current_user.token}"
 
@@ -456,6 +522,15 @@ class ApplicationsController < ApplicationController
 
 
   private
+
+  def student_can_apply_at(domain_id)
+    aux = Application.where(:user_id => @current_user.id, :domain_id => domain_id)
+    if aux.nil?
+      return true
+    else
+      return false
+    end
+  end
 
   def get_scholarships_for_active_period
     period = Period.find_by(:activ =>true).id

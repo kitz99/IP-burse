@@ -24,10 +24,11 @@ gem 'jquery-rails', '~> 3.1.0'
 gem  'jquery-ui-rails', '~> 4.2.0'
 
 # Use carrierwave with rmagic to upload documents
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "rmagick", "2.13.2", :require => 'RMagick'
 
 gem 'gravatar_image_tag'
+
 
 # gem 'bootstrap-x-editable-rails' # old gem
 # new gem
