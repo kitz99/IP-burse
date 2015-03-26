@@ -21,7 +21,7 @@
 			<div class="form-group">
 				<label class="col-md-2 control-label">Sesiune</label>
 				<div class="col-md-7">
-					<select name="domain[period_id]"   class="form-control">
+					<select name="domain[period_id]" class="form-control">
 						<% @periods.each do |p| %>
 						<option value="<%= p.id %>" selected>
 							Sesiunea <%= p.id %>
