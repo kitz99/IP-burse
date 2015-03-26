@@ -525,7 +525,10 @@ class ApplicationsController < ApplicationController
 
   def student_can_apply_at(domain_id)
     aux = Application.where(:user_id => @current_user.id, :domain_id => domain_id)
-    if aux.nil?
+    puts "===================================="
+    puts YAML::dump(aux)
+     puts "===================================="
+    if aux.empty?
       return true
     else
       return false
