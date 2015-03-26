@@ -122,7 +122,7 @@
 				                <% nume['acte'].each do |act| %>
 									<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
 										<div class="col-md-12">
-				    			 			<%= file_field(:application, nume['nume'].parameterize.underscore.to_sym, class:"form-control") %>
+				    			 			<%= file_field(:application, act.parameterize.underscore.to_sym, class:"form-control") %>
 										</div>
 				                <% end %>
 		                    <% end %>
@@ -149,7 +149,7 @@
 					                <% nume['acte'].each do |act| %>
 										<label class="col-md-12 control-label" style="text-align: left;"><%= act %></label>
 											<div class="col-md-12">
-					    			 			<%= file_field(:application, nume['nume'].parameterize.underscore.to_sym, class:"form-control") %>
+					    			 			<%= file_field(:application, act.parameterize.underscore.to_sym, class:"form-control") %>
 											</div>
 					                <% end %>
 							</div>
