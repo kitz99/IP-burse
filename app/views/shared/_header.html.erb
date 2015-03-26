@@ -27,21 +27,28 @@
             <li><a href="<%= root_url %>scholarships">Burse</a></li>
             <li><a href="<%= root_url %>domains">Domenii</a></li>
             <li><a href="<%= root_url %>periods">Sesiuni</a></li>
+
+
+
+
             <li>
-              <a aria-expanded="false" class="collapsed" href="javascript:;" data-toggle="collapse" data-target="#ddlCereri"><i class="fa fa-fw fa-arrows-v"></i> Cereri <i class="fa fa-fw fa-caret-down"></i></a>
-              <ul id="ddlCereri" style="height: 0px;" aria-expanded="false" aria-labelledby="drop3" class="collapse">
-                <li class="list-item-cereri"><a href="<%= root_url %>waiting/">In asteptare</a></li>
-                <li class="list-item-cereri"><a href="<%= root_url %>valid/">Valide</a></li>
-                <li class="list-item-cereri"><a href="<%= root_url %>requests/">Toate</a></li>
-              </ul>
+              <!-- <a aria-expanded="false" class="collapsed" href="javascript:;" data-toggle="collapse" data-target="#ddlCereri"><i class="fa fa-fw fa-arrows-v"></i> Cereri </a> -->
+              <!-- <ul id="ddlCereri" style="height: 0px;" aria-expanded="false" aria-labelledby="drop3" class="collapse"> -->
+                <li ><a href="<%= root_url %>waiting/">Burse in asteptare</a></li>
+                <li ><a href="<%= root_url %>valid/">Burse valide</a></li>
+                <li ><a href="<%= root_url %>requests/">Toate bursele</a></li>
+              <!-- </ul> -->
             </li>
+
+
+
             <li><a href="<%= root_url %>generate">Generare Burse</a></li>
 
             <% elsif @current_user.is_student == true %>
             <li><a href="<%= root_url %>">Dashboard</a></li>
             <li class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">Aplicatii<b class="caret"></b></a>
-              <ul>
+              <!-- <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">Aplicatii<b class="caret"></b></a> -->
+              <!-- <ul> -->
                 <%
                 if @my_applications and not @my_applications.empty?
                   @my_applications.each do |app|
@@ -67,7 +74,7 @@
                       end
                     end
                     %>
-                  </ul>
+                  <!-- </ul> -->
                 </li>
 
                 <% elsif @current_user.is_management == true %>
@@ -75,8 +82,9 @@
                 <li><a href="#">Cereri</a></li>
                 <% end %>
                 <li>
-                  <a href="<%= root_url %>logout">Iesire</a>
+                  <a href="<%= root_url %>logout">Iesire</a><br>
                 </li>
+
               </ul>
             </div>
           </nav>
