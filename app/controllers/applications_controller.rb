@@ -210,6 +210,8 @@ class ApplicationsController < ApplicationController
     @iban = @current_user.iban
     @bank = @current_user.bank
 
+    @mean, @credits = get_student_mean_and_credits
+
     period = Period.find_by(:activ =>true).id
 
     allScholarshipIds = Domain.select("scholarship_id").where(:period_id => period).uniq
@@ -525,9 +527,6 @@ class ApplicationsController < ApplicationController
 
   def student_can_apply_at(domain_id)
     aux = Application.where(:user_id => @current_user.id, :domain_id => domain_id)
-    puts "===================================="
-    puts YAML::dump(aux)
-     puts "===================================="
     if aux.empty?
       return true
     else
@@ -577,6 +576,35 @@ class ApplicationsController < ApplicationController
       return
     end
     return info
+  end
+
+
+  def get_student_mean_and_credits
+    str = "#{CUSTOM_PROVIDER_URL}/student_results/#{@current_user.uid}/average_grade_per_year?oauth_token=#{@current_user.token}"
+    info = JSON.parse(open(str).read)
+
+    if not info['error'].nil? 
+      redirect_to root_url + 'logout'
+      return
+    end
+
+    c_year = Time.now.year
+    l_year = (c_year - 1).to_s
+    c_year = c_year.to_s
+
+    begin
+      mean = info[l_year + "-" + c_year]['average_grade']
+    rescue Exception => e
+      mean = nil
+    end
+
+    begin
+      credits = info[l_year + "-" + c_year]['credits']
+    rescue Exception => e
+      credits = nil
+    end
+
+    return mean, credits
   end
 
   def send_info (b) 
