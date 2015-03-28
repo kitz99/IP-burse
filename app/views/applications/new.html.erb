@@ -1,3 +1,4 @@
+<pre><%= @current_user.uid %></pre>
 <div class="container col-md-12 text-center">
 	<div id="common-infos">
 		<hr />
@@ -99,8 +100,8 @@
 				<label class="col-md-12 control-label">Media</label>
 				<div class="col-md-12">
 					<div class="form-control">
-						<% if @info['mean'] %>
-						<%= @info['mean'] %>
+						<% if @mean %>
+						<%= @mean %>
 						<% else %>
 						Not specified
 						<% end %>
@@ -112,8 +113,8 @@
 				<label class="col-md-12 control-label">Nr credite</label>
 				<div class="col-md-12">
 					<div class="form-control">
-						<% if @info['credits'] %>
-						<%= @info['credits'] %>
+						<% if @credits %>
+						<%= @credits %>
 						<% else %>
 						Not specified
 						<% end %>
