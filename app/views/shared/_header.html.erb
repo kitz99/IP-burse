@@ -11,11 +11,15 @@
     <nav id="nav" role="navigation">
       <div class="block">
         <div class='avatar'>
-          <%= link_to gravatar_image_tag(@current_user.first_name , :class => 'avatar'), {controller:'user_sessions', action:'show_profile'} %>
+          <% if @current_user.is_student %>
+            <%= link_to gravatar_image_tag(@current_user.first_name , :class => 'avatar'), {controller:'user_sessions', action:'show_profile'} %>
+          <% else %>
+            <%= gravatar_image_tag(@current_user.first_name , :class => 'avatar') %>
+          <% end %>
         </div>
         <div class='username'>
           <% if not @current_user.is_admin %>
-          <a href="/profile">
+          <a class="username" href="/profile">
             <%= @current_user.first_name + " " + @current_user.last_name %>
           </a>
           <% else %>
@@ -24,9 +28,10 @@
           <ul>
             <% if @current_user.is_admin == true %>
             <li class="is-active"><a href="<%= root_url %>admin">Dashboard</a></li>
-            <li><a href="<%= root_url %>scholarships">Burse</a></li>
-            <li><a href="<%= root_url %>domains">Domenii</a></li>
+            <!-- <li><a href="<%= root_url %>scholarships">Burse</a></li> -->
+            <!--             <li><a href="<%= root_url %>domains">Domenii</a></li> -->
             <li><a href="<%= root_url %>periods">Sesiuni</a></li>
+            <li><a href="#">Revizuire stiri</a></li>
 
 
 
@@ -34,59 +39,32 @@
             <li>
               <!-- <a aria-expanded="false" class="collapsed" href="javascript:;" data-toggle="collapse" data-target="#ddlCereri"><i class="fa fa-fw fa-arrows-v"></i> Cereri </a> -->
               <!-- <ul id="ddlCereri" style="height: 0px;" aria-expanded="false" aria-labelledby="drop3" class="collapse"> -->
-                <li ><a href="<%= root_url %>waiting/">Burse in asteptare</a></li>
-                <li ><a href="<%= root_url %>valid/">Burse valide</a></li>
-                <li ><a href="<%= root_url %>requests/">Toate bursele</a></li>
-              <!-- </ul> -->
-            </li>
+<!--                 <li ><a href="<%= root_url %>waiting/">Burse in asteptare</a></li>
+  <li ><a href="<%= root_url %>valid/">Burse valide</a></li> -->
+  <li ><a href="<%= root_url %>requests/">Toate aplicatiile</a></li>
+  <!-- </ul> -->
+</li>
 
 
 
-            <li><a href="<%= root_url %>generate">Generare Burse</a></li>
+<!-- <li><a href="<%= root_url %>generate">Generare Burse</a></li> -->
 
-            <% elsif @current_user.is_student == true %>
-            <li><a href="<%= root_url %>">Dashboard</a></li>
-            <li class="dropdown">
-              <!-- <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">Aplicatii<b class="caret"></b></a> -->
-              <!-- <ul> -->
-                <%
-                if @my_applications and not @my_applications.empty?
-                  @my_applications.each do |app|
-                    %>
-                    <li><a href="<%= root_url %>applications/<%= app.id %>/edit">
-                      <%= app.scholarship.stype %></a></li>
-                      <%
-                    end
+<% elsif @current_user.is_student == true %>
+<li><a href="<%= root_url %>">Dashboard</a></li>
+<li><a href="<%= root_url %>">Aplica la bursa</a></li>
+<li><a href="<%= root_url %>">Aplicatiile mele</a></li>
 
-                    if @available_appl and not @available_appl.empty?
-                      %>
-                      <li class="divider"></li>
-                      <%
-                    end
-                  end
 
-                  if @available_appl and not @available_appl.empty?
-                    @available_appl.each do |app|
-                      %>
-                      <li><a href="<%= root_url %>applications/<%= app.id %>/new">
-                        <%= app.stype %></a></li>
-                        <%
-                      end
-                    end
-                    %>
-                  <!-- </ul> -->
-                </li>
+<% elsif @current_user.is_management == true %>
+<li><a href="#">Dashboard</a></li>
+<li><a href="#">Cereri</a></li>
+<% end %>
+<li>
+  <a href="<%= root_url %>logout">Iesire</a><br>
+</li>
 
-                <% elsif @current_user.is_management == true %>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Cereri</a></li>
-                <% end %>
-                <li>
-                  <a href="<%= root_url %>logout">Iesire</a><br>
-                </li>
-
-              </ul>
-            </div>
-          </nav>
+</ul>
+</div>
+</nav>
 
 
