@@ -11,10 +11,6 @@ class UserSessionsController < ApplicationController
     # puts "==========================================="
 
     omniauth = env['omniauth.auth']
-    puts "==========================================="
-    puts "-------------------------------------------> #{YAML::dump(omniauth)}"
-    puts "==========================================="
-
 
     user = User.find_by_uid(omniauth['uid'])
     if not user

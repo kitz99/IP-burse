@@ -1,75 +1,156 @@
-<h1>User profile</h1>
-<ul>
-	<li>Nume: 
-	<span id="nume" data-number="1" class="rest-in-place" data-url="/update" data-object="user" data-attribute="last_name" data-placeholder="Nume de familie...">
-			<%= @info["last_name"] %>
-		</span> <span id="editable1"><i class="fa fa-pencil"></i></span>      
-	</li>
-	<li>
-		Prenume: 
-		<span class="rest-in-place" data-number="2" data-url="/update" data-object="user" data-attribute="first_name" data-placeholder="Prenume...">
-			<%= @info["first_name"]%>
-		</span> <span id="editable2"><i class="fa fa-pencil"></i></span>
-	</li>
-	<li>
-		Email: 
-		<span class="rest-in-place" data-number="3" data-url="/update" data-object="user" data-attribute="email" data-placeholder="Email...">
-			<%= @info['email'] %>
-		</span><span id="editable3"><i class="fa fa-pencil"></i></span>
-	</li>
-	<li>
-		Tip cont: 
-		<% if @user.is_student %>
-		STUDENT
-		<% end %>
+<h1 class="page-header">Profil</h1>
+<div class="row">
+	<div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <%= gravatar_image_tag(@current_user.first_name , :class => 'img-circle img-thumbnail', :gravatar => { :size => 200 }) %>
+        <h2 class="nume-prenume"><%= @info['last_name'] %> <%= @info['first_name'] %></h2>
+      </div>
+    </div>
 
-		<% if @user.is_admin %>
-		ADMINISTRATOR
-		<% end %>
+        <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <h3 class="personal-infos">Informatii Personale</h3>
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Nume:</label>
+          <div class="col-lg-8">
+            <div class="input-group"> 
+	            <span id="nume" data-number="1" class="rest-in-place form-control" data-url="/update" data-object="user" data-attribute="last_name" data-placeholder="Prenume...">
+				            <%= @info["last_name"] %>
+			     </span>
+			     <div class="input-group-addon">
+							<i class="fa fa-pencil pull-right"></i>
+			     </div>
+			</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Prenume:</label>
+          <div class="col-lg-8">
+           <div class="input-group"> 
+	            <span data-number="1" class="rest-in-place form-control" data-url="/update" data-object="user" data-attribute="first_name" data-placeholder="Prenume...">
+				<%= @info["first_name"] %>
+			     </span>
+			     <div class="input-group-addon">
+							<i class="fa fa-pencil pull-right"></i>
+			     </div>
+			</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Tip cont:</label>
+          <div class="col-lg-8">
+            <div class="form-control">
+            	<% if @user.is_student %>
+				Student
+				<% end %>
 
-		<% if @user.is_management %>
-		SECRETARIAT
-		<% end %>
-		
-		<li>Serie BI/CI: 
-			<span class="rest-in-place" data-number="4" data-url="/update" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
+				<% if @user.is_admin %>
+				Administrator
+				<% end %>
+
+				<% if @user.is_management %>
+				Management
+				<% end %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email:</label>
+          <div class="col-lg-8">
+            <div class="input-group">
+            	<span class="rest-in-place form-control" data-number="3" data-url="/update" data-object="user" data-attribute="email" data-placeholder="Email...">
+			   <%= @info['email'] %>
+		       </span>
+		       <div class="input-group-addon">
+							<i class="fa fa-pencil pull-right"></i>
+			     </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Serie BI/CI:</label>
+          <div class="col-lg-8">
+            <div class="input-group">
+            	<span class="rest-in-place form-control" data-number="4" data-url="/update" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
 				<%= @info['bi serie'] %> 
-			</span><span id="editable4"><i class="fa fa-pencil"></i></span>
-
-		</li>
-		<li>Numar BI/CI:
-			<span class="rest-in-place" data-number="5" data-url="/update" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
+			    </span>
+			    <div class="input-group-addon">
+					<i class="fa fa-pencil pull-right"></i>
+			     </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Numar BI/CI:</label>
+          <div class="col-lg-8">
+            <div class="input-group">
+              <span class="rest-in-place form-control" data-number="5" data-url="/update" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
 				<%= @info['bi numar'] %> 
-			</span> <span id="editable5"><i class="fa fa-pencil"></i></span>
-		</li>
-		<li>Specializare: <%= @info['specialization'] %></li>
-		<li>An de studiu: <%= @info['group_year'] %></li>
-		<li>Seria: <%= @info['group_series'] %></li>
-		<li>Grupa: <%= @info['group_number'] %></li>
-
-		<li>IBAN: 
-			<span class="rest-in-place" data-number="6" data-url="/update" data-object="user" data-attribute="iban" data-placeholder="IBAN...">
+			   </span>
+			   <div class="input-group-addon">
+							<i class="fa fa-pencil pull-right"></i>
+			     </div> 	
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Specializarea:</label>
+          <div class="col-lg-8">
+            <div class="form-control">
+            	<%= @info['specialization'] %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Grupa:</label>
+          <div class="col-lg-8">
+            <div class="form-control">
+              <%= @info['group_year'].to_s + @info['group_series'].to_s + @info['group_number'].to_s %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Seria:</label>
+          <div class="col-lg-8">
+            <div class="form-control">
+              <%= @info['group_series'] %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Anul:</label>
+          <div class="col-lg-8">
+            <div class="form-control">
+              <%= @info['group_year'] %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">IBAN:</label>
+          <div class="col-lg-8">
+            <div class="input-group">
+              <span class="rest-in-place form-control" data-number="6" data-url="/update" data-object="user" data-attribute="iban" data-placeholder="IBAN...">
 				<%= @user.iban %>
-			</span><span id="editable6"><i class="fa fa-pencil"></i></span>
-		</li>
-		<li>Banca: 
-			<span class="rest-in-place" data-number="7" data-url="/update" data-object="user" data-attribute="bank" data-placeholder="Banca...">
+			  </span>
+			  <div class="input-group-addon">
+				 <i class="fa fa-pencil pull-right"></i>
+			  </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Banca:</label>
+          <div class="col-lg-8">
+            <div class="input-group">
+              <span class="rest-in-place form-control" data-number="7" data-url="/update" data-object="user" data-attribute="bank" data-placeholder="Banca...">
 				<%= @user.bank %>
-			</span><span id="editable7"><i class="fa fa-pencil"></i></span>
-		</li>
-	</li>
-</ul>
-
-<script type="text/javascript">
-	for(var i = 0; i <= 7; i++){
-		$("#editable" + i).hide();
-	}
-	$(".rest-in-place").on({
-		mouseenter: function () {
-			$("#editable" + $(this).data('number')).show();
-		},
-		mouseleave: function () {
-			$("#editable" + $(this).data('number')).hide();
-		}
-	});
-</script>
+			   </span>
+			   <div class="input-group-addon">
+				 <i class="fa fa-pencil pull-right"></i>
+			  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
