@@ -1,23 +1,8 @@
 == Sistem online de gestiune a burselor
 
+Ingineria Programarii: 2014 - 2015
+
 Aplicatia isi propune sa realizeze un sistem de gestiune a burselor acordate de catre facultate.  Utilizatorii aplicatiei se impart in trei categorii: studenti, manageri si administratori. Bursele se impart in: burse de performanta, burse de merit/studiu, burse sociale si burse sociale ocazioanale.
-
-STUDENTUL se poate loga in cadrul aplicatiei, avand deja toate datele personale completate si poate aplica pentru o bursa. El poate aplica la toate tipurile de  bursa, cu deosebirea ca pentru bursele de studiu si de merit trebuie sa completeze doar motivul pentru care solicita acesta bursa, iar pentru celelalte tipuri de bursa este necesara si incarcarea unor documente  justificative.
-De asemenea, studentul poate salva o aplicare la o bursa, si poate reveni asupra acesteia prin incarcarea altor documente.
-Dupa ce a aplicat la un tip de bursa, studentul isi poate vedea toate aplicarile, precum si starea in care se afla acestea: in asteptare, neaprobata sau aprobata.
-
-
-ADMINISTRATORUL poate verifica daca cererile de bursa sunt complete si are si dreptul de a completa, edita si aproba o bursa. In acelasi timp poate crea tipuri noi de burse, de domenii pentru burse.
-In functie de anumiti parametrii pe care ii seteaza, pe baza unui algoritm, i se va afisa o lista cu bursele grupate pe Tip de bursa/An de studiu/Domeniu de licenta, pe care administratorul le poate aproba sau poate modifca din nou parametrii initiali.
-
-
-Pentru atasamente folosim rmagick. Se poate adauga instaland urmatoarele: 
-- MagickWand ( sudo apt-get install libmagickwand-dev )
-- ImageMagick ( sudo apt-get install imagemagick )
-
-Pentru pagina de generate e nevoie de update la bootstrap-sass la 3.1.1, folosind comanda:
-- bundle update bootstrap-sass
-
 
 ==
 
