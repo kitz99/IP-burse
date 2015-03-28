@@ -4,9 +4,20 @@ class ApplicationsController < ApplicationController
   
   # GET /applications
   def index
-    respond_to do |format|
-      format.html { redirect_to root_url , notice: 'You are not allowed there' }
-    end
+    # metoda ce listeaza toate aplicatiile si le prezinta in 3 categorii:
+    # in asteptare <<@waiting>>
+    # acceptate <<@accepted>>
+    # respinse <<@rejected>>
+
+    @waiting = add_scholarship Application.where(:user_id => current_user.id, :status => "In asteptare")
+
+    @accepted = add_scholarship Application.where(:user_id => current_user.id, :status => "Aprobata")
+
+    @rejected = add_scholarship Application.where(:user_id => current_user.id, :status => "Respinsa")
+   
+    # respond_to do |format|
+    #   format.html { redirect_to root_url , notice: 'You are not allowed there' }
+    # end
   end
 
 
@@ -524,6 +535,17 @@ class ApplicationsController < ApplicationController
 
 
   private
+
+  def add_scholarship(array)
+    result = Array.new
+    array.each do |elem|
+      result << {
+        "scholarship" => Scholarship.find(elem.scholarship_id).stype, 
+        "application" => elem
+      }
+    end
+    result
+  end
 
   def student_can_apply_at(domain_id)
     aux = Application.where(:user_id => @current_user.id, :domain_id => domain_id)

@@ -1,0 +1,49 @@
+<h2>Aplicatiile mele</h2>
+<br /><br />
+<div class="row">
+	<div class="col-md-4">
+		<h2>Aplicatii in asteptare</h2>
+		<% if @waiting.empty? %>
+			<p>Nu aveti aplicatii in asteptare in acest moment</p>
+		<% else %>
+			<ul>
+				<% @waiting.each do |app| %>
+					<li>
+					    <%= app["scholarship"] %> 
+					    <a class="btn btn-default"><i class="fa fa-eye"></i></a>
+					    <a class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>
+					    <a class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		<h2>Aplicatii aprobate</h2>
+		<% if @accepted.empty? %>
+			<p>Nu aveti aplicatii acceptate in acest moment</p>
+		<% else %>
+			<ul>
+				<% @accepted.each do |app| %>
+					<li>
+					    <%= app["scholarship"] %> 
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		<h2>Aplicatii aprobate</h2>
+		<% if @rejected.empty? %>
+			<p>Nu aveti aplicatii respinse in acest moment</p>
+		<% else %>
+			<ul>
+				<% @rejected.each do |app| %>
+					<li>
+					    <%= app["scholarship"] %> 
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+	</div>
+</div>

@@ -40,7 +40,6 @@ Team9Scholarships::Application.routes.draw do
   put '/applications/:scholarship_id/new' => 'applications#new'
 
   put '/inline' => 'applications#inline_edit'
-  # get '/inline' => "aplications#"
 
   get '/applications/admin/:id' => 'applications#admin_show'
   put '/applications/admin_update/:id' => 'applications#admin_update'
