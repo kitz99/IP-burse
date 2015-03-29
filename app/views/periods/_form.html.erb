@@ -1,5 +1,12 @@
+<div class="container">
+  <div class="col-md-12">
+
+
 <%= flash[:notice]%>
-<%= form_for(@period) do |f| %>
+<br>
+<br>
+
+<%= form_for @period,  html: {class: "form-horizontal"} do |f| %>
   <% if @period.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@period.errors.count, "error") %> prohibited this period from being saved:</h2>
@@ -12,31 +19,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :start %><br>
-    <%= f.date_select :start %>
+
+
+      <div class="form-group">
+        <label class="col-md-2 control-label"> <%= f.label :start %> </label> 
+        <span style="margin-left:16px"> <%= f.date_select :start , class:"form-control"%> </span>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-2  control-label"> <%= f.label :end %>  </label> 
+        <span style="margin-left:16px"> <%= f.date_select :end , class:"form-control"%> </span>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-2 control-label"> <%= f.label :buget %> </label> 
+        <span class="col-md-6"> <%= f.number_field :buget , class:"form-control" , in:1...9000000%> </span>
+      </div> 
+
+      <div class="form-group">
+        <label class="col-md-2 control-label"> <%= f.label :activ %> </label> 
+        <%= f.check_box :activ, :style => "width: 20px; height: 20px; margin-left: 16px;" %>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-2 control-label"> <%= f.label :nr_stud %> </label> 
+        <span class="col-md-6"> <%= f.number_field :nr_stud, class:"form-control col-md-6", in:1...4000 %> </span>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-2 control-label">  <%= f.label :min_salary %> </label> 
+        <span class="col-md-6"> <%= f.number_field :min_salary, class:"form-control col-md-6", in:1...9000000 %> </span>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-6 col-md-offset-2"> 
+           <div class="actions"> <%= f.submit class:"btn btn-primary"%>   </div> 
+        </div>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :end %><br>
-    <%= f.date_select :end %>
-  </div>
-  <div class="field">
-    <%= f.label :buget %><br>
-    <%= f.number_field :buget %>
-  </div>
-  <div class="field">
-    <%= f.label :activ %><br>
-    <%= f.check_box :activ %>
-  </div>
-  <div class="field">
-    <%= f.label :nr_stud %><br>
-    <%= f.number_field :nr_stud %>
-  </div>
-  <div class="field">
-    <%= f.label :min_salary %><br>
-    <%= f.number_field :min_salary %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
+  
+
 <% end %>
