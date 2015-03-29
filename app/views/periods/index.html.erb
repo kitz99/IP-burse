@@ -30,7 +30,7 @@
         <td><%= elem["sesiune"].min_salary %></td>
         <td><%= link_to 'Vezi', elem["sesiune"] %></td>
         <td><%= link_to 'Editeaza', edit_period_path(elem["sesiune"]) %></td>
-        <td><%= link_to 'Sterge sesiunea', elem["sesiune"], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'STERGE', "/delete_period/" + elem["sesiune"].id.to_s, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   </tbody>
   </table>

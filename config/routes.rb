@@ -36,6 +36,8 @@ Team9Scholarships::Application.routes.draw do
 
   post '/send_applications' => 'applications#create'
 
+  delete 'delete_period/:per_id' => 'periods#delete'
+
   get 'datatable_i18n', to: 'home#datatable_i18n'
 
   get '/config-scholarship' => 'periods#defineScholarship'

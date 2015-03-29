@@ -32,7 +32,6 @@ class PeriodsController < ApplicationController
     @period = Period.new(period_params)
 
     if @period.start < @period.end
-        puts "------------------------------------- teomihneabogdan -------------------------------------------------"
         respond_to do |format|
           if @period.save
             # create a news when a period is started
@@ -70,7 +69,6 @@ class PeriodsController < ApplicationController
           end
         end
     else
-      puts "------------------------------------- teo si dora - data de inceput este mai maricica decat cea de finalizare-------------------"
       flash[:error] = "Data de inceput trebuie sa fie precedenta datei de sfarsit!"
       respond_to do |format|
         format.html { render :new }
@@ -96,6 +94,20 @@ class PeriodsController < ApplicationController
 
   # DELETE /periods/1
   # DELETE /periods/1.json
+
+  def delete
+    period = Period.find(params[:per_id])
+
+    if period.activ == false
+      flash[:notice] = "Sesiunea a fost stearsa cu succes"
+      period.destroy
+      redirect_to '/periods'
+    else
+      flash[:notice] = "Sesiunea este activa in momentul de fata si nu poate fi stearsa"
+      redirect_to '/periods'
+    end
+  end
+
   def destroy
     @period.destroy
     respond_to do |format|
