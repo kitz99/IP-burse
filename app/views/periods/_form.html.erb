@@ -2,7 +2,13 @@
   <div class="col-md-12">
 
 
-<%= flash[:notice]%>
+  <%= flash[:notice]%>
+<% unless flash[:error].nil? %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:error]%>
+  </div>
+<%end%>
+
 <br>
 <br>
 

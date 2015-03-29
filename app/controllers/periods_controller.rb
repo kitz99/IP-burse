@@ -31,42 +31,53 @@ class PeriodsController < ApplicationController
   def create
     @period = Period.new(period_params)
 
-    respond_to do |format|
-      if @period.save
-        # create a news when a period is started
-        @news = News.new()
-        @news.title = "Sesiune noua de burse"
-        @news.content = "A fost deschisa o sesiune noua de aplicare la burse. Perioada incepe la #{@period.start} si se termina la #{@period.end}"
-        @news.post_date = Time.now
-        @news.user_id = @current_user.id
+    if @period.start < @period.end
+        puts "------------------------------------- teomihneabogdan -------------------------------------------------"
+        respond_to do |format|
+          if @period.save
+            # create a news when a period is started
+            @news = News.new()
+            @news.title = "Sesiune noua de burse"
+            @news.content = "A fost deschisa o sesiune noua de aplicare la burse. Perioada incepe la #{@period.start} si se termina la #{@period.end}"
+            @news.post_date = Time.now
+            @news.user_id = @current_user.id
 
-        username = @current_user.last_name
-        @mailing_list = Array.new
+            username = @current_user.last_name
+            @mailing_list = Array.new
 
-        @students = JSON.parse RestClient.get "http://fmi-api.herokuapp.com/get_students?oauth_token=#{@current_user.token}", {:accept => :json}
-          # incerc sa prelucrez studentii si sa scot emailurile intr-un array
-          @students.each do |year|
-            year[1].each do |cycle|
-              cycle[1].each do |group|
-                group[1].each do |student|              
-                 @mailing_list << student["email"]
+            @students = JSON.parse RestClient.get "http://193.226.51.30/get_students?oauth_token=#{@current_user.token}", {:accept => :json}
+              # incerc sa prelucrez studentii si sa scot emailurile intr-un array
+              @students.each do |year|
+                year[1].each do |cycle|
+                  cycle[1].each do |group|
+                    group[1].each do |student|              
+                     @mailing_list << student["email"]
+                   end
+                 end
                end
-             end
-           end
-          end
-          @mailing_list << "tehnic@pddesign.ro"
-          @mailing_list << "bogdan.timofte@hotmail.com"
-          @mailing_list << "bogdan.mihai.timofte@gmail.com"
+              end
+              @mailing_list << "tehnic@pddesign.ro"
+              @mailing_list << "bogdan.timofte@hotmail.com"
+              @mailing_list << "bogdan.mihai.timofte@gmail.com"
 
-        NewsMailer.news_created(@news, username, @mailing_list).deliver_now
-        @news.save()
-        format.html { redirect_to @period, notice: 'Period was successfully created.' }
-        format.json { render :show, status: :created, location: @period }
-      else
+            NewsMailer.news_created(@news, username, @mailing_list).deliver_now
+            @news.save()
+            format.html { redirect_to "/periods", notice: 'Period was successfully created.' }
+            format.json { render :show, status: :created, location: @period }
+          else
+            format.html { render :new }
+            format.json { render json: @period.errors, status: :unprocessable_entity }
+          end
+        end
+    else
+      puts "------------------------------------- teo si dora - data de inceput este mai maricica decat cea de finalizare-------------------"
+      flash[:error] = "Data de inceput trebuie sa fie precedenta datei de sfarsit!"
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @period.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /periods/1
