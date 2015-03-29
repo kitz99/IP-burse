@@ -1,0 +1,50 @@
+<h1 class="page-header" style="text-align:center;">Revizuire stiri</h1>
+<% if @unp_news.empty? %>
+  <div class="alert alert-warning" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+    <p>Nu sunt stiri nepublicate in acest moment!</p>
+  </div>
+  <% end %>
+<% @unp_news.each do |news| %>
+  <h3 style="margin-top:0px"><%= news.title %> 
+    <a href="/edit_unpublished/<%= news.id %>" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></a>
+    <a href="/delete/<%= news.id %>" class="btn btn-danger" data-confirm="Are you sure"><i class="fa fa-trash-o"></i></a>
+  </h3>
+  <h6 style="color:green;"><i><%= news.post_date.to_date %></i></h6><br />
+  <div class="readMore<%=news.id%>">
+    <% if news.content.length > 100 %>
+      <%= news.content[0..200] %>...
+      <a class="linkExpand" data-toggle="collapse" href="#readMore<%=news.id%>" aria-expanded="false" aria-controls="readMore">
+        Citeste mai mult
+      </a>
+    <%else%>
+      <%= news.content %>
+    <% end %>
+  </div>
+  <div id="test"></div>
+  
+  <div class="collapse" id="readMore<%=news.id%>">
+    <div class="well">
+      <%= news.content  %>
+      <a class="linkCollpse" style="color:red" data-toggle="collapse" href="#readMore<%=news.id%>" aria-expanded="false" aria-controls="readMore">
+        Inchide
+      </a>
+    </div>
+  </div>
+  <hr>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.linkExpand').click(function(){
+      var s = $(this).attr("href");
+      $("." + s.substring(1,s.length)).fadeOut(800);
+    })
+    $('.linkCollpse').click(function(){
+      var s = $(this).attr("href");
+      $("." + s.substring(1,s.length)).fadeIn(800);
+    })
+  })  
+</script>

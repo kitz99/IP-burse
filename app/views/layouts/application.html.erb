@@ -8,14 +8,18 @@
 	<!-- STARTS here -->
 	<div id="main" role="main" class="block">
 		<% unless notice.nil? %>
-		<div class="alert alert-success"><%= notice %></div>
+		<div class="alert alert-success">
+			<p><%= notice %></p>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
 		<%end%>
 		<%= yield %>
 	</div>
-
+	<div class="clearfix"></div>
 	<%= render "shared/footer" %>
-</div>
-<!-- ENDS HERE -->
-<%= javascript_include_tag "main" %>
+	<!-- ENDS HERE -->
+	<%= javascript_include_tag "main" %>
 </body>
 </html>

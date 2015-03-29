@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
   def index
 
-    @allnews = News.all.order('post_date DESC')
+    @allnews = News.where(:published => true).order('post_date DESC')
 
     if @current_user.is_admin == true 
       respond_to do |format| 
@@ -25,7 +25,7 @@ class HomeController < ApplicationController
   end
 
   def admin_index
-    @allnews = News.all.order('post_date DESC')
+    @allnews = News.where(:published => true).order('post_date DESC')
 
     if @current_user.is_student == true
       respond_to do |format|

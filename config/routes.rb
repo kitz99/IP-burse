@@ -29,6 +29,11 @@ Team9Scholarships::Application.routes.draw do
   get '/valid' => 'home#admin_valid'
   get '/generate' => 'home#generate'
 
+  get '/review-news' => 'news#show_unpublished'
+  get '/edit_unpublished/:news_id' => 'news#edit_unp'
+  patch 'post_edit/:news_id' => 'news#post_edit'
+  get '/delete/:news_id' => 'news#delete'
+
   post '/send_applications' => 'applications#create'
 
   get 'datatable_i18n', to: 'home#datatable_i18n'

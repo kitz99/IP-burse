@@ -1,8 +1,8 @@
 <br><br>
-<h3>Adauga o noua stire</h3>
+<h3>Editeaza stirea</h3>
 
 <br><br>
-  <%= form_for(@news) do |f| %>
+  <%= form_for(@news, :url => "/post_edit/" + @news.id.to_s) do |f| %>
     <div class="form-group">
       <%= f.label :title %><br>
       <%= f.text_field :title , class:"form-control"%>
@@ -16,6 +16,6 @@
       <%= f.check_box :published, {}, "true", "false" %> Publica acum
     </label>
   </div>
-    <%= f.submit 'Posteaza anunt', :class => 'btn btn-primary'%>
+    <%= f.submit 'Updateaza', :class => 'btn btn-primary'%>
   <% end %>
 
