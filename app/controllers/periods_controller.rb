@@ -39,6 +39,7 @@ class PeriodsController < ApplicationController
             @news.title = "Sesiune noua de burse"
             @news.content = "A fost deschisa o sesiune noua de aplicare la burse. Perioada incepe la #{@period.start} si se termina la #{@period.end}"
             @news.post_date = Time.now
+            @news.published = true
             @news.user_id = @current_user.id
 
             username = @current_user.last_name
