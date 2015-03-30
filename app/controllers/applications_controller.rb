@@ -259,22 +259,34 @@ class ApplicationsController < ApplicationController
   def edit
 
     @application = Application.find_by_id params[:id]
+    @app_id = params[:id]
+    @period = Period.find_by(:activ =>true).id
+    domain_id = @application.domain_id
 
-    if check_permission(@application) == false
-      return
+    @info = get_info
+    @iban = @current_user.iban
+    @bank = @current_user.bank
+
+    @mean, @credits = get_student_mean_and_credits
+
+    @titlu_bursa = Scholarship.find(@application.scholarship_id).stype
+    @status = @application.status
+
+
+    @acte_cu_tilda =  Document.find_by(:period_id => @period, :scholarship_id => @application.scholarship_id).name
+    @acte = Array.new
+    @atasamente = Array.new
+    
+    if not @acte_cu_tilda.nil?
+      @acte = @acte_cu_tilda.split("~")
+
+      @acte.each do |a|      
+        @atasamente << Paper.find_by(:name => a, :user_uid => current_user.uid)
+      end
+    else
+      @acte << "Nu trebuie asignate acte"
     end
 
-    @attachments = @application.attachments.all
-
-    str = "#{CUSTOM_PROVIDER_URL}/students/#{@current_user.uid}?oauth_token=#{@current_user.token}"
-
-    @info = JSON.parse(open(str).read)
-
-    if ! @info['error'].nil? 
-      redirect_to root_url + 'logout'
-    end
-
-    @attachment = @application.attachments.build
   end
 
 
@@ -453,6 +465,50 @@ class ApplicationsController < ApplicationController
     #   end
     # end
     redirect_to "/"
+  end
+
+  def update_application
+    app_id = params[:app_id]
+    period = Period.find_by(:activ =>true).id
+
+    # aplicatia pe care trebuie sa o updatez
+    application = Application.find_by_id app_id
+
+    # Scot actele necesare acestei aplicatii
+    @acte_cu_tilda =  Document.find_by(:period_id => period, :scholarship_id => application.scholarship_id).name
+    if @acte_cu_tilda == "~"
+      flash[:notice] = 'Aplicatie updatata cu succes'
+      redirect_to "/applications"
+    else
+      acte = @acte_cu_tilda.split("~")
+      ok = true
+      acte.each do |paper|
+        begin
+          if not params["application"][paper.parameterize.underscore].nil?
+            act_din_papers = Paper.find_by(:name => paper, :user_uid => current_user.uid)
+            act_din_papers.document = params["application"][paper.parameterize.underscore]
+            if not act_din_papers.save
+              ok = false
+              break
+            end
+          end
+        rescue => e
+          # nu tre sa se intample nimic, pur si simplu ramane actul care a fost
+        end
+      end
+
+      if ok == true
+        flash[:notice] = "Aplicatia a fost updatata cu succes!"
+        redirect_to "/applications"
+      else
+        flash[:notice] = "Ceva a mers prost"
+        redirect_to "/applications"
+      end
+    end
+    
+
+
+
   end
 
 

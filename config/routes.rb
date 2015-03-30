@@ -35,6 +35,7 @@ Team9Scholarships::Application.routes.draw do
   get '/delete/:news_id' => 'news#delete'
 
   post '/send_applications' => 'applications#create'
+  post '/update_application/:app_id' => 'applications#update_application'
 
   get 'datatable_i18n', to: 'home#datatable_i18n'
 
