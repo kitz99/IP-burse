@@ -222,8 +222,13 @@ class ApplicationsController < ApplicationController
     @bank = @current_user.bank
 
     @mean, @credits = get_student_mean_and_credits
-
-    period = Period.find_by(:activ =>true).id
+    begin
+      period = Period.find_by(:activ =>true).id
+    rescue Exception => e
+      flash[:notice] = "In momentul de fata nu exista o sesiune activa, deci nu puteti aplica la burse"
+      redirect_to "/"
+    end
+    
 
     allScholarshipIds = Domain.select("scholarship_id").where(:period_id => period).uniq
 
@@ -486,6 +491,10 @@ class ApplicationsController < ApplicationController
         begin
           if not params["application"][paper.parameterize.underscore].nil?
             act_din_papers = Paper.find_by(:name => paper, :user_uid => current_user.uid)
+            act_din_papers.destroy
+            act_din_papers = Paper.new
+            act_din_papers.name = paper
+            act_din_papers.user_uid = current_user.uid
             act_din_papers.document = params["application"][paper.parameterize.underscore]
             if not act_din_papers.save
               ok = false
@@ -505,10 +514,18 @@ class ApplicationsController < ApplicationController
         redirect_to "/applications"
       end
     end
-    
+  end
 
 
-
+  def delete_application
+    app = Application.find(params[:app_id])
+    if app.destroy
+      flash[:notice] = "Aplicatie stearsa cu succes"
+      redirect_to "/applications"
+    else
+      flash[:notice] = "Aplicatia nu poate fi stearsa"
+      redirect_to "/applications"
+    end
   end
 
 

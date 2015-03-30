@@ -143,7 +143,7 @@
         <div class="col-md-6">
             <ul>
               <% @atasamente.each do |a| %>
-                <li><a href="<%= a.document %>" target="_blank"><%= a.name %></a> <%= file_field(:application, a.name.underscore.to_sym, class:"form-control") %></li>
+                <li><a href="<%= a.document %>" target="_blank"><%= a.name %></a> <%= file_field(:application, a.name.parameterize.underscore.to_sym, class:"form-control") %></li>
               <% end %>
             </ul>
         </div>

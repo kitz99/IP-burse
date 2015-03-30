@@ -20,6 +20,10 @@ class PeriodsController < ApplicationController
   # GET /periods/new
   def new
     @period = Period.new
+    str = "http://193.226.51.30/students/count?oauth_token=#{current_user.token}"
+
+    @info = JSON.parse(open(str).read)
+    @period.nr_stud = @info["count"]
   end
 
   # GET /periods/1/edit
@@ -130,8 +134,8 @@ class PeriodsController < ApplicationController
     template = "doc"
     doci = ""
     noDoc.times do | i |
-    doci = template + i.to_s
-    docs = docs +  params[:"#{doci}"] + "~"
+      doci = template + i.to_s
+      docs = docs +  params[:"#{doci}"] + "~"
     end
 
     
@@ -141,7 +145,7 @@ class PeriodsController < ApplicationController
     documents.scholarship_id = domain.scholarship_id
     documents.save
 
-    redirect_to "/"
+    redirect_to "/periods"
   end
 
   private

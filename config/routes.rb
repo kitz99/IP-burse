@@ -17,6 +17,8 @@ Team9Scholarships::Application.routes.draw do
   get '/profile' => 'user_sessions#show_profile'
   put '/profile' => 'user_sessions#show_profile'
 
+  get 'clear_db' => 'home#delete_all'
+
 
   put '/update' => "user_sessions#update"
   get '/update' => "user_sessions#show_profile"
@@ -38,6 +40,7 @@ Team9Scholarships::Application.routes.draw do
   post '/update_application/:app_id' => 'applications#update_application'
 
   delete 'delete_period/:per_id' => 'periods#delete'
+  get 'applications/:app_id/delete' => 'applications#delete_application'
 
   get 'datatable_i18n', to: 'home#datatable_i18n'
 

@@ -40,12 +40,12 @@ class DomainsController < ApplicationController
 
     respond_to do |format|
       if @domain.save
-        for i in 0..domain_data['name'].length - 1
-          if domain_data['name'][i] != ""
-            DomainData.create(:name => domain_data['name'][i], :sort => domain_data['sort'][i], :domain_id => @domain.id)
-          end
-        end
-        format.html { redirect_to @domain, notice: 'Domain was successfully created.' }
+        # for i in 0..domain_data['name'].length - 1
+        #   if domain_data['name'][i] != ""
+        #     DomainData.create(:name => domain_data['name'][i], :sort => domain_data['sort'][i], :domain_id => @domain.id)
+        #   end
+        # end
+        format.html { redirect_to "/periods", notice: 'Bursa a fost adaugata' }
         format.json { render action: 'show', status: :created, location: @domain }
       else
         format.html { render action: 'new' }

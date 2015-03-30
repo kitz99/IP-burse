@@ -6,16 +6,15 @@
 		<% if @waiting.empty? %>
 			<p>Nu aveti aplicatii in asteptare in acest moment</p>
 		<% else %>
-			<ul>
 				<% @waiting.each do |app| %>
-					<li>
+					<div style="  line-height: 3em; font-size: 1.2em; vertical-align: middle;">
 					    <%= app["scholarship"] %> 
-					    <a class="btn btn-default"><i class="fa fa-eye"></i></a>
-					    <a class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>
-					    <a class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
-					</li>
+					    <span class="pull-right" style="  margin-right: 25px;">
+					    	<a href="/applications/<%= app['application'].id %>/edit" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>
+					    	<a href="/applications/<%= app['application'].id %>/delete" class="btn btn-danger" data-confirm="Are you sure?"><i class="fa fa-trash-o"></i></a>
+					    </span>
+					</div>
 				<% end %>
-			</ul>
 		<% end %>
 	</div>
 	<div class="col-md-4">

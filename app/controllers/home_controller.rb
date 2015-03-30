@@ -41,6 +41,22 @@ class HomeController < ApplicationController
 
   end
 
+  def delete_all
+    if @current_user.is_admin == true
+      # apuca-te de sters
+      # applications
+      Application.destroy_all
+      Period.destroy_all
+      Document.destroy_all
+      Paper.destroy_all
+      News.destroy_all
+      Domain.destroy_all
+      redirect_to "/"
+    else
+      redirect_to "/logout"
+    end
+  end
+
 
   def generate
     @domains = Domain.order(order_number: :desc)
