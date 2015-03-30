@@ -1,245 +1,174 @@
-<div class="container col-md-10 col-md-offset-1 text-center">
-  <div class="row text-left"></div>
-    <div class="col-md-9">
-    <h2 class="col-md-8">
-      <% case params[:id] %>
-      <% when "1" %>  
-      Bursa de perfomanta
-      <% when "2" %>  
-      Bursa de studiu/merit
-      <% when "3" %>  
-      Bursa sociala</p>
-      <% when "4" %> 
-      Bursa sociala ocazionala
-      <% when "5" %> 
-      Bursa medicala
-      <% when "6" %>  
-      Bursa sociala orfan
-
-      <% end %>
-    </h2>
-    </div>
-    <div class="col-md-3">
-      Status: <span class="text-<%= 
-      case @application.status
-      when "Valida" then "primary"
-      when "Nevalida" then "warning"
-      when "Acceptata" then "success"
-      when "Respinsa" then "danger"
-      when "In asteptare" then "info"
-      else ""
-      end
-      %>"><%= @application.status %>
-    </span>
-    </div>
+<div class="container col-md-12 text-center">
+  <div class="meta-infos">
+    <h1><%= @titlu_bursa %> : <span style="color:#428bca;"><%= @status %> <i class="fa fa-spinner fa-spin"></i></span></h1>
   </div>
-  <div class="row text-left">
-    <div>
-
-      <%= form_for(@application) do |f| %> 
-
+  <div id="common-infos">
+    <hr />
+    <h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Date Personale</strong></h4>
+    <hr />
+    <div class="row" style="text-align: left;">
+      <!-- nume -->
       <div class="form-group col-md-6">
         <label class="col-md-12 control-label">Nume</label>
         <div class="col-md-12">
-        
-          <input type="text" api="1" class="form-control" name="api[last_name]" value="<%= @info["last_name"] %>">
+          <div class="input-group">
+            <span id="nume" data-number="1" class="rest-in-place form-control" data-url="/inline" data-object="user" data-attribute="last_name" data-placeholder="Nume de familie...">
+              <%= @info["last_name"] %>
+            </span>
+            <div class="input-group-addon">
+              <i class="fa fa-pencil pull-right"></i>
+            </div>
+          </div>
+          <!-- <span id="nume" data-number="1" class="rest-in-place" data-url="/inline" data-object="user" data-attribute="last_name" data-placeholder="Nume de familie...">
+            <%= @info["last_name"] %>
+          </span> -->
         </div>
       </div>
-
+      <!-- prenume -->
       <div class="form-group col-md-6">
         <label class="col-md-12 control-label">Prenume</label>
         <div class="col-md-12">
-          <input type="text" api="1" class="form-control" name="api[first_name]" value="<%= @info["first_name"] %>" disabled>
+          <div class="input-group">
+            <span id="nume" data-number="1" class="rest-in-place form-control" data-url="/inline" data-object="user" data-attribute="first_name" data-placeholder="Nume de familie...">
+              <%= @info["first_name"] %>
+            </span>
+            <div class="input-group-addon">
+              <i class="fa fa-pencil pull-right"></i>
+            </div>
+          </div>
         </div>
       </div>
-
-
-      <div class="form-group col-md-4">
-        <label class="col-md-12 control-label">Specializarea</label>
-        <div class="col-md-12">
-          <input type="text" api="1" class="form-control"  value="<%= @info['specialization'] %>" disabled>
-        </div>
-      </div>
-
-      <div class="form-group col-md-2">
-        <label class="col-md-12 control-label">Anul</label>
-        <div class="col-md-12">
-          <input type="text" api="1" class="form-control"  value="<%= @info['group_year'] %>" disabled>
-        </div>
-      </div>  
-
-      <div class="form-group col-md-2">
-        <label class="col-md-12 control-label">Grupa</label>
-        <div class="col-md-12">
-          <input type="text" api="1" class="form-control"  value="<%= @info['group_year'].to_s + @info['group_series'].to_s + @info['group_number'].to_s %>" disabled>
-        </div>
-      </div>  
-
-      <div class="form-group col-md-2">
-        <label class="col-md-12 control-label">Media</label>
-        <div class="col-md-12">
-          <input type="text" api="1" class="form-control" name="api[mean]" value="<%= @info['mean'] %>" disabled>
-        </div>
-      </div>  
-
-      <div class="form-group col-md-2">
-        <label class="col-md-12 control-label">Numarul de credite</label>
-        <div class="col-md-12">
-          <input type="text" api="1" class="form-control" name="api[credits]" value="<%= @info['credits'] %>" disabled>
-        </div>
-      </div>
-
+    </div>
+    <!-- randul 2 -->
+    <div class="row text-left">
       <div class="form-group col-md-6">
         <label class="col-md-12 control-label">CNP</label>
         <div class="col-md-12">
-          <input type="text" api="1" class="form-control" name="api[cnp]" value="<%= @info['cnp'] %>" disabled>
+          <span class="col-md-12 form-control">
+            <%= @info['cnp'] %>
+          </span>
         </div>
       </div>
 
-      <div class="form-group col-md-6">
-        <label class="col-md-12 control-label">BI/CI seria si nr</label>
+      <div class="form-group col-md-3">
+        <label class="col-md-12 control-label">BI/CI serie</label>
         <div class="col-md-12">
-          <input type="text" api="1" class="form-control" name="api[serienumar]" value="<%= @info['bi serie'].to_s + @info['bi numar'].to_s %>" disabled>
-        </div>
-      </div>
-      
-      <input type="hidden" class="form-control" name="api[is]" value="0">
-      <div class="form-group" id="editApi">
-        <div class="col-md-7" style="text-align:right">
-          <a href="javascript:void(0)"  onclick="edit_api();">Editeaza informatii</a>
+          <div class="input-group">
+            <span class="rest-in-place form-control" data-number="4" data-url="/inline" data-object="user" data-attribute="bi_serie" data-placeholder="Serie BI...">
+              <%=  @info['bi serie'].to_s %>
+            </span> 
+            <div class="input-group-addon">       
+              <i class="fa fa-pencil pull-right"></i>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-group col-md-12">
-        <label class="col-md-12 control-label">Motivul pentru care aplicati</label>
+      <div class="form-group col-md-3">
+        <label class="col-md-12 control-label">BI/CI numar</label>
         <div class="col-md-12">
-          <%= f.text_area :reason, :rows => 5 , :class => "form-control" %>
+          <div class="input-group">
+            <span class="rest-in-place form-control" data-number="5" data-url="/inline" data-object="user" data-attribute="bi_numar" data-placeholder="Numar BI">
+              <%=  @info['bi numar'].to_s %>
+            </span>   
+            <div class="input-group-addon">     
+              <i class="fa fa-pencil pull-right"></i>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group col-md-2">
-        <label class="col-md-12 control-label">Bursa pe card?</label>
-        <div class="col-md-12">
-          <%= f.select(:on_card, [['Nu', 0], ['Da', 1]] , {}, { :class => 'form-control' }) %>  
-        </div>
-      </div>
-
-      <div class="form-group col-md-3" id="bankDiv" style="display:none">
-        <label class="col-md-12 control-label">Banca</label>
-        <div class="col-md-12">
-          <input type="text" class="form-control" name="application[users][bank]" value="<%= @application.user.bank %>">
-        </div>
-      </div>
-
-      <div class="form-group col-md-3" id="ibanDiv" style="display:none">
-        <label class="col-md-12 control-label">Contul Iban</label>
-        <div class="col-md-12">
-          <input type="text" class="form-control" name="application[users][iban]" value="<%= @application.user.iban %>">
-        </div>
-      </div>
-
-
-
-      <div class="form-group col-md-4">
-       <label class="col-md-12 control-label">Documente</label>
-       <div class="col-md-12">
-        <% check = 0 %>
-        <%= f.fields_for :attachments do |p| %>
-        <% if check == 0 %>
-        <% check = 1 %>
-        <%= p.file_field :path, :multiple => true, name: "attachments[path][]", class: "btn btn-default pull-left" %>
-        <% end %>
-        <% end %>    
       </div>
     </div>
+    <!-- randul 3 -->
+    <div class="row text-left">
+      <div class="form-group col-md-3">
+        <label class="col-md-12 control-label">Grupa</label>
+        <div class="col-md-12">
+          <div class="form-control" >
+            <%= @info['group_year'].to_s + @info['group_series'].to_s + @info['group_number'].to_s %>
+          </div>
+        </div>
+      </div> 
 
-  </div>
+      <div class="form-group col-md-3">
+        <label class="col-md-12 control-label">Anul</label>
+        <div class="col-md-12">
+          <div class="form-control">
+            <%= @info['group_year'] %>
+          </div>
+        </div>
+      </div>  
 
-  <div class="col-md-3">
-    <% @attachments.each do |attachment| %>
-    <% if attachment.path %>
-    <div class="pull-left"> 
-      <a href="<%= root_url[0..-2] + attachment.path.to_s %>" target="_blank">
-        <img class="img-thumbnail" src="<%= attachment.path_url(:thumb) %>" />
-      </a>
-      <%= link_to '<span class="glyphicon glyphicon-remove" style="cursor:pointer;top:-100px;left:-12px;border: 1px solid gray;color: gray;border-radius: 5px;"></span>'.html_safe, attachment, method: :delete, data: { confirm: 'Are you sure?' } %>                  
+      <div class="form-group col-md-3">
+        <label class="col-md-12 control-label">Media</label>
+        <div class="col-md-12">
+          <div class="form-control">
+            <% if @mean %>
+            <%= @mean %>
+            <% else %>
+            Not specified
+            <% end %>
+          </div>
+        </div>
+      </div> 
 
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-
-  <% if @application.status == "Nevalida" %>
-  <div class="col-md-3">
-    <span class="text-danger">Raspuns: <%= @application.response %></span>
-  </div>
-  <% end %>
-
-  <div class="col-md-3">
-    <% @attachments.each do |attachment| %>
-    <% if attachment.path %>
-    <div class="pull-left"> 
-      <a href="<%= root_url[0..-2] + attachment.path.to_s %>" target="_blank">
-        <img class="img-thumbnail" src="<%= attachment.path_url(:thumb) %>" />
-      </a>
-      <%= link_to '<span class="glyphicon glyphicon-remove" style="cursor:pointer;top:-100px;left:-12px;border: 1px solid gray;color: gray;border-radius: 5px;"></span>'.html_safe, attachment, method: :delete, data: { confirm: 'Are you sure?' } %>                  
-
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-
-  </div>
-
-
-  <div class="clearfix"></div>
-  <br />
-  <br />
-
-  <% if @application.status != "Valida" %>
-  <div class="row">
-    <div class="col-md-12" style="text-align:center">    
-      <%= f.submit "Salveaza", :class => 'btn btn-lg btn-primary' %>
+      <div class="form-group col-md-3">
+        <label class="col-md-12 control-label">Nr credite</label>
+        <div class="col-md-12">
+          <div class="form-control">
+            <% if @credits %>
+            <%= @credits %>
+            <% else %>
+            Not specified
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <% end %>
-
-  <% end %>
+  <hr />
+  <h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Documente atasate</strong></h4>
+  <hr />
 </div>
 
+<div container="container">
+  <ul class="nav nav-tabs" id="myTab">
+    <li role="presentation" data-toggle="tab" class="active">
+      <a href="#goto-tab"><%= @titlu_bursa %></a></li>
+  </ul>
+</div>
+<%= form_tag("/update_application/#{@app_id}", method: "post", class:"form-horizontal", :multipart => true) do %>
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active in" id="goto-tab">
+      <div class="row">
+        <div class="col-md-6">
+            <ul>
+              <% @atasamente.each do |a| %>
+                <li><a href="<%= a.document %>" target="_blank"><%= a.name %></a> <%= file_field(:application, a.name.underscore.to_sym, class:"form-control") %></li>
+              <% end %>
+            </ul>
+        </div>
+        <div class="col-md-6">
+          <br />
+              <h4>Instructiuni de completare</h4>
+              <br />
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto quas, animi cupiditate quam deleniti! Natus aperiam recusandae quam vel quod enim, autem ipsa quis provident, suscipit, sunt alias est quaerat?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="submit-button">
+    <input type="submit" value="Trimite" class="">
+  </div>
+<% end %>
+<script type="text/javascript">
+  $('#myTab a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  })
+  $('.rest-in-place').click(function(){
 
-  <script>
-
-    function edit_api(){
-      $("#editApi").hide();
-
-      $("[name='api[is]']").val('1');
-
-      $("[api='1']").each(function(){
-        $(this).prop('disabled', false);
-      });
-
-      //make all available
-    }
-
-    function check_iban(){
-      if($("#application_on_card").val() == 0){
-        $("#bankDiv").hide();
-        $("#ibanDiv").hide();
-      }
-      else{
-        $("#bankDiv").show();
-        $("#ibanDiv").show();
-      }
-
-    }
-
-    $(document).ready(function(){
-      check_iban();
-    });
-
-    $("#application_on_card").change(function(){
-      check_iban();
-    });
-
-  </script>
+    $('.rip-active').css('border','none');
+  });
+</script>
+</div>
+<div class="clearfix"></div>
