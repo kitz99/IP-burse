@@ -43,14 +43,44 @@ class HomeController < ApplicationController
 
   def delete_all
     if @current_user.is_admin == true
-      # apuca-te de sters
-      # applications
-      Application.destroy_all
-      Period.destroy_all
-      Document.destroy_all
-      Paper.destroy_all
-      News.destroy_all
-      Domain.destroy_all
+      flash[:notice] = "Incep sa sterg: "
+      begin
+        Application.destroy_all
+        flash[:notice] += "STERS - Applications | "
+      rescue Exception => e
+        flash[:notice] += "NU POT - Applications | "
+      end
+      begin
+        Document.destroy_all
+        flash[:notice] += "STERS - Documents | "
+      rescue Exception => e
+        flash[:notice] += "NU POT - Applications | "
+      end
+      begin
+        Period.destroy_all
+        flash[:notice] += "STERS - Periods | "
+      rescue Exception => e
+        flash[:notice] += "NU POT - Periods | "
+      end
+      begin
+        Paper.destroy_all
+        flash[:notice] += "STERS - Papers | "
+      rescue Exception => e
+        flash[:notice] += "NU POT - Papers | "
+      end
+      begin
+        News.destroy_all
+        flash[:notice] += "STERS - news | "
+      rescue Exception => e
+        flash[:notice] += "NU POT - News | "
+      end
+      begin
+        Domain.destroy_all
+        flash[:notice] += "STERS - Domain | "
+      rescue Exception => e
+        flash[:notice] += "NU POT - Domain | "
+      end
+      
       redirect_to "/"
     else
       redirect_to "/logout"
