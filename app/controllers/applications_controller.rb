@@ -231,6 +231,11 @@ class ApplicationsController < ApplicationController
     
 
     allScholarshipIds = Domain.select("scholarship_id").where(:period_id => period).uniq
+    existent_applications = Array.new
+
+    Application.where(:user_id => current_user.id).each do |app|
+      existent_applications << app.scholarship_id
+    end
 
     @scholarship_titles = Array.new
 
@@ -241,19 +246,24 @@ class ApplicationsController < ApplicationController
         acte = acte_cu_tilda.name.split("~")
       end
       if not acte.nil?
-        h = {"nume" => Scholarship.find_by(:id => elem.scholarship_id).stype, 
-              "identificator" => rand(10000),
-              "acte" => acte
-            }
+          h = {"nume" => Scholarship.find_by(:id => elem.scholarship_id).stype, 
+                "identificator" => rand(10000),
+                "acte" => acte
+              }
       else
-         h = {"nume" => Scholarship.find_by(:id => elem.scholarship_id).stype, 
-              "identificator" => rand(10000)
-             }
+           h = {"nume" => Scholarship.find_by(:id => elem.scholarship_id).stype, 
+                "identificator" => rand(10000)
+               }
       end
 
-      @scholarship_titles << h
+      if not existent_applications.include?(elem.scholarship_id)
+        @scholarship_titles << h
+      end
     end
 
+    puts "=============================="
+    puts YAML::dump(@scholarship_titles)
+    puts "=============================="
 
     # respond_to do |format|
     #   format.html 

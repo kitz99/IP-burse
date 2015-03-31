@@ -70,7 +70,7 @@ class DomainsController < ApplicationController
             end
           end
         end
-        format.html { redirect_to @domain, notice: 'Domain was successfully updated.' }
+        format.html { redirect_to "/periods", notice: 'Bursa Updatata cu succes' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -84,7 +84,7 @@ class DomainsController < ApplicationController
   def destroy
     @domain.destroy
     respond_to do |format|
-      format.html { redirect_to domains_url }
+      format.html { redirect_to "/periods" }
       format.json { head :no_content }
     end
   end
