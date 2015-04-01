@@ -1,8 +1,10 @@
-<h2>Aplicatiile mele</h2>
+<hr/>
+ <h2 class="text-muted" style="text-align:center;"><i class="fa fa-check-circle"></i> <strong>Aplicatiile mele</strong></h2>
+ <hr/>
 <br /><br />
 <div class="row">
 	<div class="col-md-4">
-		<h2>Aplicatii in asteptare</h2>
+		<h3>Aplicatii in asteptare</h3><br />
 		<% if @waiting.empty? %>
 			<p>Nu aveti aplicatii in asteptare in acest moment</p>
 		<% else %>
@@ -18,7 +20,7 @@
 		<% end %>
 	</div>
 	<div class="col-md-4">
-		<h2>Aplicatii aprobate</h2>
+		<h3>Aplicatii aprobate</h3><br />
 		<% if @accepted.empty? %>
 			<p>Nu aveti aplicatii acceptate in acest moment</p>
 		<% else %>
@@ -32,7 +34,7 @@
 		<% end %>
 	</div>
 	<div class="col-md-4">
-		<h2>Aplicatii aprobate</h2>
+		<h3>Aplicatii respinse</h3><br />
 		<% if @rejected.empty? %>
 			<p>Nu aveti aplicatii respinse in acest moment</p>
 		<% else %>

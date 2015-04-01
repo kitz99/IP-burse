@@ -125,7 +125,7 @@
 			<div class="row" style="text-align: left;">
 			<!-- banca -->
 			<div class="form-group col-md-6">
-				<label class="col-md-12 control-label">Nume</label>
+				<label class="col-md-12 control-label">Banca</label>
 				<div class="col-md-12">
 					<div class="input-group">
 						<span id="nume" data-number="1" class="rest-in-place form-control" data-url="/inline" data-object="user" data-attribute="bank" data-placeholder="Banca...">
@@ -139,7 +139,7 @@
 			</div>
 			<!-- IBAN -->
 			<div class="form-group col-md-6">
-				<label class="col-md-12 control-label">Prenume</label>
+				<label class="col-md-12 control-label">IBAN</label>
 				<div class="col-md-12">
 					<div class="input-group">
 						<span id="nume" data-number="1" class="rest-in-place form-control" data-url="/inline" data-object="user" data-attribute="iban" data-placeholder="IBAN...">
@@ -158,6 +158,7 @@
 	<h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Alege tip bursa</strong></h4>
 	<hr />
 </div>
+<% if @scholarship_titles.length != 0  %>
 <div container="container">
 	<ul class="nav nav-tabs" id="myTab">
 		<% i = true %>
@@ -239,11 +240,21 @@
 		<% end %>
 	</div>
 	<div class="submit-button">
-		<input type="submit" value="Trimite" class="">
+		<input type="submit" value="Trimite" class="btn btn-info">
 	</div>
 
 	<% end %>
+<% else %>
+  <div class="clearfix"></div>
+  <div class="alert alert-warning">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<p>In momentul de fata nu exista burse la care sa puteti aplica. Va rugam sa reveniti!</p>
+	</div>
+<% end %>
 </div>
+
 <script type="text/javascript">
 	$('#myTab a').click(function (e) {
 		e.preventDefault();

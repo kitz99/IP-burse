@@ -1,6 +1,8 @@
 
-
-<h1>Perioade de aplicare</h1>
+<hr/>
+ <h2 class="text-muted" style="text-align:center;"><i class="fa fa-check-circle"></i> <strong>Perioade de aplicare</strong></h2>
+ <hr/>
+ <br><br>
 <style type="text/css">
   td {
       width: 120px;
@@ -78,6 +80,78 @@
 
 
 <br>
-<h3><%= link_to 'Adauga o noua perioada', new_period_path %></h3>
-<h3><%= link_to 'Adauga burse la sesiunea activa', new_domain_path %></h3>
-<h3><%= link_to 'Defineste burse pentru sesiunea activa', "/config-scholarship"%></h3>
+
+<div class="row">
+   <div class="col-md-4">
+    <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                       <i class="fa fa-plus-square fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">I</div>
+                                        <div>Step</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="<%= new_period_path %>">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Adauga Sesiune</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+
+   </div>
+
+   <div class="col-md-4">
+       <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-puzzle-piece fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">II</div>
+                                        <div>Step</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="disabled" href="<%= new_domain_path %>" role="button">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Adauga burse la sesiunea activa</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+   
+
+   <div class="col-md-4">
+      <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-cog fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">III</div>
+                                        <div>Step</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/config-scholarship">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Configureaza burse</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+  
+
+ </div>
