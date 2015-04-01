@@ -322,8 +322,9 @@ class ApplicationsController < ApplicationController
 
     allScholarshipIds.each do |elem|
       could_apply_at = Scholarship.find_by(:id => elem.scholarship_id).stype
-      
-      if params[could_apply_at]["yes"] == "1"
+
+      begin
+        if params[could_apply_at]["yes"] == "1"
         acte_cu_tilda =  Document.find_by(:period_id => period, :scholarship_id => elem.scholarship_id)
 
         if acte_cu_tilda 
@@ -337,6 +338,10 @@ class ApplicationsController < ApplicationController
           "domain_id" => elem.id
         }
       end
+      rescue Exception => e
+        # Aici nu ar trebui sa se intample nimic
+      end
+      
     end
 
     errors = Array.new
