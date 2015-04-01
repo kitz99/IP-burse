@@ -261,13 +261,6 @@ class ApplicationsController < ApplicationController
       end
     end
 
-    puts "=============================="
-    puts YAML::dump(@scholarship_titles)
-    puts "=============================="
-
-    # respond_to do |format|
-    #   format.html 
-    # end
   end
 
 
@@ -319,6 +312,16 @@ class ApplicationsController < ApplicationController
     allScholarshipIds = Domain.select("scholarship_id, id").where(:period_id => period).uniq
 
     applied_at = Array.new()
+
+    puts "=============================="
+    puts YAML::dump(params["peCardVal"])
+    puts "=============================="
+
+    if params["peCardVal"] == 'true'
+      peCard = true
+    else
+      peCard = false
+    end
 
     allScholarshipIds.each do |elem|
       could_apply_at = Scholarship.find_by(:id => elem.scholarship_id).stype
@@ -397,6 +400,11 @@ class ApplicationsController < ApplicationController
           app.user_id = user_id
           app.scholarship_id = scholarship_id
           app.domain_id = domain_id
+          if peCard == true
+            app.on_card = 1
+          else
+            app.on_card = 0
+          end
           # app.on_card = params[:application]['on_card']
 
           if not app.save
