@@ -27,10 +27,26 @@
 <% end %>
 
 <script type="text/javascript">
+ var lastId = new Array();
+ function showAll(element) {
+      $("." + element).fadeIn(800);
+ }
   $(document).ready(function(){
     $('.linkExpand').click(function(){
+      if(lastId.length != 0 ) {
+        console.log(lastId);
+        $('.collapse').fadeOut(800);
+        for (var i=0; i<lastId.length;i=i+1) {
+          showAll(lastId[i]);
+        }
+        while (lastId.length) {
+           lastId.pop();
+        }
+      }      
+
       var s = $(this).attr("href");
       $("." + s.substring(1,s.length)).fadeOut(800);
+      lastId.push(s.substring(1,s.length));
     })
     $('.linkCollpse').click(function(){
       var s = $(this).attr("href");
