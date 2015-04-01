@@ -16,9 +16,6 @@
 							<i class="fa fa-pencil pull-right"></i>
 						</div>
 					</div>
-					<!-- <span id="nume" data-number="1" class="rest-in-place" data-url="/inline" data-object="user" data-attribute="last_name" data-placeholder="Nume de familie...">
-						<%= @info["last_name"] %>
-					</span> -->
 				</div>
 			</div>
 			<!-- prenume -->
@@ -122,6 +119,41 @@
 			</div>
 		</div>
 	</div>
+	<div class="mod-de-plata" style="text-align: left; margin-left: 20px;">
+		<input type="checkbox" id="pe-card"> Vreau bursa pe card
+		<div id="banca" style="display:none; margin-left: -20px">
+			<div class="row" style="text-align: left;">
+			<!-- banca -->
+			<div class="form-group col-md-6">
+				<label class="col-md-12 control-label">Nume</label>
+				<div class="col-md-12">
+					<div class="input-group">
+						<span id="nume" data-number="1" class="rest-in-place form-control" data-url="/inline" data-object="user" data-attribute="bank" data-placeholder="Banca...">
+							<%= @bank %>
+						</span>
+						<div class="input-group-addon">
+							<i class="fa fa-pencil pull-right"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- IBAN -->
+			<div class="form-group col-md-6">
+				<label class="col-md-12 control-label">Prenume</label>
+				<div class="col-md-12">
+					<div class="input-group">
+						<span id="nume" data-number="1" class="rest-in-place form-control" data-url="/inline" data-object="user" data-attribute="iban" data-placeholder="IBAN...">
+							<%= @iban %>
+						</span>
+						<div class="input-group-addon">
+							<i class="fa fa-pencil pull-right"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
 	<hr />
 	<h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Alege tip bursa</strong></h4>
 	<hr />
@@ -140,6 +172,7 @@
 	</ul>
 
 <%= form_tag("/send_applications", method: "post", class:"form-horizontal", :multipart => true) do %>
+	<input type="hidden" name="peCardVal" id="peCardVal">
 	<div id="myTabContent" class="tab-content">
 		<% i = true %>
 		<% @scholarship_titles.each do |nume| %>
@@ -220,6 +253,17 @@
 
 		$('.rip-active').css('border','none');
 	});
+
+	$('#pe-card').on("click", function(){
+		if ($("#pe-card").is(":checked")){
+			$("#banca").fadeIn();
+			$("#peCardVal").val = true;
+		}
+		else{
+			$("#banca").fadeOut();
+			$("#peCardVal").val = false;
+		}
+	})
 </script>
 </div>
 <div class="clearfix"></div>
