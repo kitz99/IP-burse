@@ -307,15 +307,12 @@ class ApplicationsController < ApplicationController
     # pentru fiecare act necesar din array-ul de mai sus, verific daca a incarcat. Daca e totul ok, linkez
     # datele comune cu datele astea particulare si creez o aplicatie. Daca nu, trec la urmatoarea, si retin erorile.
     # INEFICIENT, RELATIV PROST GANDIT, NECESITA REFACTORIZARE
+    # inca un comentariu adaugat
     
     period = Period.find_by(:activ =>true).id
     allScholarshipIds = Domain.select("scholarship_id, id").where(:period_id => period).uniq
 
     applied_at = Array.new()
-
-    puts "=============================="
-    puts YAML::dump(params["peCardVal"])
-    puts "=============================="
 
     if params["peCardVal"] == 'true'
       peCard = true
@@ -325,8 +322,9 @@ class ApplicationsController < ApplicationController
 
     allScholarshipIds.each do |elem|
       could_apply_at = Scholarship.find_by(:id => elem.scholarship_id).stype
-      
-      if params[could_apply_at]["yes"] == "1"
+
+      begin
+        if params[could_apply_at]["yes"] == "1"
         acte_cu_tilda =  Document.find_by(:period_id => period, :scholarship_id => elem.scholarship_id)
 
         if acte_cu_tilda 
@@ -340,6 +338,10 @@ class ApplicationsController < ApplicationController
           "domain_id" => elem.id
         }
       end
+      rescue Exception => e
+        # Aici nu ar trebui sa se intample nimic
+      end
+      
     end
 
     errors = Array.new
