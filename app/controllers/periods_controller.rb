@@ -36,7 +36,12 @@ class PeriodsController < ApplicationController
     @period = Period.new(period_params)
 
     if @period.start < @period.end
-        respond_to do |format|
+
+      respond_to do |format|
+        verify_activ = Period.find_by(:activ => 't')
+        if not verify_activ.nil?
+          format.html { redirect_to "/periods", notice: 'Exista deja o perioada activa!' }
+        else
           if @period.save
             # create a news when a period is started
             @news = News.new()
@@ -59,20 +64,21 @@ class PeriodsController < ApplicationController
                    end
                  end
                end
-              end
-              @mailing_list << "tehnic@pddesign.ro"
-              @mailing_list << "bogdan.timofte@hotmail.com"
-              @mailing_list << "bogdan.mihai.timofte@gmail.com"
+             end
+             @mailing_list << "tehnic@pddesign.ro"
+             @mailing_list << "bogdan.timofte@hotmail.com"
+             @mailing_list << "bogdan.mihai.timofte@gmail.com"
 
-            NewsMailer.news_created(@news, username, @mailing_list).deliver_now
-            @news.save()
-            format.html { redirect_to "/periods", notice: 'Period was successfully created.' }
-            format.json { render :show, status: :created, location: @period }
-          else
+             NewsMailer.news_created(@news, username, @mailing_list).deliver_now
+             @news.save()
+             format.html { redirect_to "/periods", notice: 'Period was successfully created.' }
+             format.json { render :show, status: :created, location: @period }
+           else
             format.html { render :new }
             format.json { render json: @period.errors, status: :unprocessable_entity }
           end
         end
+      end
     else
       flash[:error] = "Data de inceput trebuie sa fie precedenta datei de sfarsit!"
       respond_to do |format|
@@ -162,4 +168,4 @@ class PeriodsController < ApplicationController
     def domain_params
       params.require(:domain).permit(:scholarship_id, :period_id)
     end
-end
+  end
