@@ -6,7 +6,7 @@ APP_NAME = 'Team9Scholarships'
 ROOT_PATH = "/home/rails_burse/#{APP_NAME}"
 
 set :application, APP_NAME
-set :repo_url, 'git@github.com:RoR-FMI/Team9Scholarships.git'
+set :repo_url, 'git@github.com:kitz99/IP-burse.git'
 set :branch, ENV['branch'] || 'master'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

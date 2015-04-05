@@ -70,6 +70,8 @@ group :production, :testing do
   gem 'rails_12factor'
 end
 
+gem 'therubyracer'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
