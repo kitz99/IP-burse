@@ -65,8 +65,8 @@ group :development do
   gem 'sqlite3'
 end
 
+gem 'pg' # postgress
 group :production, :testing do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -78,10 +78,10 @@ gem 'jbuilder'
 gem 'responders', '~> 2.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
