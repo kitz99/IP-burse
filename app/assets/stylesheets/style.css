@@ -706,3 +706,20 @@ border-radius: 50%;
   text-decoration: none;
   color:white;
 }
+
+.panel-yellow{
+    border-color: #f0ad4e;
+}
+.panel-yellow .panel-heading{
+  border-color: #f0ad4e;
+  color: #fff;
+  background-color: #f0ad4e;
+}
+.panel-green {
+  border-color: #5cb85c;
+}
+.panel-green .panel-heading {
+  border-color: #5cb85c;
+  color: #fff;
+  background-color: #5cb85c;
+}
