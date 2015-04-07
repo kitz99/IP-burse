@@ -34,7 +34,7 @@ gem 'gravatar_image_tag'
 # new gem
 gem 'rest_in_place'
 
-# for put on server 
+# for put on server
 gem 'rest-client', '~> 1.6.7'
 
 
@@ -55,8 +55,8 @@ gem 'rails-observers', '~>0.1.1'
 gem 'rails-perftest', '~>0.0.2'
 
 
-# Use jQuery data tables for filter/show data 
-gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git' 
+# Use jQuery data tables for filter/show data
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'will_paginate'
 
 gem 'heroku'
