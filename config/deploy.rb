@@ -2,6 +2,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
+RUBY_V = '2.2.0'
 APP_NAME = 'Team9Scholarships'
 ROOT_PATH = "/home/rails_burse/#{APP_NAME}"
 
@@ -42,6 +43,22 @@ set :rvm_type, :system
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+namespace :assets do
+  desc "precompile assets"
+  task :precompile do
+    on roles(:app) do
+      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use #{RUBY_V} && bundle exec rake assets:precompile RAILS_ENV=production"
+    end
+  end
+
+  desc "clean assets"
+  task :clean do
+    on roles(:app) do
+      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use #{RUBY_V} && bundle exec rake assets:clean RAILS_ENV=production"
+    end
+  end
+end
+
 namespace :deploy do
   desc "Create log & pid folder"
   task :setup_pid_log do
@@ -60,7 +77,7 @@ namespace :deploy do
   desc "Start unicorn"
   task :start do
     on roles(:web) do
-      execute "if [ ! -f #{ROOT_PATH}/pid/unicorn.pid ]; then source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use 2.0.0 && bundle exec unicorn_rails -E production -c config/unicorn.rb -D; else echo \"Unicorn already running\"; fi"
+      execute "if [ ! -f #{ROOT_PATH}/pid/unicorn.pid ]; then source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use #{RUBY_V} && bundle exec unicorn_rails -E production -c config/unicorn.rb -D; else echo \"Unicorn already running\"; fi"
     end
   end
 
@@ -68,42 +85,42 @@ namespace :deploy do
   task :restart do
     on roles(:web) do
       execute "if [ ! -f #{ROOT_PATH}/pid/unicorn.pid ]; then echo \"Pid file not found!\"; else kill -s QUIT `cat #{ROOT_PATH}/pid/unicorn.pid`; fi"
-      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use 2.0.0 && bundle exec unicorn_rails -E production -c config/unicorn.rb -D"
+      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use #{RUBY_V} && bundle exec unicorn_rails -E production -c config/unicorn.rb -D"
     end
   end
 
   desc "Setup figaro"
   task :env_var_link do
     on roles(:web) do
-      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current/config && rvm use 2.0.0 && ln -sf #{ROOT_PATH}/application.yml application.yml"
+      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current/config && rvm use #{RUBY_V} && ln -sf #{ROOT_PATH}/application.yml application.yml"
     end
   end
 
   desc "Run bundle"
   task :bundle do
     on roles(:web) do
-      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use 2.0.0 && bundle install"
+      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use #{RUBY_V} && bundle install"
     end
   end
 
   desc "Run migrations"
   task :migrate_all do
     on roles(:web) do
-      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use 2.0.0 && bundle exec rake db:create db:migrate RAILS_ENV=production"
+      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use #{RUBY_V} && bundle exec rake db:create db:migrate RAILS_ENV=production"
     end
   end
 
   desc "Drop database"
   task :drop_db do
     on roles(:web) do
-      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use 2.0.0 && bundle exec rake db:drop RAILS_ENV=production"
+      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use #{RUBY_V} && bundle exec rake db:drop RAILS_ENV=production"
     end
   end
 
   desc "Seed database"
   task :seed_db do
     on roles(:web) do
-      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use 2.0.0 && bundle exec rake db:seed RAILS_ENV=production"
+      execute "source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current && rvm use #{RUBY_V} && bundle exec rake db:seed RAILS_ENV=production"
     end
   end
 
@@ -118,7 +135,16 @@ namespace :rails do
   desc "Open the rails console on one of the remote servers"
   task :console do
     on roles(:app) do
-      exec "ssh -l #{host.user} #{host.hostname} -p #{host.ssh_options[:port]} -t 'source ~/.profile && source /etc/profile.d/rvm.sh && cd fmi_api/current && rails c production'"
+      exec "ssh -l #{host.user} #{host.hostname} -p #{host.ssh_options[:port]} -t 'source ~/.profile && source /etc/profile.d/rvm.sh && cd #{ROOT_PATH}/current  && rvm use #{RUBY_V} && rails c production'"
      end
+  end
+end
+
+namespace :logs do
+  desc "tail rails logs"
+  task :tail_rails do
+    on roles(:app) do
+      execute "tail -f #{ROOT_PATH}/log/unicorn.log"
+    end
   end
 end
