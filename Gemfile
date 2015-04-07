@@ -85,5 +85,7 @@ gem 'unicorn'
 # Deploy with Capistrano
 gem 'capistrano'
 
+gem 'figaro'
+
 # To use debugger
 # gem 'debugger'
