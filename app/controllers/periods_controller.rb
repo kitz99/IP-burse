@@ -152,7 +152,8 @@ class PeriodsController < ApplicationController
     documents.scholarship_id = domain.scholarship_id
     documents.save
 
-    redirect_to "/periods"
+    flash[:notice] = "Ati definit actele necesare pentru acest tip de bursa." 
+    redirect_to "/config-scholarship"
   end
 
   private

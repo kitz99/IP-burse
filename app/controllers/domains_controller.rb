@@ -45,7 +45,7 @@ class DomainsController < ApplicationController
         #     DomainData.create(:name => domain_data['name'][i], :sort => domain_data['sort'][i], :domain_id => @domain.id)
         #   end
         # end
-        format.html { redirect_to "/periods", notice: 'Bursa a fost adaugata' }
+        format.html { redirect_to "/domains/new", notice: 'Bursa a fost adaugata' }
         format.json { render action: 'show', status: :created, location: @domain }
       else
         format.html { render action: 'new' }
