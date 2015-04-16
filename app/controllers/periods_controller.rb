@@ -40,7 +40,8 @@ class PeriodsController < ApplicationController
       respond_to do |format|
         verify_activ = Period.find_by(:activ => 't')
         if not verify_activ.nil?
-          format.html { redirect_to "/periods", notice: 'Exista deja o perioada activa!' }
+          flash[:error] = "Exista deja o perioada activa!"
+          format.html { redirect_to "/periods/new", error: 'Exista deja o perioada activa!' }
         else
           if @period.save
             # create a news when a period is started

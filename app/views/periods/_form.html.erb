@@ -1,13 +1,6 @@
+
 <div class="container">
   <div class="col-md-12">
-
-
-  <%= flash[:notice]%>
-<% unless flash[:error].nil? %>
-  <div class="alert alert-danger" role="alert">
-    <%= flash[:error]%>
-  </div>
-<%end%>
 
 <br>
 <br>
@@ -28,12 +21,12 @@
 
 
       <div class="form-group">
-        <label class="col-md-2 control-label"> <%= f.label :start %> </label> 
+        <label class="col-md-2 control-label"> Data de start </label> 
         <span style="margin-left:16px"> <%= f.date_select :start , class:"form-control"%> </span>
       </div>
 
       <div class="form-group">
-        <label class="col-md-2  control-label"> <%= f.label :end %>  </label> 
+        <label class="col-md-2  control-label"> Data de sfarsit  </label> 
         <span style="margin-left:16px"> <%= f.date_select :end , class:"form-control"%> </span>
       </div>
 
@@ -48,18 +41,18 @@
       </div>
 
       <div class="form-group">
-        <label class="col-md-2 control-label"> <%= f.label :nr_stud %> </label> 
+        <label class="col-md-2 control-label"> Numar studenti </label> 
         <span class="col-md-6"> <%= f.number_field :nr_stud, class:"form-control col-md-6", in:1...4000 %> </span>
       </div>
 
       <div class="form-group">
-        <label class="col-md-2 control-label">  <%= f.label :min_salary %> </label> 
+        <label class="col-md-2 control-label">  Salariu minim </label> 
         <span class="col-md-6"> <%= f.number_field :min_salary, class:"form-control col-md-6", in:1...9000000 %> </span>
       </div>
 
       <div class="form-group">
         <div class="col-md-6 col-md-offset-2"> 
-           <div class="actions"> <%= f.submit class:"btn btn-primary"%>   </div> 
+           <div class="actions"> <%= f.submit class:"btn btn-primary" %>   </div> 
         </div>
       </div>
   </div>
