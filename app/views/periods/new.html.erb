@@ -1,4 +1,10 @@
-<h1>New Period</h1>
+<%= flash[:notice]%>
+<% unless flash[:error].nil? %>
+  <div class="alert alert-danger" role="alert">
+    <%= flash[:error]%>
+  </div>
+<%end%>
+<h1>Definiti o perioada noua</h1>
 
 <%= render 'form' %>
 

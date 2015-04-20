@@ -9,7 +9,7 @@ class HomeController < ApplicationController
 
     if @current_user.is_admin == true 
       respond_to do |format| 
-        format.html { redirect_to '/admin' } 
+        format.html { redirect_to '/periods' } 
       end
     end
 
