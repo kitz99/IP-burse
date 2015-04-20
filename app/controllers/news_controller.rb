@@ -62,7 +62,7 @@ class NewsController < ApplicationController
        username = @current_user.last_name
        @mailing_list = get_mailing_list
        NewsMailer.news_created(news, username, @mailing_list).deliver_now
-       redirect_to "/", notice: 'News was successfully published'
+       redirect_to "/admin", notice: 'News was successfully published'
      else
       redirect_to "/review-news", notice: 'News was successfully updated'
     end
