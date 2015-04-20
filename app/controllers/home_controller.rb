@@ -18,6 +18,12 @@ class HomeController < ApplicationController
         format.html # index.html.erb
       end
     end
+
+    if @current_user.is_management == true
+      respond_to do |format|
+        format.html { redirect_to '/requests-main' } 
+      end
+    end
   end
 
   def admin_resolved
@@ -29,7 +35,7 @@ class HomeController < ApplicationController
 
     if @current_user.is_student == true
       respond_to do |format|
-        format.html { redirect_to '/' }
+        format.html { redirect_to '/requests-main' }
       end
     end
 

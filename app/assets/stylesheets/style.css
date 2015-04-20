@@ -674,6 +674,10 @@ border-radius: 50%;
     font-family: fontawesome;
     src: url(/fonts/fontawesome-webfont.ttf);
 }
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 .ptr-form{
   background-color: white;
   padding-top: 7px;

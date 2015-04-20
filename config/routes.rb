@@ -31,6 +31,8 @@ Team9Scholarships::Application.routes.draw do
   get '/valid' => 'home#admin_valid'
   get '/generate' => 'home#generate'
 
+  get '/requests-main' => 'management#index'
+
   get '/review-news' => 'news#show_unpublished'
   get '/edit_unpublished/:news_id' => 'news#edit_unp'
   patch 'post_edit/:news_id' => 'news#post_edit'
