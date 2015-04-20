@@ -33,10 +33,10 @@ class NewsController < ApplicationController
       if @news.save
         if @news.published == true
           NewsMailer.news_created(@news, username, @mailing_list).deliver_now
-          format.html { redirect_to "/", notice: 'News was successfully published' }
+          format.html { redirect_to "/admin", notice: 'Stirea a fost publicata cu succes' }
           format.json { render action: 'show', status: :created, location: @news }
         else
-          format.html { redirect_to "/", notice: 'News was successfully created and you can edit' }
+          format.html { redirect_to "/admin", notice: 'Stirea a fost creata si poate fi editata' }
           format.json { render action: 'show', status: :created, location: @news }
         end
       end
