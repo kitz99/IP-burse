@@ -9,12 +9,14 @@
 
                     <ul class="dropdown-menu user-menu pull-right" role="menu">
                         <li><a href="#">
-                            <img src='http://en.gravatar.com/userimage/38594946/7e3248c2e78c061561b265d602f8bd72.jpg' class='avatar'/>
-                            <span class='username'>Horodnic Dragos Stefan</span>
+                             <%= gravatar_image_tag(@current_user.first_name , :class => 'avatar') %>
+                            <span class='username1'><%= @current_user.first_name + " " + @current_user.last_name %></span>
                         </a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Sign out</a></li>
+                        <% if @current_user.is_student %>
+                          <li><a href="/profile">Profile</a></li>
+                        <% end %>
+                        <li><a href="/logout">Sign out</a></li>
                   </ul>
             </div>
         </header>

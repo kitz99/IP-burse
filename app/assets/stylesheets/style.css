@@ -660,7 +660,7 @@ border-radius: 50%;
 -webkit-border-radius: 50%;
 }
 
-.username {
+.username1 {
   font-size: 1em;
   margin-left: auto;
   margin-right: auto;
@@ -706,6 +706,9 @@ border-radius: 50%;
   font-weight: 500;
   margin-bottom: 5px;
   display:block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 .username:hover{
   text-decoration: none;
