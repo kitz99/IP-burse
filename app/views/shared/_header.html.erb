@@ -1,12 +1,23 @@
 <div id="outer-wrap">
   <div id="inner-wrap">
 
-    <header id="top" role="banner">
-      <div class="block-top">
-        <a href='/' class='clickable'></a>
-        <a class="nav-btn" id="nav-open-btn" href="#nav"></a>
-      </div>
-    </header>
+<header id="top" role="banner">
+            <div class="block-top">
+                <a class="user-btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <a href='#' class='clickable'></a>
+                <a class="nav-btn" id="nav-open-btn" href="#nav"></a>
+
+                    <ul class="dropdown-menu user-menu pull-right" role="menu">
+                        <li><a href="#">
+                            <img src='http://en.gravatar.com/userimage/38594946/7e3248c2e78c061561b265d602f8bd72.jpg' class='avatar'/>
+                            <span class='username'>Horodnic Dragos Stefan</span>
+                        </a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Sign out</a></li>
+                  </ul>
+            </div>
+        </header>
 
     <nav id="nav" role="navigation">
       <div class="block">
@@ -27,11 +38,11 @@
           <% end %>
           <ul>
             <% if @current_user.is_admin == true %>
-            <li class="is-active"><a href="<%= root_url %>admin">Dashboard</a></li>
+            <li class="<%= cp('/admin') %>"><a href="<%= root_url %>admin">Dashboard</a></li>
             <!-- <li><a href="<%= root_url %>scholarships">Burse</a></li> -->
             <!--             <li><a href="<%= root_url %>domains">Domenii</a></li> -->
-            <li><a href="<%= root_url %>periods">Sesiuni</a></li>
-            <li><a href="/review-news">Revizuire stiri</a></li>
+            <li class="<%= cp('/periods') %>"><a href="<%= root_url %>periods">Sesiuni</a></li>
+            <li class="<%= cp('/review-news') %>"><a href="/review-news">Revizuire stiri</a></li>
 
 
 
@@ -41,7 +52,7 @@
               <!-- <ul id="ddlCereri" style="height: 0px;" aria-expanded="false" aria-labelledby="drop3" class="collapse"> -->
 <!--                 <li ><a href="<%= root_url %>waiting/">Burse in asteptare</a></li>
   <li ><a href="<%= root_url %>valid/">Burse valide</a></li> -->
-  <li ><a href="<%= root_url %>requests/">Toate aplicatiile</a></li>
+  <li class="<%= cp('/requests') %>"><a href="<%= root_url %>requests/">Toate aplicatiile</a></li>
   <li ><a href="<%= root_url %>clear_db/" data-confirm="Sunteti sigur ca doriti sa stergeti tot?">Sterge TOT!</a></li>
   <!-- </ul> -->
 </li>
@@ -51,14 +62,14 @@
 <!-- <li><a href="<%= root_url %>generate">Generare Burse</a></li> -->
 
 <% elsif @current_user.is_student == true %>
-<li><a href="<%= root_url %>">Dashboard</a></li>
-<li><a href="<%= root_url %>aplica">Aplica la bursa</a></li>
-<li><a href="<%= root_url %>applications">Aplicatiile mele</a></li>
+<li class="<%= cp('/') %>"><a href="<%= root_url %>">Dashboard</a></li>
+<li class="<%= cp('/aplica') %>"><a href="<%= root_url %>aplica">Aplica la bursa</a></li>
+<li class="<%= cp('/applications') %>"><a href="<%= root_url %>applications">Aplicatiile mele</a></li>
 
 
 <% elsif @current_user.is_management == true %>
-<li><a href="#">Dashboard</a></li>
-<li><a href="#">Cereri</a></li>
+<li class="<%= cp('/') %>"><a href="#">Dashboard</a></li>
+<li class="<%= cp('/requests-main') %>"><a href="#">Cereri</a></li>
 <% end %>
 <li>
   <a href="<%= root_url %>logout">Iesire</a><br>

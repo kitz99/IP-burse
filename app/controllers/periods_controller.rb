@@ -35,7 +35,7 @@ class PeriodsController < ApplicationController
   def create
     @period = Period.new(period_params)
 
-    if @period.start < @period.end
+    # if @period.start < @period.end
 
       respond_to do |format|
         verify_activ = Period.find_by(:activ => 't')
@@ -80,13 +80,13 @@ class PeriodsController < ApplicationController
           end
         end
       end
-    else
-      flash[:error] = "Data de inceput trebuie sa fie precedenta datei de sfarsit!"
-      respond_to do |format|
-        format.html { render :new }
-        format.json { render json: @period.errors, status: :unprocessable_entity }
-      end
-    end
+    # else
+    #   flash[:error] = "Data de inceput trebuie sa fie precedenta datei de sfarsit!"
+    #   respond_to do |format|
+    #     format.html { render :new }
+    #     format.json { render json: @period.errors, status: :unprocessable_entity }
+    #   end
+    # end
 
   end
 

@@ -329,7 +329,7 @@ body {
   float: right;
   border: 0;
   outline: none;
-  background: #333333 url("../img/user-btn.svg") left center no-repeat;
+  background: url("../img/user-btn.svg") left center no-repeat;
   background-size: 1.875em 1.5em;
   overflow: hidden;
   white-space: nowrap;
@@ -647,7 +647,7 @@ footer[role="contentinfo"] {
 }
 
 .user-menu {
-  right: 0px;
+  min-width: 256px;
 }
 
 .avatar {
@@ -669,6 +669,11 @@ border-radius: 50%;
 
 
 /* my style */
+
+@font-face {
+    font-family: fontawesome;
+    src: url(/fonts/fontawesome-webfont.ttf);
+}
 .ptr-form{
   background-color: white;
   padding-top: 7px;
@@ -722,4 +727,20 @@ border-radius: 50%;
   border-color: #5cb85c;
   color: #fff;
   background-color: #5cb85c;
+}
+
+#error_explanation h2 {
+    font-size: 20px !important;
+    color: #a94442;
+}
+#error_explanation ul{
+  margin-top: 1em;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+#error_explanation ul li:before {
+    font-family: 'fontawesome';
+    content: '\f071';
+    padding-right: 5px;
+    color: #a94442;
 }

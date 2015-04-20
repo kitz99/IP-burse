@@ -7,10 +7,10 @@ class Period < ActiveRecord::Base
     validates :start, :end, :buget, :nr_stud, :min_salary, presence: true
     validates :buget, numericality: { only_integer: true }
     validates :min_salary, numericality: { only_integer: true}
-    # validate :validate_dates
+    validate :validate_dates
 
-    # def validate_dates
-    #     # puts "---------------#{:start}+++++++++++++++++54+++++++++++"
-    #     errors.add(:eroare_perioada, ": Data de inceput trebuie sa fie precedenta datei de sfarsit") if :start > :end
-    # end
+    def validate_dates
+        # puts "---------------#{:start}+++++++++++++++++54+++++++++++"
+        errors.add(:eroare_perioada, ": Data de inceput trebuie sa fie precedenta datei de sfarsit") if self.start > self.end
+    end
 end
