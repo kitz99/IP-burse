@@ -17,5 +17,4 @@
 //= require 'rest_in_place'
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
-//= require main
 //= require bootstrap
