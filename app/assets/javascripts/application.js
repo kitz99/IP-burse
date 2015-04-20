@@ -11,10 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require modernizr
 //= require jquery.ui.all
 //= require jquery_ujs
-//= require bootstrap
 //= require 'rest_in_place'
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
+//= require main
+//= require bootstrap
 //= require_tree .
