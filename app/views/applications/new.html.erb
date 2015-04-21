@@ -1,8 +1,8 @@
-<div class="container col-md-12 text-center">
+<div class="container col-md-12">
 	<div id="common-infos">
-		<hr />
-		<h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Date Personale</strong></h4>
-		<hr />
+		<br /><br>
+		<h3 class="text-muted" style="color:black;">Date Personale</h3>
+		<br /><br>
 		<div class="row" style="text-align: left;">
 			<!-- nume -->
 			<div class="form-group col-md-6">
@@ -154,12 +154,12 @@
 		</div>
 		</div>
 	</div>
-	<hr />
-	<h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Alege tip bursa</strong></h4>
-	<hr />
+	<br /><br /><br />
+	<h3 class="text-muted" style="color:black;">Alege tip bursa</h3>
+	<br /> <br />
 </div>
 <% if @scholarship_titles.length != 0  %>
-<div container="container">
+<div container="container" style="margin-left: 2.4%;" >
 	<ul class="nav nav-tabs" id="myTab">
 		<% i = true %>
 		<% @scholarship_titles.each do |nume| %>
@@ -171,6 +171,7 @@
 		><a href="#goto-<%= nume['identificator'] %>"><%= nume["nume"] %></a></li>
 		<% end %>
 	</ul>
+	<br />
 
 <%= form_tag("/send_applications", method: "post", class:"form-horizontal", :multipart => true) do %>
 	<input type="hidden" name="peCardVal" id="peCardVal">
@@ -240,7 +241,7 @@
 		<% end %>
 	</div>
 	<div class="submit-button">
-		<input type="submit" value="Trimite" class="btn btn-info">
+		<input type="submit" value="Trimite" class="btn btn-primary">
 	</div>
 
 	<% end %>

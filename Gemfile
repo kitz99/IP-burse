@@ -65,9 +65,10 @@ group :development do
   gem 'sqlite3'
 end
 
-gem 'pg' # postgress
+
 group :production, :testing do
   gem 'rails_12factor'
+  gem 'pg' # postgress
 end
 
 gem 'therubyracer'

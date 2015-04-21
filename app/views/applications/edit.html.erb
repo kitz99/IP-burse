@@ -1,11 +1,11 @@
-<div class="container col-md-12 text-center">
+<div class="container col-md-12">
   <div class="meta-infos">
     <h1><%= @titlu_bursa %> : <span style="color:#428bca;"><%= @status %> </span></h1>
   </div>
   <div id="common-infos">
-    <hr />
-    <h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Date Personale</strong></h4>
-    <hr />
+    <br /><br>
+    <h3 class="text-muted" style="color:black;">Date Personale</h3>
+    <br /><br>
     <div class="row" style="text-align: left;">
       <!-- nume -->
       <div class="form-group col-md-6">
@@ -125,17 +125,18 @@
       </div>
     </div>
   </div>
-  <hr />
-  <h4 class="text-muted"><i class="fa fa-check-circle"></i> <strong>Documente atasate</strong></h4>
-  <hr />
+  <br /><br />
+  <h3 class="text-muted" style="color:black;">Documente atasate</h3>
+  <br />
 </div>
 
-<div container="container">
+<div container="container" style="margin-left: 2.6%;">
   <ul class="nav nav-tabs" id="myTab">
     <li role="presentation" data-toggle="tab" class="active">
       <a href="#goto-tab"><%= @titlu_bursa %></a></li>
   </ul>
 </div>
+<br />
 <%= form_tag("/update_application/#{@app_id}", method: "post", class:"form-horizontal", :multipart => true) do %>
   <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade active in" id="goto-tab">
@@ -156,8 +157,8 @@
       </div>
     </div>
   </div>
-  <div class="submit-button">
-    <input type="submit" value="Trimite" class="btn btn-info">
+  <div class="submit-button" style="margin-left: 2.6%;">
+    <input type="submit" value="Trimite" class="btn btn-primary">
   </div>
 <% end %>
 <script type="text/javascript">

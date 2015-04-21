@@ -5,7 +5,8 @@
   <div class="readMore<%=news.id%>">
     <% if news.content.length > 100 %>
       <%= news.content[0..200] %>...
-      <a class="linkExpand" data-toggle="collapse" href="#readMore<%=news.id%>" aria-expanded="false" aria-controls="readMore">
+      </br>
+      <a class="linkExpand btn btn-info" data-toggle="collapse" href="#readMore<%=news.id%>" aria-expanded="false" aria-controls="readMore" >
         Citeste mai mult
       </a>
     <%else%>
@@ -18,7 +19,8 @@
   <div class="collapse" id="readMore<%=news.id%>">
     <div class="well">
       <%= news.content  %>
-      <a class="linkCollpse" style="color:red" data-toggle="collapse" href="#readMore<%=news.id%>" aria-expanded="false" aria-controls="readMore">
+      </br>
+      <a class="linkCollpse btn btn-default" data-toggle="collapse" href="#readMore<%=news.id%>" aria-expanded="false" aria-controls="readMore">
         Inchide
       </a>
     </div>
