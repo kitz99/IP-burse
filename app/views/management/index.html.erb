@@ -19,11 +19,17 @@
             <h3 style="text-align:center;width:100%;">In Asteptare
             </h3><br>
 
+            <% @waiting.each do |key, value| %>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4><%= @waiting[:sc_name] %><span class="badge pull-right"><%= @waiting[:number] %></span> <a href="#"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a></h4>
+                <h4><%= key %><span class="badge pull-right"><%= value %></span> 
+                    <% if value != 0 %>
+                       <a href="#"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
+                    <% end %>
+                </h4>
               </div>
             </div>
+            <% end %>
             </div>
             <div class="col-sm-4" style="background-color: #E9E9E9; height: 100vh; padding: 1em;">
             <div class="img-circle center-block" style="width:160px; height:160px;">
@@ -41,16 +47,18 @@
             </div>  
             <h3 style="text-align:center;width:100%;">Acceptate
             </h3>
+            <br>
+            <% @accepted.each do |key, value| %>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4>Nu exista aplicatii in acest moment</h4>
+                <h4><%= key %><span class="badge pull-right"><%= value %></span> 
+                    <% if value != 0 %>
+                       <a href="#"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
+                    <% end %>
+                </h4>
               </div>
-<!--               <div class="panel-body">
-                Detalii despre bursa
-                <a href="#"><i class="fa fa-trash-o pull-right" style="color: red; padding-right: 15px;"></i></a>
-                <a href="#"><i class="fa fa-pencil pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
-              </div> -->
             </div>
+            <% end %>
             </div>
             <div class="col-sm-4" style="background-color: #F9F9F9; height: 100vh; padding: 1em;">
             <div class="img-circle center-block" style="width:160px; height:160px;">
@@ -69,15 +77,16 @@
             </div>  
             <h3 style="text-align:center;width:100%;">Respinse
             </h3>
+            <br>
+            <% @rejected.each do |key, value| %>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4>Nu exista aplicatii in acest moment</h4>
+                <h4><%= key %><span class="badge pull-right"><%= value %></span> 
+                    <% if value != 0 %>
+                       <a href="#"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
+                    <% end %>
+                </h4>
               </div>
-<!--               <div class="panel-body">
-                Detalii despre bursa
-                <a href="#"><i class="fa fa-trash-o pull-right" style="color: red; padding-right: 15px;"></i></a>
-                <a href="#"><i class="fa fa-pencil pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
-              </div> -->
             </div>
-            </div>
+            <% end %>
           </div>

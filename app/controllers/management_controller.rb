@@ -1,20 +1,43 @@
 class ManagementController < ApplicationController
   def index
   	@current_user = current_user
-  	@waiting = build_hash Application.where(:status => "In asteptare").group(:scholarship_id)
+    @waiting = Array.new
+    @accepted = Array.new
+    @rejected = Array.new
 
-    @accepted = Application.where(:status => "Aprobata").length
+    Scholarship.all.pluck(:id).each do |id|
+      Application.where(:scholarship_id => id).each do |app|
+        if app.status == "In asteptare"
+          @waiting << app
+        end
 
-    @rejected = Application.where(:status => "Respinsa").length
+        if app.status == "Aprobata"
+          @accepted << app
+        end
+
+        if app.status == "Respinsa"
+          @rejected << app
+        end
+      end
+    end
+
+  	@waiting = build_hash @waiting
+
+    @accepted = build_hash @accepted
+
+    @rejected = build_hash @rejected
   end
 
   protected
 
   	def build_hash(array)
   		result = Hash.new
-  		sc_name = Scholarship.find_by(:id => array.first.scholarship_id).stype
-  		number = array.length
-  		{:sc_name => sc_name, :number => number}
+  		Scholarship.all.each do |sc|
+        aux = array.select { |app|  app.scholarship_id == sc.id  } 
+        result[sc.stype] = aux.length
+      end
+
+      return result
   	end
 end
    

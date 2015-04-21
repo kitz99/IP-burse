@@ -22,7 +22,7 @@ class ApplicationsController < ApplicationController
 
 
   def inline_edit
-    # metoda ce updateasa inline profilul utilizatorului
+    # metoda ce updateaza inline profilul utilizatorului
     # Iau din params ceea ce trebuie sa updatez
     # Verific daca se poate face update-ul si apoi incerc sa scriu in API
 
@@ -672,7 +672,7 @@ class ApplicationsController < ApplicationController
     
     response = JSON.parse(RestClient.post url, body, {:content_type => :json})
 
-    # puts "Mesajul de la repo-------------------> #{response}"
+    puts "Mesajul de la repo-------------------> #{response}"
 
     if response['message'] == "error while updating student"
       return false
