@@ -1,41 +1,99 @@
+<div id="main" role="main" class="block">
 <br>
  <h2 class="text-muted" style="color:black;">Aplicatiile mele</h2>
 <br /><br />
 <div class="row">
-	<div class="col-md-4">
-		<h3>Aplicatii in asteptare</h3><br />
+	<div class="col-sm-4" style="background-color: #F9F9F9; height: 100vh; padding: 1em;">
+		<div class="img-circle center-block" style="width:160px; height:160px;">
+              <i class="fa fa-clock-o" style="  display: inline-block;
+                                                   -moz-border-radius: 130px;
+                                                    -webkit-border-radius: 130px;
+                                                    border-radius: 130px;
+                                                    background-color: #f1c40f;
+                                                    font-size: 128px;
+                                                    line-height: 108px;
+                                                    padding: 20px;
+                                                     margin-left: 6px;
+                                                     color: white;
+
+              "></i>
+        </div>            
+		<h3 style="text-align:center;width:100%;">Aplicatii in asteptare</h3><br />
 		<% if @waiting.empty? %>
-			<p>Nu aveti aplicatii in asteptare in acest moment</p>
+		<div class="panel panel-default">
+		   <div class="panel-heading">
+							<h4>Nu aveti aplicatii in asteptare in acest moment</h4>
+		   </div>
+		</div>
 		<% else %>
 				<% @waiting.each do |app| %>
-					<div style="  line-height: 3em; font-size: 1.2em; vertical-align: middle;">
+		    <div class="panel panel-default">
+              <div class="panel-heading">
+					<h4>
 					    <%= app["scholarship"] %> 
-					    <span class="pull-right" style="  margin-right: 25px;">	
-					    	<a href="/applications/<%= app['application'].id %>/edit"><i class="fa fa-pencil" style="color: #2980b9; padding: 2px;"></i></a>
-					    	<a href="/applications/<%= app['application'].id %>/delete" data-confirm="Are you sure?"><i class="fa fa-trash-o" style="color: red; padding: 2px;"></i></a>
-					    </span>
-					</div>
+					    <a href="/applications/<%= app['application'].id %>/delete" data-confirm="Are you sure?"><i class="fa fa-trash-o pull-right" style="color: red; padding-right:15px;"></i></a>
+					    <a href="/applications/<%= app['application'].id %>/edit"><i class="fa fa-pencil pull-right" style="color: #2980b9; padding-right:15px;"></i></a>					    
+		            </h4>
+			</div>
+			</div>
 				<% end %>
 		<% end %>
 	</div>
-	<div class="col-md-4">
-		<h3>Aplicatii aprobate</h3><br />
+
+	 <div class="col-sm-4" style="background-color: #E9E9E9; height: 100vh; padding: 1em;">
+            <div class="img-circle center-block" style="width:160px; height:160px;">
+              <i class="fa fa-check" style="  display: inline-block;
+                                                    -moz-border-radius: 128px;
+                                                    -webkit-border-radius: 128px;
+                                                    border-radius: 128px;
+                                                    background-color: #27ae60;
+                                                    font-size: 128px;
+                                                    line-height: 128px;
+                                                    padding: 10px;
+                                                     margin-left: 6px;
+                                                    color: white;
+              "></i>
+            </div>  
+		<h3 style="text-align:center;width:100%;">Aplicatii acceptate</h3><br />
 		<% if @accepted.empty? %>
-			<p>Nu aveti aplicatii acceptate in acest moment</p>
+		<div class="panel panel-default">
+		   <div class="panel-heading">
+							<h4>Nu aveti aplicatii acceptate in acest moment</h4>
+			</div>
+		</div>
 		<% else %>
 			<ul>
 				<% @accepted.each do |app| %>
 					<li>
-					    <%= app["scholarship"] %> 
+					   		 <%= app["scholarship"] %> 
 					</li>
 				<% end %>
 			</ul>
 		<% end %>
 	</div>
-	<div class="col-md-4">
-		<h3>Aplicatii respinse</h3><br />
+
+	 <div class="col-sm-4" style="background-color: #F9F9F9; height: 100vh; padding: 1em;">
+            <div class="img-circle center-block" style="width:160px; height:160px;">
+              <i class="fa fa-times" style="  display: inline-block;
+                                                    -moz-border-radius: 160px;
+                                                    -webkit-border-radius: 160px;
+                                                    border-radius: 160px;
+                                                    background-color: #c0392b;
+                                                    font-size: 138px;
+                                                    line-height: 110px;
+                                                    padding: 20px;
+                                                     margin-left: 6px;
+                                                    color: white;
+              "></i>
+
+            </div>  
+		<h3 style="text-align:center;width:100%;">Aplicatii respinse</h3><br />
 		<% if @rejected.empty? %>
-			<p>Nu aveti aplicatii respinse in acest moment</p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+							<h4>Nu aveti aplicatii respinse in acest moment</h4>
+			</div>
+		</div>
 		<% else %>
 			<ul>
 				<% @rejected.each do |app| %>
@@ -45,5 +103,7 @@
 				<% end %>
 			</ul>
 		<% end %>
+		</div>
 	</div>
+</div>
 </div>
