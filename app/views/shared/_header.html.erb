@@ -40,7 +40,7 @@
           <% end %>
           <ul>
             <% if @current_user.is_admin == true %>
-            <li class="<%= cp('/admin') %>"><a href="<%= root_url %>admin">Dashboard</a></li>
+            <li class="<%= cp('/admin') %>"><a href="<%= root_url %>admin">Panou de control</a></li>
             <!-- <li><a href="<%= root_url %>scholarships">Burse</a></li> -->
             <!--             <li><a href="<%= root_url %>domains">Domenii</a></li> -->
             <li class="<%= cp('/periods') %>"><a href="<%= root_url %>periods">Sesiuni</a></li>
@@ -64,13 +64,13 @@
 <!-- <li><a href="<%= root_url %>generate">Generare Burse</a></li> -->
 
 <% elsif @current_user.is_student == true %>
-<li class="<%= cp('/') %>"><a href="<%= root_url %>">Dashboard</a></li>
+<li class="<%= cp('/') %>"><a href="<%= root_url %>">Panou de control</a></li>
 <li class="<%= cp('/aplica') %>"><a href="<%= root_url %>aplica">Aplica la bursa</a></li>
 <li class="<%= cp('/applications') %>"><a href="<%= root_url %>applications">Aplicatiile mele</a></li>
 
 
 <% elsif @current_user.is_management == true %>
-<li class="<%= cp('/') %>"><a href="#">Dashboard</a></li>
+<li class="<%= cp('/') %>"><a href="#">Panou de control</a></li>
 <li class="<%= cp('/requests-main') %>"><a href="#">Cereri</a></li>
 <% end %>
 <li>
