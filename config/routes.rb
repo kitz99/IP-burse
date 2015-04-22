@@ -32,6 +32,7 @@ Team9Scholarships::Application.routes.draw do
   get '/generate' => 'home#generate'
 
   get '/requests-main' => 'management#index'
+  get '/applications/:sw/:stype' => 'management#render_table'
 
   get '/review-news' => 'news#show_unpublished'
   get '/edit_unpublished/:news_id' => 'news#edit_unp'

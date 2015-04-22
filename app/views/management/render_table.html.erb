@@ -1,0 +1,24 @@
+<h2>Cereri pentru <%= params[:stype] %></h2>
+<table id="rendered_table" class="large-only table table-striped" cellspacing="0" width="100%">
+	<thead>
+		<th>Nume student</th>
+		<th>Prenume student</th>
+		<th>Data depunerii</th>
+		<th>Vizualizare</th>
+	</thead>
+	<tbody>
+		<% @applications.each do |app| %>
+			<tr>
+				<td><%= app[:student_first] %></td>
+				<td><%= app[:student_last] %></td>
+				<td><%= app[:app].submission_date %></td>
+				<td><a href="#"><i class="fa fa-eye" style="color: #2980b9;padding-right: 15px;"></i></a></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<script>
+	$("#rendered_table").dataTable();
+	$(".dataTables_length label select").addClass("form-control");
+	$("#rendered_table_filter label input").addClass("form-control");
+</script>

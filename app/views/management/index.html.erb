@@ -24,7 +24,7 @@
               <div class="panel-heading">
                 <h4><%= key %><span class="badge pull-right"><%= value %></span> 
                     <% if value != 0 %>
-                       <a href="#"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
+                       <a href="/applications/waiting/<%= key %>"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
                     <% end %>
                 </h4>
               </div>
@@ -53,7 +53,7 @@
               <div class="panel-heading">
                 <h4><%= key %><span class="badge pull-right"><%= value %></span> 
                     <% if value != 0 %>
-                       <a href="#"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
+                       <a href="/applications/accepted"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
                     <% end %>
                 </h4>
               </div>
@@ -83,7 +83,7 @@
               <div class="panel-heading">
                 <h4><%= key %><span class="badge pull-right"><%= value %></span> 
                     <% if value != 0 %>
-                       <a href="#"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
+                       <a href="/applications/rejected/<%= key %>"><i class="fa fa-eye pull-right" style="color: #2980b9;padding-right: 15px;"></i></a>
                     <% end %>
                 </h4>
               </div>
