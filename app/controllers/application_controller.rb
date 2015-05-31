@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  
 
   def current_user
     return nil unless session[:uid]

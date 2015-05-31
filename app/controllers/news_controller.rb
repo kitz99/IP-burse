@@ -129,9 +129,6 @@ end
          end
        end
      end
-     mailing_list << "tehnic@pddesign.ro"
-     mailing_list << "bogdan.timofte@hotmail.com"
-     mailing_list << "bogdan.mihai.timofte@gmail.com"
     #end try
 
     return mailing_list
