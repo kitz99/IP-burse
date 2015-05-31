@@ -66,7 +66,7 @@ group :development do
 end
 
 
-group :production, :testing do
+group :production, :testing, :staging do
   gem 'rails_12factor'
   gem 'pg' # postgress
 end
